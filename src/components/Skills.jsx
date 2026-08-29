@@ -1,116 +1,161 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Layout, Cpu, CheckCircle2, ChevronRight, Sparkles, Terminal } from 'lucide-react';
+import {
+  FaPython,
+  FaJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaReact,
+  FaBrain,
+  FaDatabase,
+  FaServer,
+  FaStar,
+  FaLightbulb,
+  FaUsers,
+  FaComments,
+  FaGears
+} from 'react-icons/fa6';
 import { portfolioData } from '../data/portfolioData';
 
-const iconMap = {
-  Code2: <Code2 size={22} />,
-  Layout: <Layout size={22} />,
-  Cpu: <Cpu size={22} />
+// Custom </> Code Symbol Icon for C++, C, etc.
+const CodeBracketIcon = () => (
+  <span className="arsenal-code-badge">&lt;/&gt;</span>
+);
+
+const technicalIconMap = {
+  "C++": <CodeBracketIcon />,
+  Python: <FaPython size={28} />,
+  "C Language": <CodeBracketIcon />,
+  JavaScript: <FaJs size={28} />,
+  "JavaScript (ES6+)": <FaJs size={28} />,
+  HTML5: <FaHtml5 size={28} />,
+  CSS3: <FaCss3Alt size={28} />,
+  "CSS3 & Modern UI": <FaCss3Alt size={28} />,
+  "React.js": <FaReact size={28} />,
+  React: <FaReact size={28} />,
+  DSA: <FaGears size={28} />,
+  "Data Structures & Algorithms (DSA)": <FaGears size={28} />,
+  DBMS: <FaServer size={26} />,
+  "DBMS (Database Management)": <FaServer size={26} />,
+  SQL: <FaDatabase size={26} />,
+  "Problem Solving": <FaBrain size={28} />
+};
+
+const softIconMap = {
+  "Leadership and Influence": <FaStar size={26} />,
+  "Problem-Solving and Critical Thinking": <FaLightbulb size={26} />,
+  "Collaboration and Teamwork": <FaUsers size={26} />,
+  Communication: <FaComments size={26} />
 };
 
 export const Skills = () => {
-  const { skills } = portfolioData;
-  const [selectedSkill, setSelectedSkill] = useState(null);
+  const { technicalSkills, softSkills } = portfolioData.skills;
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.06
+      }
+    }
   };
 
-  const handleSkillClick = (skillName) => {
-    setSelectedSkill(prev => (prev === skillName ? null : skillName));
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.35, ease: 'easeOut' }
+    }
   };
 
   return (
-    <section id="skills" style={{ position: 'relative' }}>
+    <section id="skills" className="arsenal-section">
       <div id="arsenal" style={{ position: 'absolute', top: '-80px' }} />
       <div className="container">
+        
+        {/* Section Title 1: Technical Skills */}
         <motion.div
-          className="section-header"
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: -15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          variants={cardVariants}
+          transition={{ duration: 0.5 }}
+          className="arsenal-heading-wrap"
         >
-          <span className="section-label">[ TECH_MATRIX // INTERACTIVE_BLOCKS ]</span>
-          <h2>Technical Skills & Arsenal</h2>
-          <p>Click on any skill block to inspect specific proficiencies, practical usage, and problem-solving milestones.</p>
+          <h2 className="arsenal-title">Technical Skills</h2>
         </motion.div>
 
-        <div className="skills-grid">
-          {skills.map((cat, idx) => (
+        {/* Technical Skills Cards Grid */}
+        <motion.div
+          className="arsenal-grid arsenal-grid-tech"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          {technicalSkills.map((skill, idx) => (
             <motion.div
               key={idx}
-              className="glass-card skill-category-card"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              className="arsenal-card arsenal-card-tech"
               variants={cardVariants}
-              transition={{ delay: idx * 0.1 }}
+              whileHover={{
+                scale: 1.05,
+                borderColor: '#00f0ff',
+                boxShadow: '0 0 24px rgba(0, 240, 255, 0.4)',
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="skill-category-header">
-                <div className="skill-category-icon">
-                  {iconMap[cat.icon] || <Code2 size={22} />}
-                </div>
-                <div>
-                  <h3>{cat.category}</h3>
-                  <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Interactive Blocks</span>
-                </div>
+              <div className="arsenal-card-icon">
+                {technicalIconMap[skill.name] || <CodeBracketIcon />}
               </div>
-
-              <div className="skill-list">
-                {cat.items.map((skill, sIdx) => {
-                  const isSelected = selectedSkill === skill.name;
-                  return (
-                    <div
-                      key={sIdx}
-                      className={`clickable-skill-item ${isSelected ? 'active' : ''}`}
-                      onClick={() => handleSkillClick(skill.name)}
-                      title="Click to toggle details"
-                    >
-                      <div className="skill-info">
-                        <div className="skill-info-name">
-                          <span>{skill.name}</span>
-                          {skill.highlight && (
-                            <span className="skill-highlight-tag">{skill.highlight}</span>
-                          )}
-                        </div>
-                        <span className="mono" style={{ color: 'var(--primary)', fontSize: '0.85rem' }}>
-                          {skill.level}%
-                        </span>
-                      </div>
-
-                      <div className="skill-progress-bar">
-                        <motion.div
-                          className="skill-progress-fill"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, ease: 'easeOut', delay: 0.1 }}
-                        />
-                      </div>
-
-                      {/* Clickable Expanded Details Block */}
-                      {isSelected ? (
-                        <div className="skill-expanded-details">
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary)', fontWeight: '600', marginBottom: '4px' }}>
-                            <Sparkles size={13} /> {skill.status}
-                          </div>
-                          <p>{skill.details}</p>
-                        </div>
-                      ) : (
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginTop: '4px', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-                          Click to inspect <ChevronRight size={12} />
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
+              <span className="arsenal-card-name">{skill.name}</span>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
+
+        {/* Section Title 2: Soft Skills */}
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="arsenal-heading-wrap soft-skills-heading-wrap"
+        >
+          <h2 className="arsenal-title">Soft Skills</h2>
+        </motion.div>
+
+        {/* Soft Skills Cards Grid */}
+        <motion.div
+          className="arsenal-grid arsenal-grid-soft"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          {softSkills.map((skill, idx) => (
+            <motion.div
+              key={idx}
+              className="arsenal-card arsenal-card-soft"
+              variants={cardVariants}
+              whileHover={{
+                scale: 1.04,
+                borderColor: '#00f0ff',
+                boxShadow: '0 0 24px rgba(0, 240, 255, 0.4)',
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="arsenal-card-icon">
+                {softIconMap[skill.name] || <FaStar size={26} />}
+              </div>
+              <span className="arsenal-card-name">{skill.name}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+
       </div>
     </section>
   );

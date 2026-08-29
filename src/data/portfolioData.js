@@ -45,103 +45,27 @@ export const portfolioData = {
     ]
   },
 
-  skills: [
-    {
-      category: "Programming Languages",
-      icon: "Code2",
-      items: [
-        {
-          name: "C++",
-          level: 90,
-          status: "Currently Learning This Semester",
-          details: "Object-oriented design, STL containers, pointers, competitive problem solving, and system efficiency.",
-          highlight: "Core Language for DSA"
-        },
-        {
-          name: "Python",
-          level: 90,
-          status: "Certified in Python Programming",
-          details: "AI/ML script automation, data manipulation, algorithm prototyping, and backend integration.",
-          highlight: "AI/ML Foundation"
-        },
-        {
-          name: "C Language",
-          level: 85,
-          status: "Foundational Mastery",
-          details: "Low-level memory management, pointer arithmetic, procedural programming, and algorithmic design.",
-          highlight: "Systems Programming"
-        }
-      ]
-    },
-    {
-      category: "Web Technologies",
-      icon: "Layout",
-      items: [
-        {
-          name: "JavaScript (ES6+)",
-          level: 88,
-          status: "Active Web Development",
-          details: "Modern asynchronous workflows, DOM manipulation, ES6+ modules, event handling, and API consumption.",
-          highlight: "Dynamic Web Apps"
-        },
-        {
-          name: "HTML5",
-          level: 95,
-          status: "Semantic Markup",
-          details: "Accessible structure, modern HTML5 semantic layout, media embedding, and responsive scaffolding.",
-          highlight: "Web Foundation"
-        },
-        {
-          name: "CSS3 & Modern UI",
-          level: 92,
-          status: "Glassmorphism & Cyber Styling",
-          details: "Flexbox, CSS Grid, keyframe animations, CSS custom properties, responsive media queries, and themes.",
-          highlight: "Modern Design System"
-        },
-        {
-          name: "React.js",
-          level: 88,
-          status: "Certified by Infosys Springboard",
-          details: "Component architecture, hooks (useState, useEffect, useRef), Framer Motion integration, and single-page apps.",
-          highlight: "Full-Stack React"
-        }
-      ]
-    },
-    {
-      category: "Core CS Concepts & Problem Solving",
-      icon: "Cpu",
-      items: [
-        {
-          name: "Data Structures & Algorithms (DSA)",
-          level: 88,
-          status: "Currently Learning This Semester",
-          details: "Arrays, linked lists, stacks, queues, trees, graphs, sorting/searching algorithms, and recursion.",
-          highlight: "Solved 50+ on LeetCode"
-        },
-        {
-          name: "DBMS (Database Management)",
-          level: 86,
-          status: "Database Architecture",
-          details: "Relational database concepts, normalization (1NF to BCNF), ER diagrams, ACID properties, and transactions.",
-          highlight: "Data Consistency"
-        },
-        {
-          name: "SQL",
-          level: 88,
-          status: "Query Formulation",
-          details: "Complex JOIN queries, aggregations, subqueries, view creation, indexing, and schema design.",
-          highlight: "Relational Queries"
-        },
-        {
-          name: "Problem Solving",
-          level: 90,
-          status: "LeetCode & Competitive Coding",
-          details: "Continuous practice on LeetCode with 50+ problems solved across arrays, strings, binary search, and math.",
-          highlight: "50+ LeetCode Solved"
-        }
-      ]
-    }
-  ],
+  skills: {
+    technicalSkills: [
+      { name: "C++", icon: "Code", category: "Core Language for DSA" },
+      { name: "Python", icon: "Python", category: "AI/ML Foundation" },
+      { name: "C Language", icon: "Code", category: "Systems Programming" },
+      { name: "JavaScript", icon: "JavaScript", category: "Dynamic Web Apps" },
+      { name: "HTML5", icon: "HTML5", category: "Web Foundation" },
+      { name: "CSS3", icon: "CSS3", category: "Modern Design System" },
+      { name: "React.js", icon: "React", category: "Full-Stack React" },
+      { name: "DSA", icon: "Gears", category: "50+ LeetCode Solved" },
+      { name: "DBMS", icon: "Server", category: "Database Architecture" },
+      { name: "SQL", icon: "Database", category: "Relational Queries" },
+      { name: "Problem Solving", icon: "Brain", category: "50+ LeetCode Solved" }
+    ],
+    softSkills: [
+      { name: "Leadership and Influence", icon: "Star" },
+      { name: "Problem-Solving and Critical Thinking", icon: "Lightbulb" },
+      { name: "Collaboration and Teamwork", icon: "Team" },
+      { name: "Communication", icon: "Chat" }
+    ]
+  },
 
   projects: [
     {
