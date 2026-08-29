@@ -41,38 +41,50 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container nav-container">
-        <a href="#hero" className="nav-logo" onClick={() => setMenuOpen(false)}>
-          <span className="nav-logo-bracket">&lt;</span>
-          {portfolioData.personal.name}
-          <span className="nav-logo-bracket">/&gt;</span>
-        </a>
+    <>
+      <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="container nav-container">
+          <a href="#hero" className="nav-logo" onClick={() => setMenuOpen(false)}>
+            <span className="nav-logo-bracket">&lt;</span>
+            {portfolioData.personal.name}
+            <span className="nav-logo-bracket">/&gt;</span>
+          </a>
 
-        <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          {navItems.map(item => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className={activeSection === item.id ? 'active' : ''}
-              onClick={() => setMenuOpen(false)}
+          <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
+            {navItems.map(item => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={activeSection === item.id ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="nav-actions">
+            <ThemeToggle />
+            <button
+              className="menu-toggle"
+              onClick={() => setMenuOpen(prev => !prev)}
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
             >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="nav-actions">
-          <ThemeToggle />
-          <button
-            className="menu-toggle"
-            onClick={() => setMenuOpen(prev => !prev)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* Mobile Menu Backdrop */}
+      {menuOpen && (
+        <div
+          className="nav-backdrop"
+          onClick={() => setMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+    </>
   );
 };
