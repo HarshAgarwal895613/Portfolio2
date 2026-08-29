@@ -21,12 +21,12 @@ export const Projects = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={cardVariants}
         >
-          <span className="section-label">[ DEPLOYED_SYSTEMS // AI_ML_PROJECTS ]</span>
-          <h2>Featured Projects & Concepts</h2>
-          <p>Highlighting AI/ML vision systems, smart climate hardware, and full-stack platforms.</p>
+          <span className="section-label">[ FEATURED_SYSTEM // AI_IOT_PROJECT ]</span>
+          <h2>Featured Project & Innovation</h2>
+          <p>Highlighting AI/ML intelligent climate telemetry and smart hardware systems.</p>
         </motion.div>
 
-        <div className="projects-grid">
+        <div className="projects-grid" style={projects.length === 1 ? { maxWidth: '750px', margin: '0 auto' } : {}}>
           {projects.map((proj, idx) => (
             <motion.div
               key={proj.id}

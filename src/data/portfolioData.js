@@ -145,17 +145,6 @@ export const portfolioData = {
 
   projects: [
     {
-      id: "smart-classroom-monitoring",
-      title: "Smart Classroom Monitoring System",
-      category: "AI / ML Vision Concept",
-      description: "An advanced AI/ML-based computer vision application with classroom camera telemetry that intelligently detects student inattentiveness, sleeping, or mobile phone usage during lectures, automatically dispatching alert notifications to parents.",
-      techStack: ["Python", "Computer Vision (OpenCV)", "AI/ML Detection", "Parent Notification Telemetry"],
-      icon: "👁️",
-      highlight: "AI/ML Flagship Concept",
-      github: "https://github.com/HarshAgarwal895613",
-      demo: "#"
-    },
-    {
       id: "ai-smart-humidifier",
       title: "AI-Based Smart Humidifier System",
       category: "AI / IoT / Smart Climate",
@@ -164,28 +153,6 @@ export const portfolioData = {
       image: "/assets/project-humidifier.jpg",
       icon: "💧",
       highlight: "IoT + AI Hardware",
-      github: "https://github.com/HarshAgarwal895613",
-      demo: "#"
-    },
-    {
-      id: "authenticity-detection-device",
-      title: "Authenticity Detection Device",
-      category: "Hardware & Machine Learning Concept",
-      description: "A specialized sensor instrument designed to analyze material spectral properties and packaging markers to determine whether a commercial product is original or duplicate before purchase.",
-      techStack: ["Hardware Sensor Rig", "Machine Learning Classification", "Python", "Spectrometry Analysis"],
-      icon: "🔍",
-      highlight: "Consumer Protection",
-      github: "https://github.com/HarshAgarwal895613",
-      demo: "#"
-    },
-    {
-      id: "fullstack-react-hub",
-      title: "Full-Stack React Web Platform",
-      category: "Full Stack Development",
-      description: "Modern, responsive dynamic web ecosystem built with React, interactive state management, REST APIs, and database connectivity.",
-      techStack: ["React.js", "JavaScript", "HTML5/CSS3", "SQL / DBMS", "Framer Motion"],
-      icon: "🌐",
-      highlight: "Certified Full-Stack",
       github: "https://github.com/HarshAgarwal895613",
       demo: "#"
     }
@@ -244,7 +211,7 @@ export const portfolioData = {
       semester: "Currently in 3rd Semester",
       score: "CGPA: 9.24",
       highlight: "Top Academic Standing",
-      notes: "Took a 2-year gap (2023 – 2025) for JEE preparation; qualified JEE Advanced",
+      notes: "Took a 2-year gap (2023 – 2025) for JEE preparation; Qualified for JEE Advanced",
       jeeQualified: true,
       location: "Phagwara, Punjab, India",
       icon: "GraduationCap"

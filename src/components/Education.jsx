@@ -41,7 +41,7 @@ export const Education = () => {
             </div>
             <div className="ticker-item">
               <CheckCircle2 size={16} color="var(--secondary)" />
-              <span>JEE Advanced: <strong>Qualified</strong></span>
+              <span>Qualified for: <strong>JEE Advanced</strong></span>
             </div>
             <div className="ticker-item">
               <Award size={16} color="var(--primary)" />
@@ -59,7 +59,7 @@ export const Education = () => {
             </div>
             <div className="ticker-item">
               <CheckCircle2 size={16} color="var(--secondary)" />
-              <span>JEE Advanced: <strong>Qualified</strong></span>
+              <span>Qualified for: <strong>JEE Advanced</strong></span>
             </div>
             <div className="ticker-item">
               <Award size={16} color="var(--primary)" />

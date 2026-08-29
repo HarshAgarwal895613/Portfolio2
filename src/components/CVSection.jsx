@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Download, ExternalLink, GraduationCap, CheckCircle2, Sparkles, Eye, X } from 'lucide-react';
+import { FileText, Download, ExternalLink, GraduationCap, CheckCircle2, Sparkles, Eye, X, Cpu, ArrowRight } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export const CVSection = () => {
@@ -54,7 +54,7 @@ export const CVSection = () => {
               <CheckCircle2 size={14} style={{ marginRight: '6px' }} /> 50+ LeetCode Solved
             </span>
             <span className="tag tag-pink">
-              <CheckCircle2 size={14} style={{ marginRight: '6px' }} /> JEE Advanced Qualified
+              <CheckCircle2 size={14} style={{ marginRight: '6px' }} /> Qualified for JEE Advanced
             </span>
           </div>
 
@@ -75,12 +75,24 @@ export const CVSection = () => {
             </button>
 
             <a
+              href="#skills"
+              className="btn btn-outline"
+              style={{
+                borderColor: 'rgba(0, 240, 255, 0.4)',
+                color: 'var(--primary)',
+                background: 'rgba(0, 240, 255, 0.06)'
+              }}
+            >
+              <Cpu size={18} /> Arsenal Direct Reach <ArrowRight size={16} />
+            </a>
+
+            <a
               href={personal.resumePdf}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline"
             >
-              <ExternalLink size={18} /> Open in New Tab
+              <ExternalLink size={18} /> Open in Tab
             </a>
           </div>
         </motion.div>

@@ -23,7 +23,8 @@ export const Skills = () => {
   };
 
   return (
-    <section id="skills">
+    <section id="skills" style={{ position: 'relative' }}>
+      <div id="arsenal" style={{ position: 'absolute', top: '-80px' }} />
       <div className="container">
         <motion.div
           className="section-header"
