@@ -135,7 +135,6 @@ export const portfolioData = {
       semester: "Currently in 3rd Semester",
       score: "CGPA: 9.24",
       highlight: "Top Academic Standing",
-      notes: "Took a 2-year gap (2023 – 2025) for JEE preparation; Qualified for JEE Advanced",
       jeeQualified: true,
       location: "Phagwara, Punjab, India",
       icon: "GraduationCap"

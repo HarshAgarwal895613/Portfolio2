@@ -92,7 +92,9 @@ export const Hero = () => {
             <img
               src={personal.avatar}
               alt={personal.name}
-              style={{ objectFit: 'cover', objectPosition: 'center 12%' }}
+              className="hero-avatar-img"
+              loading="eager"
+              decoding="async"
               onError={(e) => {
                 e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(personal.name)}&size=300&background=070714&color=00f0ff&bold=true`;
               }}

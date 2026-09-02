@@ -599,38 +599,41 @@ body.custom-cursor-active * {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(var(--avatar-size) + 100px);
-  height: calc(var(--avatar-size) + 100px);
+  width: calc(var(--avatar-size) + 90px);
+  height: calc(var(--avatar-size) + 90px);
   max-width: 100%;
   margin: 0 auto;
 }
 
 .avatar-ring {
   position: absolute;
-  width: calc(var(--avatar-size) + 70px);
-  height: calc(var(--avatar-size) + 70px);
+  width: calc(var(--avatar-size) + 60px);
+  height: calc(var(--avatar-size) + 60px);
   border-radius: 50%;
-  border: 2px dashed rgba(0, 240, 255, 0.4);
+  border: 2px dashed rgba(0, 240, 255, 0.45);
   animation: rotate-ring 25s linear infinite;
-  box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
+  pointer-events: none;
 }
 
 .avatar-ring-outer {
   position: absolute;
-  width: calc(var(--avatar-size) + 100px);
-  height: calc(var(--avatar-size) + 100px);
+  width: calc(var(--avatar-size) + 90px);
+  height: calc(var(--avatar-size) + 90px);
   border-radius: 50%;
-  border: 1px solid rgba(255, 0, 127, 0.25);
+  border: 1.5px solid rgba(255, 0, 127, 0.3);
   animation: rotate-ring-rev 30s linear infinite;
+  pointer-events: none;
 }
 
 .avatar-glow {
   position: absolute;
-  width: calc(var(--avatar-size) + 20px);
-  height: calc(var(--avatar-size) + 20px);
+  width: calc(var(--avatar-size) + 30px);
+  height: calc(var(--avatar-size) + 30px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.3) 0%, rgba(255, 0, 127, 0.15) 50%, transparent 70%);
-  filter: blur(25px);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.35) 0%, rgba(255, 0, 127, 0.2) 50%, transparent 70%);
+  filter: blur(28px);
+  pointer-events: none;
 }
 
 .avatar-img-container {
@@ -639,23 +642,30 @@ body.custom-cursor-active * {
   height: var(--avatar-size);
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid rgba(0, 240, 255, 0.6);
-  box-shadow: var(--shadow-lg), 0 0 40px rgba(0, 240, 255, 0.3);
+  border: 4px solid rgba(0, 240, 255, 0.7);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 35px rgba(0, 240, 255, 0.35);
   background: var(--bg-tertiary);
+  z-index: 2;
 }
 
-/* Optimized position to center Harsh's face and glasses properly */
-.avatar-img-container img {
+/* Zoomed out position: Clear space above head and visible body down to chest */
+.avatar-img-container img,
+.hero-avatar-img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
-  object-position: center 10%;
-  transform: scale(1.05);
-  transition: transform 0.5s ease;
+  object-position: center top;
+  transform: scale(1);
+  transform-origin: center top;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  image-rendering: -webkit-optimize-contrast;
 }
 
-.avatar-img-container:hover img {
-  transform: scale(1.1);
+.avatar-img-container:hover img,
+.avatar-img-container:hover .hero-avatar-img {
+  transform: scale(1.03);
+  filter: brightness(1.04);
 }
 
 @keyframes rotate-ring {
