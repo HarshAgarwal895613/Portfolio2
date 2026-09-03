@@ -24,7 +24,7 @@ export const CVSection = () => {
         >
           <span className="section-label">[ CURRICULUM_VITAE // OFFICIAL_DOCUMENT ]</span>
           <h2>Curriculum Vitae</h2>
-          <p>Download or examine my official verified CV with comprehensive academic records and project interests.</p>
+          <p>Download or examine my official verified CV with comprehensive academic records, project implementations, and technical credentials.</p>
         </motion.div>
 
         <motion.div
@@ -38,14 +38,14 @@ export const CVSection = () => {
             <FileText size={36} />
           </div>
 
-          <h3>{personal.name} — Official Resume</h3>
+          <h3>{personal.name} — Official Curriculum Vitae</h3>
           <p>
-            B.Tech Computer Science Engineering (AI/ML Specialization) @ Lovely Professional University. Experienced with C++, Python, Data Structures & Algorithms, Full-Stack React, and DBMS.
+            Bachelor of Technology in Computer Science & Engineering (AI/ML Specialization) at Lovely Professional University. Proficient in C++, Python, JavaScript (ES6+), SQL, React.js, IoT Sensors, and Climate Telemetry.
           </p>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap', marginBottom: '32px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '32px' }}>
             <span className="tag">
-              <GraduationCap size={14} style={{ marginRight: '6px' }} /> 9.24 CGPA @ LPU (3rd Sem)
+              <GraduationCap size={14} style={{ marginRight: '6px' }} /> 9.24 CGPA @ LPU
             </span>
             <span className="tag tag-pink">
               <Sparkles size={14} style={{ marginRight: '6px' }} /> AI/ML Specialization
@@ -55,6 +55,9 @@ export const CVSection = () => {
             </span>
             <span className="tag tag-pink">
               <CheckCircle2 size={14} style={{ marginRight: '6px' }} /> Qualified for JEE Advanced
+            </span>
+            <span className="tag">
+              <CheckCircle2 size={14} style={{ marginRight: '6px' }} /> 150 Hrs Programming Training
             </span>
           </div>
 
@@ -83,7 +86,7 @@ export const CVSection = () => {
                 background: 'rgba(0, 240, 255, 0.06)'
               }}
             >
-              <Cpu size={18} /> Arsenal Direct Reach <ArrowRight size={16} />
+              <Cpu size={18} /> Technical Skills <ArrowRight size={16} />
             </a>
 
             <a
@@ -92,7 +95,7 @@ export const CVSection = () => {
               rel="noopener noreferrer"
               className="btn btn-outline"
             >
-              <ExternalLink size={18} /> Open in Tab
+              <ExternalLink size={18} /> Open in New Tab
             </a>
           </div>
         </motion.div>
@@ -115,7 +118,7 @@ export const CVSection = () => {
               <iframe
                 src={`${personal.resumePdf}#toolbar=1`}
                 title="Harsh Agarwal CV Preview"
-                style={{ width: '100%', height: '100%', border: 'none' }}
+                style={{ width: '100%', height: '100%', border: 'none', borderRadius: '12px' }}
               />
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Sparkles, Cpu } from 'lucide-react';
+import { Github, ExternalLink, Sparkles, CheckCircle2, Calendar } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export const Projects = () => {
@@ -22,8 +22,8 @@ export const Projects = () => {
           variants={cardVariants}
         >
           <span className="section-label">[ FEATURED_SYSTEM // AI_IOT_PROJECT ]</span>
-          <h2>Featured Project & Innovation</h2>
-          <p>Highlighting AI/ML intelligent climate telemetry and smart hardware systems.</p>
+          <h2>Featured Projects & Innovations</h2>
+          <p>Highlighting AI/ML intelligent climate telemetry, automated regulation, and hardware sensing.</p>
         </motion.div>
 
         <div className="projects-grid" style={projects.length === 1 ? { maxWidth: '750px', margin: '0 auto' } : {}}>
@@ -52,6 +52,11 @@ export const Projects = () => {
                   <span className="tag">
                     <Sparkles size={12} style={{ marginRight: '4px' }} /> {proj.category}
                   </span>
+                  {proj.date && (
+                    <span className="tag" style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>
+                      <Calendar size={12} style={{ marginRight: '4px' }} /> {proj.date}
+                    </span>
+                  )}
                   {proj.highlight && (
                     <span className="tag tag-pink" style={{ fontSize: '0.72rem' }}>
                       {proj.highlight}
@@ -60,7 +65,19 @@ export const Projects = () => {
                 </div>
 
                 <h3>{proj.title}</h3>
-                <p>{proj.description}</p>
+                
+                {proj.bullets && proj.bullets.length > 0 ? (
+                  <ul style={{ listStyle: 'none', padding: 0, margin: '12px 0 16px 0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    {proj.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                        <CheckCircle2 size={15} color="var(--primary)" style={{ flexShrink: 0, marginTop: '3px' }} />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>{proj.description}</p>
+                )}
 
                 <div className="project-tech">
                   {proj.techStack.map((tech, tIdx) => (

@@ -3,7 +3,7 @@ export const portfolioData = {
   personal: {
     name: "Harsh Agarwal",
     tagline: "Aspiring Software Engineer | AI/ML Specialist",
-    animeTag: "⚡ [ CYBER_DEV // AI_ML_SPECIALIZATION // LPU_9.24_CGPA ] ⚡",
+    animeTag: "⚡ [ SOFTWARE_ENGINEER // AI_ML_SPECIALIZATION // LPU_9.24_CGPA ] ⚡",
     titles: [
       "Aspiring Software Engineer",
       "Specialization in AI / ML",
@@ -12,8 +12,8 @@ export const portfolioData = {
       "Full-Stack React & Python Developer"
     ],
     bio: "Motivated Computer Science undergraduate aiming to build a career as a Software Engineer with a specialization in Artificial Intelligence and Machine Learning. Eager to apply strong problem-solving skills, C++, Python, and a growing foundation in programming and data structures to real-world, impactful projects.",
-    subhashChowk: "Subhash Chowk, Churu, Rajasthan",
-    location: "Subhash Chowk, Churu, Rajasthan / LPU Phagwara, Punjab",
+    subhashChowk: "Lord's International School, Rajasthan, Churu",
+    location: "Rajasthan, Churu / Phagwara, Punjab",
     email: "ha895613@gmail.com",
     phone: "+91 9602219403",
     avatar: "/assets/profile.jpg",
@@ -39,30 +39,84 @@ export const portfolioData = {
       "Artificial Intelligence & Machine Learning (AI/ML)",
       "Data Structures & Algorithms (DSA) — 50+ LeetCode Solved",
       "Object-Oriented Programming (C++ & C)",
-      "Python Development & ML Scripts",
-      "Full-Stack Web Technologies (React, HTML, CSS, JavaScript)",
-      "Relational Database Management Systems (DBMS & SQL)"
+      "Python Development & AI Algorithms",
+      "Web Development (HTML5, CSS3, React.js, RESTful APIs, Modern UI/UX)",
+      "Tools & Platforms (Git, GitHub, VS Code, IoT Sensors, Telemetry)",
+      "Relational Databases (SQL & DBMS)"
     ]
   },
 
   skills: {
+    categories: [
+      {
+        name: "Languages",
+        description: "Core programming and database languages",
+        skills: [
+          { name: "C++", level: "Core DSA", icon: "CodeBracket" },
+          { name: "Python", level: "AI/ML Foundation", icon: "Python" },
+          { name: "C", level: "Systems Programming", icon: "CodeBracket" },
+          { name: "JavaScript (ES6+)", level: "Modern Web Logic", icon: "JavaScript" },
+          { name: "SQL", level: "Relational Queries", icon: "Database" }
+        ]
+      },
+      {
+        name: "Tools & Platforms",
+        description: "Development, version control, and hardware telemetry",
+        skills: [
+          { name: "Git", level: "Version Control", icon: "Git" },
+          { name: "GitHub", level: "Collaboration & Repos", icon: "Github" },
+          { name: "VS Code", level: "Primary IDE", icon: "Terminal" },
+          { name: "IoT Sensors", level: "Hardware Sensing", icon: "Sensor" },
+          { name: "Microcontroller Interfacing", level: "Embedded Systems", icon: "Cpu" },
+          { name: "Environmental Telemetry", level: "Climate Telemetry", icon: "Activity" }
+        ]
+      },
+      {
+        name: "Web Development",
+        description: "Modern frontend architectures and responsive design",
+        skills: [
+          { name: "HTML5", level: "Semantic Markup", icon: "HTML5" },
+          { name: "CSS3", level: "Modern Design System", icon: "CSS3" },
+          { name: "React.js", level: "Full-Stack React", icon: "React" },
+          { name: "RESTful APIs", level: "API Integration", icon: "Server" },
+          { name: "Modern UI/UX", level: "Responsive Glassmorphism", icon: "Layout" }
+        ]
+      },
+      {
+        name: "Soft Skills",
+        description: "Collaborative, analytical, and leadership attributes",
+        skills: [
+          { name: "Problem-Solving (50+ LeetCode solved)", level: "Analytical Focus", icon: "Lightbulb" },
+          { name: "Team Collaboration", level: "Peer Synergy", icon: "Team" },
+          { name: "Leadership", level: "Project Ownership", icon: "Star" },
+          { name: "Critical Thinking", level: "Logical Reasoning", icon: "Brain" },
+          { name: "Communication", level: "Technical Discourse", icon: "Chat" }
+        ]
+      }
+    ],
+
+    // Flat lists for backward compatibility
     technicalSkills: [
-      { name: "C++", icon: "Code", category: "Core Language for DSA" },
+      { name: "C++", icon: "CodeBracket", category: "Core Language for DSA" },
       { name: "Python", icon: "Python", category: "AI/ML Foundation" },
-      { name: "C Language", icon: "Code", category: "Systems Programming" },
-      { name: "JavaScript", icon: "JavaScript", category: "Dynamic Web Apps" },
-      { name: "HTML5", icon: "HTML5", category: "Web Foundation" },
-      { name: "CSS3", icon: "CSS3", category: "Modern Design System" },
-      { name: "React.js", icon: "React", category: "Full-Stack React" },
-      { name: "DSA", icon: "Gears", category: "50+ LeetCode Solved" },
-      { name: "DBMS", icon: "Server", category: "Database Architecture" },
+      { name: "C", icon: "CodeBracket", category: "Systems Programming" },
+      { name: "JavaScript (ES6+)", icon: "JavaScript", category: "Dynamic Web Apps" },
       { name: "SQL", icon: "Database", category: "Relational Queries" },
-      { name: "Problem Solving", icon: "Brain", category: "50+ LeetCode Solved" }
+      { name: "Git & GitHub", icon: "Git", category: "Version Control" },
+      { name: "VS Code", icon: "Terminal", category: "Development Environment" },
+      { name: "IoT Sensors", icon: "Sensor", category: "Hardware Interfacing" },
+      { name: "Microcontroller Interfacing", icon: "Cpu", category: "Embedded Systems" },
+      { name: "Environmental Telemetry", icon: "Activity", category: "Climate Monitoring" },
+      { name: "HTML5 & CSS3", icon: "HTML5", category: "Web Foundation" },
+      { name: "React.js", icon: "React", category: "Frontend Framework" },
+      { name: "RESTful APIs", icon: "Server", category: "API Integration" },
+      { name: "Modern UI/UX", icon: "Layout", category: "Design System" }
     ],
     softSkills: [
-      { name: "Leadership and Influence", icon: "Star" },
-      { name: "Problem-Solving and Critical Thinking", icon: "Lightbulb" },
-      { name: "Collaboration and Teamwork", icon: "Team" },
+      { name: "Problem-Solving (50+ LeetCode solved)", icon: "Lightbulb" },
+      { name: "Team Collaboration", icon: "Team" },
+      { name: "Leadership", icon: "Star" },
+      { name: "Critical Thinking", icon: "Brain" },
       { name: "Communication", icon: "Chat" }
     ]
   },
@@ -72,8 +126,14 @@ export const portfolioData = {
       id: "ai-smart-humidifier",
       title: "AI-Based Smart Humidifier System",
       category: "AI / IoT / Smart Climate",
-      description: "An intelligent environmental management system featuring real-time relative humidity tracking, AI adaptive moisture dispersion algorithms, multi-sensor climate telemetry, and automated threshold alerts.",
-      techStack: ["Python", "AI Algorithms", "IoT Sensors", "Embedded C++", "Climate Telemetry"],
+      date: "May 2026",
+      description: "Developed an automated smart humidifier system for dynamic ambient climate regulation. Integrated IoT sensors and climate telemetry to monitor ambient conditions and support dynamic environmental regulation. Applied Python, Embedded C++, AI algorithms, and IoT sensing for automated humidification control.",
+      techStack: ["Python", "Embedded C++", "AI Algorithms", "IoT Sensors", "Climate Telemetry"],
+      bullets: [
+        "Developed an automated smart humidifier system for dynamic ambient climate regulation.",
+        "Integrated IoT sensors and climate telemetry to monitor ambient conditions and support dynamic environmental regulation.",
+        "Applied Python, Embedded C++, AI algorithms, and IoT sensing for automated humidification control."
+      ],
       image: "/assets/project-humidifier.jpg",
       icon: "💧",
       highlight: "IoT + AI Hardware",
@@ -82,12 +142,43 @@ export const portfolioData = {
     }
   ],
 
+  training: [
+    {
+      id: "iamneo-programming-training",
+      title: "Computer Programming (150 Hours Intensive)",
+      organization: "iamneo / neoColab & LPU",
+      certificateLabel: "Certificate Verified",
+      date: "May 2026",
+      duration: "150 Hours Intensive",
+      bullets: [
+        "Completed 150 hours of intensive hands-on programming training with iamneo focusing on core Data Structures and Algorithms.",
+        "Solved diverse algorithmic challenges to strengthen computational logic and program execution efficiency."
+      ]
+    }
+  ],
+
   certifications: [
+    {
+      id: "times-cdp",
+      title: "Community Development Project (CDP)",
+      issuer: "Times Foundation (The Times of India) & LPU",
+      date: "August 2026",
+      badge: "Community & Leadership",
+      image: "/assets/certs/cert-times-foundation.png"
+    },
+    {
+      id: "iamneo-programming",
+      title: "Computer Programming (150 Hours Intensive)",
+      issuer: "iamneo / neoColab & LPU",
+      date: "May 2026",
+      badge: "150 Hours Intensive",
+      image: "/assets/certs/cert-iamneo-programming.png"
+    },
     {
       id: "infosys-react",
       title: "Learning Full Stack React",
       issuer: "Infosys Springboard",
-      date: "February 21, 2026",
+      date: "February 2026",
       badge: "Full Stack Web",
       image: "/assets/certs/cert-infosys-react.png"
     },
@@ -95,33 +186,38 @@ export const portfolioData = {
       id: "saylor-python",
       title: "CS105: Introduction to Python",
       issuer: "Saylor Academy",
-      date: "February 6, 2026",
+      date: "February 2026",
       badge: "Python Programming",
       image: "/assets/certs/cert-saylor-python.png"
-    },
-    {
-      id: "iamneo-programming",
-      title: "Computer Programming (150 Hours)",
-      issuer: "iamneo / neo colab & LPU",
-      date: "May 21, 2026",
-      badge: "150 Hours Intensive",
-      image: "/assets/certs/cert-iamneo-programming.png"
-    },
-    {
-      id: "times-community",
-      title: "Community Development Project",
-      issuer: "Times Foundation (The Times of India) & LPU",
-      date: "2026",
-      badge: "Leadership & Social Impact",
-      image: "/assets/certs/cert-times-foundation.png"
     },
     {
       id: "techveda-time",
       title: "Effective Time Management (Proctored MOOC)",
       issuer: "Tech Veda",
-      date: "October 29, 2025",
+      date: "October 2025",
       badge: "Professional Excellence",
       image: "/assets/certs/cert-techveda-time.png"
+    }
+  ],
+
+  achievements: [
+    {
+      title: "Qualified for JEE Advanced",
+      description: "Qualified for JEE Advanced following a dedicated 2-year competitive preparation.",
+      icon: "Trophy",
+      tag: "Competitive Exam"
+    },
+    {
+      title: "Top Academic Standing (9.24 CGPA)",
+      description: "Achieved and maintained top academic standing with a 9.24 CGPA in B.Tech CSE (AI/ML) at Lovely Professional University.",
+      icon: "Award",
+      tag: "Academic Excellence"
+    },
+    {
+      title: "50+ LeetCode DSA Challenges Solved",
+      description: "Solved 50+ algorithmic challenges in Data Structures & Algorithms (DSA) on LeetCode in C++ and Python.",
+      icon: "CheckCircle",
+      tag: "Problem Solving"
     }
   ],
 
@@ -129,36 +225,36 @@ export const portfolioData = {
     {
       id: "btech-lpu",
       order: 1,
-      degree: "B-Tech in Computer Science & Engineering (AI/ML Specialization)",
-      institution: "Lovely Professional University, Phagwara, Punjab",
-      duration: "2025 — 2029 (Pursuing)",
+      degree: "Bachelor of Technology — Computer Science and Engineering (AI/ML)",
+      institution: "Lovely Professional University",
+      duration: "Aug' 25 – Present",
       semester: "Currently in 3rd Semester",
       score: "CGPA: 9.24",
       highlight: "Top Academic Standing",
       jeeQualified: true,
-      location: "Phagwara, Punjab, India",
+      location: "Phagwara, Punjab",
       icon: "GraduationCap"
     },
     {
       id: "senior-secondary-12th",
       order: 2,
-      degree: "Senior Secondary (Class XII) — CBSE Board",
-      institution: "Lord's International School, Churu, Rajasthan",
-      duration: "Completed in 2023",
+      degree: "Senior Secondary Education (Class XII)",
+      institution: "Lord's International School",
+      duration: "Mar' 22 – May' 23",
       score: "Percentage: 76.6%",
       highlight: "CBSE Senior Secondary",
-      location: "Churu, Rajasthan, India",
+      location: "Rajasthan, Churu",
       icon: "Award"
     },
     {
       id: "secondary-10th",
       order: 3,
-      degree: "Secondary Schooling (Class X) — CBSE Board",
-      institution: "Lord's International School, Churu, Rajasthan",
-      duration: "Completed in 2021",
+      degree: "Secondary Education (Class X)",
+      institution: "Lord's International School",
+      duration: "Mar' 20 – May' 21",
       score: "Percentage: 70.0%",
       highlight: "CBSE Matriculation",
-      location: "Churu, Rajasthan, India",
+      location: "Rajasthan, Churu",
       icon: "BookOpen"
     }
   ],

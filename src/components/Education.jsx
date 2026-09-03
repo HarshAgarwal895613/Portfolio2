@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award, MapPin, Calendar, Sparkles, BookOpen, CheckCircle2 } from 'lucide-react';
+import { GraduationCap, Award, MapPin, Sparkles, BookOpen, CheckCircle2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 const iconMap = {
@@ -37,7 +37,7 @@ export const Education = () => {
           <div className="running-ticker-track">
             <div className="ticker-item">
               <Sparkles size={16} color="var(--primary)" />
-              <span>B.Tech CSE (AI/ML) @ LPU: <strong>9.24 CGPA (3rd Sem)</strong></span>
+              <span>B.Tech CSE (AI/ML) @ LPU: <strong>9.24 CGPA (Aug' 25 – Present)</strong></span>
             </div>
             <div className="ticker-item">
               <CheckCircle2 size={16} color="var(--secondary)" />
@@ -45,17 +45,17 @@ export const Education = () => {
             </div>
             <div className="ticker-item">
               <Award size={16} color="var(--primary)" />
-              <span>Class 12th CBSE: <strong>76.6% (Lord's Int.)</strong></span>
+              <span>Class 12th CBSE: <strong>76.6% (Mar' 22 – May' 23)</strong></span>
             </div>
             <div className="ticker-item">
               <BookOpen size={16} color="var(--secondary)" />
-              <span>Class 10th CBSE: <strong>70.0% (Lord's Int.)</strong></span>
+              <span>Class 10th CBSE: <strong>70.0% (Mar' 20 – May' 21)</strong></span>
             </div>
 
             {/* Duplicate for seamless infinite loop */}
             <div className="ticker-item">
               <Sparkles size={16} color="var(--primary)" />
-              <span>B.Tech CSE (AI/ML) @ LPU: <strong>9.24 CGPA (3rd Sem)</strong></span>
+              <span>B.Tech CSE (AI/ML) @ LPU: <strong>9.24 CGPA (Aug' 25 – Present)</strong></span>
             </div>
             <div className="ticker-item">
               <CheckCircle2 size={16} color="var(--secondary)" />
@@ -63,11 +63,11 @@ export const Education = () => {
             </div>
             <div className="ticker-item">
               <Award size={16} color="var(--primary)" />
-              <span>Class 12th CBSE: <strong>76.6% (Lord's Int.)</strong></span>
+              <span>Class 12th CBSE: <strong>76.6% (Mar' 22 – May' 23)</strong></span>
             </div>
             <div className="ticker-item">
               <BookOpen size={16} color="var(--secondary)" />
-              <span>Class 10th CBSE: <strong>70.0% (Lord's Int.)</strong></span>
+              <span>Class 10th CBSE: <strong>70.0% (Mar' 20 – May' 21)</strong></span>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ export const Education = () => {
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
                 <span className="edu-step-badge">
-                  STAGE 0{item.order} // {item.duration.split(' ')[0]}
+                  STAGE 0{item.order} // {item.duration}
                 </span>
                 {item.highlight && (
                   <span className="tag tag-pink" style={{ fontSize: '0.72rem', padding: '2px 8px' }}>
@@ -106,19 +106,13 @@ export const Education = () => {
                 </div>
               )}
 
-              {item.notes && (
-                <div className="edu-notes-box">
-                  <strong>Milestone Note:</strong> {item.notes}
-                </div>
-              )}
-
               <div className="edu-footer-meta">
                 <div className="edu-score-pill">
                   <Award size={16} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle' }} />
                   {item.score}
                 </div>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: 'var(--text-muted)' }}>
-                  <MapPin size={14} /> {item.location.split(',')[0]}
+                  <MapPin size={14} /> {item.location}
                 </div>
               </div>
             </motion.div>

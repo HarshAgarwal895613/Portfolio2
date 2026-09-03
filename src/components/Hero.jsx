@@ -25,7 +25,7 @@ export const Hero = () => {
         >
           <div className="anime-badge">
             <span className="pulse-dot" />
-            <span>{personal.animeTag || '⚡ CYBER_DEV // AI_ML_SPECIALIZATION ⚡'}</span>
+            <span>{personal.animeTag || '⚡ SOFTWARE_ENGINEER // AI_ML_SPECIALIZATION ⚡'}</span>
           </div>
 
           <h1 className="hero-title">
