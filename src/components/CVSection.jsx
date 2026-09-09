@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Download, ExternalLink, GraduationCap, CheckCircle2, Sparkles, Eye, X, Cpu, ArrowRight } from 'lucide-react';
+import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
 export const CVSection = () => {
@@ -28,76 +29,77 @@ export const CVSection = () => {
         </motion.div>
 
         <motion.div
-          className="glass-card cv-card"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
-          <div className="cv-icon">
-            <FileText size={36} />
-          </div>
+          <TiltCard className="glass-card cv-card cv-frame-3d" maxTilt={6} scale={1.015}>
+            <div className="cv-icon">
+              <FileText size={36} />
+            </div>
 
-          <h3>{personal.name} — Official Curriculum Vitae</h3>
-          <p>
-            Bachelor of Technology in Computer Science & Engineering (AI/ML Specialization) at Lovely Professional University. Proficient in C++, Python, JavaScript (ES6+), SQL, React.js, IoT Sensors, and Climate Telemetry.
-          </p>
+            <h3>{personal.name} — Official Curriculum Vitae</h3>
+            <p>
+              Bachelor of Technology in Computer Science & Engineering (AI/ML Specialization) at Lovely Professional University. Proficient in C++, Python, JavaScript (ES6+), SQL, React.js, IoT Sensors, and Climate Telemetry.
+            </p>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '32px' }}>
-            <span className="tag">
-              <GraduationCap size={14} style={{ marginRight: '6px' }} /> 9.24 CGPA @ LPU
-            </span>
-            <span className="tag tag-pink">
-              <Sparkles size={14} style={{ marginRight: '6px' }} /> AI/ML Specialization
-            </span>
-            <span className="tag">
-              <CheckCircle2 size={14} style={{ marginRight: '6px' }} /> 50+ LeetCode Solved
-            </span>
-            <span className="tag tag-pink">
-              <CheckCircle2 size={14} style={{ marginRight: '6px' }} /> Qualified for JEE Advanced
-            </span>
-            <span className="tag">
-              <CheckCircle2 size={14} style={{ marginRight: '6px' }} /> 150 Hrs Programming Training
-            </span>
-          </div>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '32px' }}>
+              <span className="tag">
+                <GraduationCap size={14} style={{ marginRight: '6px' }} /> 9.24 CGPA @ LPU
+              </span>
+              <span className="tag tag-pink">
+                <Sparkles size={14} style={{ marginRight: '6px' }} /> AI/ML Specialization
+              </span>
+              <span className="tag">
+                <CheckCircle2 size={14} style={{ marginRight: '6px' }} /> 50+ LeetCode Solved
+              </span>
+              <span className="tag tag-pink">
+                <CheckCircle2 size={14} style={{ marginRight: '6px' }} /> Qualified for JEE Advanced
+              </span>
+              <span className="tag">
+                <CheckCircle2 size={14} style={{ marginRight: '6px' }} /> 150 Hrs Programming Training
+              </span>
+            </div>
 
-          <div className="cv-actions">
-            <a
-              href={personal.resumePdf}
-              download="Harsh_Agarwal_Resume.pdf"
-              className="btn btn-primary"
-            >
-              <Download size={18} /> Download CV (PDF)
-            </a>
+            <div className="cv-actions">
+              <a
+                href={personal.resumePdf}
+                download="Harsh_Agarwal_Resume.pdf"
+                className="btn btn-primary btn-3d-tactile"
+              >
+                <Download size={18} /> Download CV (PDF)
+              </a>
 
-            <button
-              className="btn btn-accent"
-              onClick={() => setShowPreview(true)}
-            >
-              <Eye size={18} /> Instant CV Viewer
-            </button>
+              <button
+                className="btn btn-accent btn-3d-tactile"
+                onClick={() => setShowPreview(true)}
+              >
+                <Eye size={18} /> Instant CV Viewer
+              </button>
 
-            <a
-              href="#skills"
-              className="btn btn-outline"
-              style={{
-                borderColor: 'rgba(0, 240, 255, 0.4)',
-                color: 'var(--primary)',
-                background: 'rgba(0, 240, 255, 0.06)'
-              }}
-            >
-              <Cpu size={18} /> Technical Skills <ArrowRight size={16} />
-            </a>
+              <a
+                href="#skills"
+                className="btn btn-outline btn-3d-tactile"
+                style={{
+                  borderColor: 'rgba(0, 240, 255, 0.4)',
+                  color: 'var(--primary)',
+                  background: 'rgba(0, 240, 255, 0.06)'
+                }}
+              >
+                <Cpu size={18} /> Technical Skills <ArrowRight size={16} />
+              </a>
 
-            <a
-              href={personal.resumePdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline"
-            >
-              <ExternalLink size={18} /> Open in New Tab
-            </a>
-          </div>
+              <a
+                href={personal.resumePdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline btn-3d-tactile"
+              >
+                <ExternalLink size={18} /> Open in New Tab
+              </a>
+            </div>
+          </TiltCard>
         </motion.div>
 
         {/* Embedded PDF Viewer Modal */}

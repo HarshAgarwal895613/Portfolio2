@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase } from 'lucide-react';
+import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
 export const Experience = () => {
@@ -38,7 +39,7 @@ export const Experience = () => {
               transition={{ delay: idx * 0.04 }}
             >
               <div className="timeline-dot" />
-              <div className="glass-card timeline-card">
+              <TiltCard className="glass-card timeline-card timeline-frame-3d" maxTilt={6} scale={1.02}>
                 <span className="timeline-year">{item.duration}</span>
                 <h3>{item.role}</h3>
                 <p className="timeline-org">{item.organization}</p>
@@ -51,7 +52,7 @@ export const Experience = () => {
                     </span>
                   ))}
                 </div>
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, Sparkles, CheckCircle2, Calendar } from 'lucide-react';
+import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
 export const Projects = () => {
@@ -30,22 +31,22 @@ export const Projects = () => {
           {projects.map((proj, idx) => (
             <motion.div
               key={proj.id}
-              className="glass-card project-card"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.05 }}
               variants={cardVariants}
               transition={{ delay: idx * 0.04 }}
             >
-              {proj.image ? (
-                <div className="project-image-container">
-                  <img src={proj.image} alt={proj.title} loading="lazy" />
-                </div>
-              ) : (
-                <div className="project-header-bar">
-                  <span>{proj.icon}</span>
-                </div>
-              )}
+              <TiltCard className="glass-card project-card project-frame-3d" maxTilt={8} scale={1.015}>
+                {proj.image ? (
+                  <div className="project-image-container">
+                    <img src={proj.image} alt={proj.title} loading="lazy" />
+                  </div>
+                ) : (
+                  <div className="project-header-bar">
+                    <span>{proj.icon}</span>
+                  </div>
+                )}
 
               <div className="project-body">
                 <div className="project-tag-row">
@@ -112,7 +113,8 @@ export const Projects = () => {
                   )}
                 </div>
               </div>
-            </motion.div>
+            </TiltCard>
+          </motion.div>
           ))}
         </div>
       </div>

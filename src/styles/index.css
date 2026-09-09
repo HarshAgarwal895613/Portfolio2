@@ -805,6 +805,153 @@ body.custom-cursor-active * {
   box-shadow: 0 6px 18px rgba(0, 240, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
+/* ==========================================================================
+   3D Tilt Engine & Multi-Depth Perspective System
+   ========================================================================== */
+.tilt-3d-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  border-radius: var(--card-radius);
+  position: relative;
+  transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.25s ease;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 240, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.tilt-3d-card:hover {
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.85), 0 0 32px rgba(0, 240, 255, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Pop-out 3D layer translations on card tilt hover */
+.tilt-3d-card .cv-icon,
+.tilt-3d-card .profile-icon,
+.tilt-3d-card .achievement-icon-box,
+.tilt-3d-card .contact-icon {
+  transform: translateZ(24px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card:hover .cv-icon,
+.tilt-3d-card:hover .profile-icon,
+.tilt-3d-card:hover .achievement-icon-box,
+.tilt-3d-card:hover .contact-icon {
+  transform: translateZ(32px) scale(1.08);
+}
+
+.tilt-3d-card h3 {
+  transform: translateZ(12px);
+  transition: transform 0.25s ease;
+}
+
+.tilt-3d-card:hover h3 {
+  transform: translateZ(18px);
+}
+
+.tilt-3d-card .tag,
+.tilt-3d-card .edu-step-badge,
+.tilt-3d-card .edu-score-pill {
+  transform: translateZ(14px);
+  transition: transform 0.25s ease;
+}
+
+.tilt-3d-card:hover .tag,
+.tilt-3d-card:hover .edu-step-badge,
+.tilt-3d-card:hover .edu-score-pill {
+  transform: translateZ(22px);
+}
+
+.tilt-3d-card .btn {
+  transform: translateZ(16px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tilt-3d-card:hover .btn {
+  transform: translateZ(26px);
+}
+
+/* Specific 3D Frames */
+.project-frame-3d {
+  height: 100%;
+}
+
+.stat-box-3d {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 26px 20px;
+  background: rgba(6, 12, 28, 0.7);
+  border: 1.5px solid rgba(0, 240, 255, 0.2);
+}
+
+.stat-box-3d:hover {
+  border-color: rgba(0, 240, 255, 0.6);
+}
+
+.cv-frame-3d {
+  background: radial-gradient(circle at center top, rgba(0, 240, 255, 0.08) 0%, rgba(6, 12, 28, 0.95) 75%);
+  border: 1.5px solid rgba(0, 240, 255, 0.35);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 240, 255, 0.15);
+}
+
+.cv-frame-3d:hover {
+  border-color: rgba(0, 240, 255, 0.65);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 45px rgba(0, 240, 255, 0.3);
+}
+
+.profile-frame-3d {
+  background: rgba(6, 12, 28, 0.75);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+}
+
+.profile-frame-3d:hover {
+  border-color: rgba(0, 240, 255, 0.55);
+}
+
+.contact-panel-3d {
+  padding: 36px 30px;
+  border-radius: var(--card-radius);
+  background: rgba(6, 12, 28, 0.75);
+  border: 1.5px solid rgba(0, 240, 255, 0.25);
+}
+
+.form-frame-3d {
+  background: rgba(6, 12, 28, 0.85);
+  border: 1.5px solid rgba(0, 240, 255, 0.3);
+}
+
+.cert-frame-3d {
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  background: rgba(6, 12, 28, 0.8);
+}
+
+.cert-frame-3d:hover {
+  border-color: rgba(0, 240, 255, 0.6);
+}
+
+.achievement-frame-3d {
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  background: rgba(6, 12, 28, 0.75);
+}
+
+.achievement-frame-3d:hover {
+  border-color: rgba(255, 0, 127, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 0, 127, 0.2);
+}
+
+.timeline-frame-3d {
+  border: 1.5px solid rgba(0, 240, 255, 0.25);
+  background: rgba(6, 12, 28, 0.8);
+}
+
+.timeline-frame-3d:hover {
+  border-color: rgba(0, 240, 255, 0.6);
+}
+
+.edu-stage-3d {
+  border: 1.5px solid rgba(0, 240, 255, 0.25);
+}
+
 @keyframes rotate-ring {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

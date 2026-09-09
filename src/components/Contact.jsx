@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle2, Terminal, Building2 } from 'lucide-react';
+import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
 export const Contact = () => {
@@ -40,141 +41,143 @@ export const Contact = () => {
 
         <div className="contact-grid">
           <motion.div
-            className="contact-info"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.05 }}
             variants={cardVariants}
           >
-            <h3>Direct Contact Channels</h3>
-            <p>
-              I am open to software development internships, freelance collaborations, and project inquiries.
-            </p>
+            <TiltCard className="contact-info contact-panel-3d" maxTilt={6} scale={1.01}>
+              <h3>Direct Contact Channels</h3>
+              <p>
+                I am open to software development internships, freelance collaborations, and project inquiries.
+              </p>
 
-            <div className="contact-items">
-              <div className="contact-item">
-                <div className="contact-icon">
-                  <Mail size={22} />
+              <div className="contact-items">
+                <div className="contact-item">
+                  <div className="contact-icon">
+                    <Mail size={22} />
+                  </div>
+                  <div>
+                    <p className="contact-label">Email (Gmail)</p>
+                    <a href={`mailto:${personal.email}`} className="contact-value">
+                      {personal.email}
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <p className="contact-label">Email (Gmail)</p>
-                  <a href={`mailto:${personal.email}`} className="contact-value">
-                    {personal.email}
-                  </a>
+
+                <div className="contact-item">
+                  <div className="contact-icon">
+                    <Phone size={22} />
+                  </div>
+                  <div>
+                    <p className="contact-label">Phone</p>
+                    <a href={`tel:${personal.phone.replace(/[^0-9+]/g, '')}`} className="contact-value">
+                      {personal.phone}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="contact-item">
+                  <div className="contact-icon">
+                    <MapPin size={22} />
+                  </div>
+                  <div>
+                    <p className="contact-label">Locations</p>
+                    <p className="contact-value" style={{ fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
+                      {personal.location}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="contact-item">
+                  <div className="contact-icon">
+                    <Building2 size={22} />
+                  </div>
+                  <div>
+                    <p className="contact-label">Alma Mater & School</p>
+                    <p className="contact-value" style={{ fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
+                      {personal.subhashChowk}
+                    </p>
+                  </div>
                 </div>
               </div>
-
-              <div className="contact-item">
-                <div className="contact-icon">
-                  <Phone size={22} />
-                </div>
-                <div>
-                  <p className="contact-label">Phone</p>
-                  <a href={`tel:${personal.phone.replace(/[^0-9+]/g, '')}`} className="contact-value">
-                    {personal.phone}
-                  </a>
-                </div>
-              </div>
-
-              <div className="contact-item">
-                <div className="contact-icon">
-                  <MapPin size={22} />
-                </div>
-                <div>
-                  <p className="contact-label">Locations</p>
-                  <p className="contact-value" style={{ fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
-                    {personal.location}
-                  </p>
-                </div>
-              </div>
-
-              <div className="contact-item">
-                <div className="contact-icon">
-                  <Building2 size={22} />
-                </div>
-                <div>
-                  <p className="contact-label">Alma Mater & School</p>
-                  <p className="contact-value" style={{ fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
-                    {personal.subhashChowk}
-                  </p>
-                </div>
-              </div>
-            </div>
+            </TiltCard>
           </motion.div>
 
           <motion.div
-            className="glass-card contact-form-wrapper"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.05 }}
             variants={cardVariants}
             transition={{ delay: 0.04 }}
           >
-            {submitted ? (
-              <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-                <CheckCircle2 size={48} color="var(--primary)" style={{ margin: '0 auto 16px' }} />
-                <h3>Transmission Ready!</h3>
-                <p style={{ color: 'var(--text-secondary)', marginTop: '8px' }}>
-                  Your email client has been launched. Thank you for connecting with Harsh Agarwal!
-                </p>
-              </div>
-            ) : (
-              <form className="contact-form" onSubmit={handleSubmit}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="name">// YOUR_NAME</label>
+            <TiltCard className="glass-card contact-form-wrapper form-frame-3d" maxTilt={6} scale={1.01}>
+              {submitted ? (
+                <div style={{ textAlign: 'center', padding: '40px 20px' }}>
+                  <CheckCircle2 size={48} color="var(--primary)" style={{ margin: '0 auto 16px' }} />
+                  <h3>Transmission Ready!</h3>
+                  <p style={{ color: 'var(--text-secondary)', marginTop: '8px' }}>
+                    Your email client has been launched. Thank you for connecting with Harsh Agarwal!
+                  </p>
+                </div>
+              ) : (
+                <form className="contact-form" onSubmit={handleSubmit}>
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label htmlFor="name">// YOUR_NAME</label>
+                      <input
+                        type="text"
+                        id="name"
+                        required
+                        placeholder="e.g. Alex"
+                        value={formState.name}
+                        onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="email">// YOUR_EMAIL</label>
+                      <input
+                        type="email"
+                        id="email"
+                        required
+                        placeholder="e.g. user@example.com"
+                        value={formState.email}
+                        onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-group" style={{ marginTop: '16px' }}>
+                    <label htmlFor="subject">// SUBJECT</label>
                     <input
                       type="text"
-                      id="name"
+                      id="subject"
                       required
-                      placeholder="e.g. Alex"
-                      value={formState.name}
-                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                      placeholder="Project Inquiry / Job Opportunity"
+                      value={formState.subject}
+                      onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
                     />
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="email">// YOUR_EMAIL</label>
-                    <input
-                      type="email"
-                      id="email"
+
+                  <div className="form-group" style={{ marginTop: '16px' }}>
+                    <label htmlFor="message">// MESSAGE_BODY</label>
+                    <textarea
+                      id="message"
                       required
-                      placeholder="e.g. user@example.com"
-                      value={formState.email}
-                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                      placeholder="Describe your proposal or project requirements..."
+                      value={formState.message}
+                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                     />
                   </div>
-                </div>
 
-                <div className="form-group" style={{ marginTop: '16px' }}>
-                  <label htmlFor="subject">// SUBJECT</label>
-                  <input
-                    type="text"
-                    id="subject"
-                    required
-                    placeholder="Project Inquiry / Job Opportunity"
-                    value={formState.subject}
-                    onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
-                  />
-                </div>
-
-                <div className="form-group" style={{ marginTop: '16px' }}>
-                  <label htmlFor="message">// MESSAGE_BODY</label>
-                  <textarea
-                    id="message"
-                    required
-                    placeholder="Describe your proposal or project requirements..."
-                    value={formState.message}
-                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  />
-                </div>
-
-                <div className="form-submit">
-                  <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-                    <Send size={18} /> Transmit Message
-                  </button>
-                </div>
-              </form>
-            )}
+                  <div className="form-submit">
+                    <button type="submit" className="btn btn-primary btn-3d-tactile" style={{ width: '100%' }}>
+                      <Send size={18} /> Transmit Message
+                    </button>
+                  </div>
+                </form>
+              )}
+            </TiltCard>
           </motion.div>
         </div>
       </div>

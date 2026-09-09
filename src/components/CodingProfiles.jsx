@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Code, Terminal } from 'lucide-react';
+import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
 const iconMap = {
@@ -35,26 +36,31 @@ export const CodingProfiles = () => {
 
         <div className="profiles-grid">
           {codingProfiles.map((profile, idx) => (
-            <motion.a
+            <motion.div
               key={idx}
-              href={profile.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-card profile-card"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.05 }}
               variants={cardVariants}
               transition={{ delay: idx * 0.04 }}
             >
-              <div className="profile-icon">
-                {iconMap[profile.icon] || <Code size={24} />}
-              </div>
-              <div className="profile-info">
-                <h3>{profile.platform}</h3>
-                <p>@{profile.username}</p>
-              </div>
-            </motion.a>
+              <TiltCard className="glass-card profile-card profile-frame-3d" maxTilt={10} scale={1.03}>
+                <a
+                  href={profile.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'flex', alignItems: 'center', gap: '16px', textDecoration: 'none', color: 'inherit', width: '100%' }}
+                >
+                  <div className="profile-icon">
+                    {iconMap[profile.icon] || <Code size={24} />}
+                  </div>
+                  <div className="profile-info">
+                    <h3>{profile.platform}</h3>
+                    <p>@{profile.username}</p>
+                  </div>
+                </a>
+              </TiltCard>
+            </motion.div>
           ))}
         </div>
       </div>

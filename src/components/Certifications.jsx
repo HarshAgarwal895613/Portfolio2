@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Award, Eye, CheckCircle2 } from 'lucide-react';
+import { TiltCard } from './TiltCard';
 import { ImageModal } from './ImageModal';
 import { portfolioData } from '../data/portfolioData';
 
@@ -32,43 +33,44 @@ export const Certifications = () => {
           {certifications.map((cert, idx) => (
             <motion.div
               key={cert.id}
-              className="glass-card cert-card"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.05 }}
               variants={cardVariants}
               transition={{ delay: idx * 0.04 }}
             >
-              <div
-                className="cert-image-wrapper"
-                onClick={() => setSelectedImage(cert.image)}
-                title="Click to zoom certificate"
-              >
-                <img
-                  src={cert.image}
-                  alt={cert.title}
-                  loading="lazy"
-                />
-                <div className="cert-image-overlay">
-                  <Eye size={22} /> Click to Examine
+              <TiltCard className="glass-card cert-card cert-frame-3d" maxTilt={8} scale={1.02}>
+                <div
+                  className="cert-image-wrapper"
+                  onClick={() => setSelectedImage(cert.image)}
+                  title="Click to zoom certificate"
+                >
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    loading="lazy"
+                  />
+                  <div className="cert-image-overlay">
+                    <Eye size={22} /> Click to Examine
+                  </div>
                 </div>
-              </div>
 
-              <div className="cert-body">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                  <p className="cert-issuer">{cert.issuer}</p>
-                  <span className="tag tag-pink" style={{ fontSize: '0.72rem', padding: '2px 8px' }}>
-                    {cert.badge}
-                  </span>
+                <div className="cert-body">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <p className="cert-issuer">{cert.issuer}</p>
+                    <span className="tag tag-pink" style={{ fontSize: '0.72rem', padding: '2px 8px' }}>
+                      {cert.badge}
+                    </span>
+                  </div>
+                  <h3>{cert.title}</h3>
+                  <div className="cert-meta-row">
+                    <p className="cert-date">{cert.date}</p>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--primary)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                      <CheckCircle2 size={14} /> Verified
+                    </span>
+                  </div>
                 </div>
-                <h3>{cert.title}</h3>
-                <div className="cert-meta-row">
-                  <p className="cert-date">{cert.date}</p>
-                  <span style={{ fontSize: '0.85rem', color: 'var(--primary)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                    <CheckCircle2 size={14} /> Verified
-                  </span>
-                </div>
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Award, MapPin, Sparkles, BookOpen, CheckCircle2 } from 'lucide-react';
+import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
 const iconMap = {
@@ -77,44 +78,45 @@ export const Education = () => {
           {education.map((item, idx) => (
             <motion.div
               key={item.id}
-              className={`glass-card edu-running-card ${idx === 0 ? 'featured-card' : ''}`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.05 }}
               variants={cardVariants}
               transition={{ delay: idx * 0.04 }}
             >
-              <div className="edu-card-glow-bar" />
+              <TiltCard className={`glass-card edu-running-card edu-stage-3d ${idx === 0 ? 'featured-card' : ''}`} maxTilt={8} scale={1.02}>
+                <div className="edu-card-glow-bar" />
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
-                <span className="edu-step-badge">
-                  STAGE 0{item.order} // {item.duration}
-                </span>
-                {item.highlight && (
-                  <span className="tag tag-pink" style={{ fontSize: '0.72rem', padding: '2px 8px' }}>
-                    <Sparkles size={11} style={{ marginRight: '4px' }} /> {item.highlight}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+                  <span className="edu-step-badge">
+                    STAGE 0{item.order} // {item.duration}
                   </span>
+                  {item.highlight && (
+                    <span className="tag tag-pink" style={{ fontSize: '0.72rem', padding: '2px 8px' }}>
+                      <Sparkles size={11} style={{ marginRight: '4px' }} /> {item.highlight}
+                    </span>
+                  )}
+                </div>
+
+                <h3>{item.degree}</h3>
+                <p className="edu-org">{item.institution}</p>
+
+                {item.semester && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary)', fontWeight: '600', fontSize: '0.9rem', marginBottom: '8px' }}>
+                    <Sparkles size={14} /> {item.semester}
+                  </div>
                 )}
-              </div>
 
-              <h3>{item.degree}</h3>
-              <p className="edu-org">{item.institution}</p>
-
-              {item.semester && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary)', fontWeight: '600', fontSize: '0.9rem', marginBottom: '8px' }}>
-                  <Sparkles size={14} /> {item.semester}
+                <div className="edu-footer-meta">
+                  <div className="edu-score-pill">
+                    <Award size={16} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle' }} />
+                    {item.score}
+                  </div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: 'var(--text-muted)' }}>
+                    <MapPin size={14} /> {item.location}
+                  </div>
                 </div>
-              )}
-
-              <div className="edu-footer-meta">
-                <div className="edu-score-pill">
-                  <Award size={16} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle' }} />
-                  {item.score}
-                </div>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: 'var(--text-muted)' }}>
-                  <MapPin size={14} /> {item.location}
-                </div>
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

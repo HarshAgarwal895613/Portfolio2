@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Sparkles, Terminal } from 'lucide-react';
+import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
 export const About = () => {
@@ -63,10 +64,10 @@ export const About = () => {
             variants={cardVariants}
           >
             {about.stats.map((stat, idx) => (
-              <div key={idx} className="glass-card stat-box">
+              <TiltCard key={idx} className="glass-card stat-box stat-box-3d" maxTilt={10} scale={1.04}>
                 <div className="stat-number">{stat.number}</div>
                 <div className="stat-label">{stat.label}</div>
-              </div>
+              </TiltCard>
             ))}
           </motion.div>
         </div>
