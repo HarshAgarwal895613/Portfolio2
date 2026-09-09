@@ -1859,299 +1859,439 @@ body.custom-cursor-active * {
 }
 
 /* ==========================================================================
-   Welcome Slide / Intro Preloader Overlay
+   Advanced 3D Visual Welcome Experience & Executive Cockpit
    ========================================================================== */
-.welcome-slide-overlay {
+.welcome-3d-viewport {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 999999;
-  background-color: #030712;
-  background: radial-gradient(circle at 50% 30%, #060e24 0%, #02040a 80%, #000000 100%);
+  background-color: #02050e;
+  background: radial-gradient(circle at 50% 35%, #05102a 0%, #02040b 70%, #000000 100%);
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-.welcome-bg-grid {
+.welcome-3d-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.welcome-3d-grid {
   position: absolute;
   inset: 0;
-  background-size: 40px 40px;
+  background-size: 48px 48px;
   background-image: 
     linear-gradient(to right, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
-  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  mask-image: radial-gradient(ellipse at center, black 35%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 85%);
   pointer-events: none;
+  z-index: 2;
 }
 
-.welcome-glow {
+.welcome-3d-ambient-glow {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(120px);
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.3;
+  z-index: 2;
 }
 
-.welcome-glow-cyan {
-  top: 15%;
-  left: 20%;
-  width: 320px;
-  height: 320px;
+.welcome-3d-ambient-glow.glow-cyan {
+  top: 10%;
+  left: 15%;
+  width: 380px;
+  height: 380px;
   background: #00f0ff;
 }
 
-.welcome-glow-pink {
-  bottom: 15%;
-  right: 20%;
-  width: 340px;
-  height: 340px;
+.welcome-3d-ambient-glow.glow-magenta {
+  bottom: 10%;
+  right: 15%;
+  width: 400px;
+  height: 400px;
   background: #ff007f;
 }
 
-.welcome-glow-center {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 480px;
-  height: 480px;
-  background: #9d00ff;
-  opacity: 0.18;
-}
-
-.welcome-particle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #00f0ff;
-  box-shadow: 0 0 12px #00f0ff;
-  pointer-events: none;
-  animation: floatParticle 6s ease-in-out infinite alternate;
-}
-
-.welcome-particle.particle-1 { top: 25%; left: 15%; animation-delay: 0s; }
-.welcome-particle.particle-2 { top: 70%; left: 22%; animation-delay: 1.5s; background: #ff007f; box-shadow: 0 0 12px #ff007f; }
-.welcome-particle.particle-3 { top: 30%; right: 18%; animation-delay: 3s; }
-.welcome-particle.particle-4 { top: 75%; right: 15%; animation-delay: 4.5s; background: #9d00ff; box-shadow: 0 0 12px #9d00ff; }
-
-@keyframes floatParticle {
-  0% { transform: translateY(0) scale(0.8); opacity: 0.3; }
-  50% { transform: translateY(-20px) scale(1.2); opacity: 0.9; }
-  100% { transform: translateY(10px) scale(0.9); opacity: 0.4; }
-}
-
-.welcome-content-container {
+/* Top System Telemetry Bar */
+.welcome-3d-telemetry-bar {
   position: relative;
-  z-index: 10;
-  max-width: 580px;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 36px 28px;
-  background: rgba(10, 16, 30, 0.65);
-  border: 1px solid rgba(0, 240, 255, 0.2);
-  border-radius: 24px;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 240, 255, 0.12);
-}
-
-.welcome-sys-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.25);
-  color: var(--primary);
-  font-family: 'Fira Code', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.5px;
-  margin-bottom: 24px;
-}
-
-.welcome-emblem-wrapper {
-  position: relative;
-  width: 88px;
-  height: 88px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.welcome-emblem-ring-outer {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px dashed rgba(0, 240, 255, 0.5);
-  animation: rotateEmblem 14s linear infinite;
-}
-
-.welcome-emblem-ring-inner {
-  position: absolute;
-  inset: 6px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 0, 127, 0.4);
-  border-top-color: transparent;
-  animation: rotateEmblem 8s linear infinite reverse;
-}
-
-.welcome-emblem-core {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #00f0ff 0%, #7928ca 60%, #000000 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 24px rgba(0, 240, 255, 0.5);
-}
-
-.welcome-emblem-icon {
-  color: #ffffff;
-}
-
-@keyframes rotateEmblem {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.welcome-greeting-box {
-  min-height: 72px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
-}
-
-.welcome-greeting-text {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2.4rem, 6vw, 3.6rem);
-  font-weight: 800;
-  letter-spacing: -1px;
-  color: #ffffff;
-  margin: 0;
-  line-height: 1.1;
-  text-shadow: 0 0 24px rgba(0, 240, 255, 0.4);
-}
-
-.welcome-dot {
-  color: var(--primary);
-}
-
-.welcome-greeting-sub {
-  font-family: 'Fira Code', monospace;
-  font-size: 0.76rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 4px;
-}
-
-.welcome-profile-intro {
-  margin-bottom: 24px;
-}
-
-.welcome-name {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 6px;
-}
-
-.welcome-tagline {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
-.welcome-progress-card {
+  z-index: 20;
   width: 100%;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 14px 18px;
-  margin-bottom: 24px;
-}
-
-.welcome-progress-meta {
+  max-width: 1200px;
+  padding: 18px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: 'Fira Code', monospace;
-  font-size: 0.78rem;
-  margin-bottom: 10px;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  letter-spacing: 0.5px;
 }
 
-.welcome-status-msg {
+.telemetry-col {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.telemetry-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 10px #00ff88;
+  animation: pulseLiveDot 1.4s infinite alternate;
+}
+
+@keyframes pulseLiveDot {
+  0% { opacity: 0.4; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1.15); }
+}
+
+.telemetry-tag {
+  color: #00ff88;
+  font-weight: 700;
+}
+
+.telemetry-meta {
+  color: var(--primary);
+}
+
+.telemetry-icon {
+  color: var(--primary);
+}
+
+/* 3D Stage & Central Cockpit Card */
+.welcome-3d-stage {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  perspective: 1400px;
+  padding: 12px 16px;
+}
+
+.welcome-3d-card {
+  position: relative;
+  max-width: 590px;
+  width: 100%;
+  background: rgba(6, 12, 26, 0.76);
+  border: 1.5px solid rgba(0, 240, 255, 0.28);
+  border-radius: 26px;
+  padding: 34px 30px;
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow: 
+    0 24px 70px rgba(0, 0, 0, 0.85),
+    0 0 45px rgba(0, 240, 255, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform-style: preserve-3d;
+  transition: transform 0.12s ease-out, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.welcome-3d-card:hover {
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 
+    0 30px 90px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(0, 240, 255, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.card-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.card-3d-layer {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+}
+
+/* 3D Top Badge Row */
+.card-3d-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  transform: translateZ(25px);
+}
+
+.badge-3d-cyber {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 16px;
+  background: rgba(0, 240, 255, 0.09);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--primary);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.badge-3d-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 16px;
+  background: rgba(0, 255, 136, 0.08);
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  color: #00ff88;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* 3D Central Emblem */
+.emblem-3d-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  transform: translateZ(40px);
+}
+
+.emblem-3d-orbit-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px dashed rgba(0, 240, 255, 0.6);
+  animation: spin3DOrbit 12s linear infinite;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+.emblem-3d-orbit-ring-secondary {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 0, 127, 0.5);
+  border-bottom-color: transparent;
+  animation: spin3DOrbit 7s linear infinite reverse;
+}
+
+.emblem-3d-core {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #00f0ff 0%, #7928ca 65%, #050b18 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 28px rgba(0, 240, 255, 0.55), inset 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.emblem-3d-symbol {
+  color: #ffffff;
+  filter: drop-shadow(0 0 6px #00f0ff);
+}
+
+@keyframes spin3DOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 3D Greeting Section */
+.greeting-3d-box {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  transform: translateZ(35px);
+}
+
+.greeting-item-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.greeting-3d-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.3rem, 5.5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.05;
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+}
+
+.dot-pulse {
+  color: var(--primary);
+  animation: pulseBlink 0.9s infinite alternate;
+}
+
+.greeting-3d-sub {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-top: 4px;
+}
+
+/* Executive Info & 3D Metrics Strip */
+.executive-hero-info {
+  margin-bottom: 20px;
+  transform: translateZ(30px);
+}
+
+.executive-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  letter-spacing: -0.3px;
+}
+
+.executive-tagline {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+.metrics-3d-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.metric-pill {
+  padding: 5px 12px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.metric-pill strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.metric-pill:hover {
+  border-color: rgba(0, 240, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
+}
+
+/* 3D Diagnostic Progress Meter */
+.progress-3d-container {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  transform: translateZ(25px);
+}
+
+.progress-3d-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.76rem;
+  margin-bottom: 8px;
+}
+
+.progress-3d-status {
   color: var(--text-secondary);
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.status-blink-dot {
-  width: 7px;
-  height: 7px;
+.status-ping {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--primary);
   box-shadow: 0 0 8px var(--primary);
   animation: pulseBlink 1s infinite alternate;
 }
 
-@keyframes pulseBlink {
-  0% { opacity: 0.3; transform: scale(0.8); }
-  100% { opacity: 1; transform: scale(1.2); }
-}
-
-.welcome-progress-pct {
+.progress-3d-pct {
   color: var(--primary);
   font-weight: 700;
 }
 
-.welcome-progress-bar-track {
+.progress-3d-track {
   width: 100%;
-  height: 6px;
+  height: 5px;
   background: rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
   position: relative;
 }
 
-.welcome-progress-bar-fill {
+.progress-3d-fill {
   height: 100%;
   background: var(--gradient-anime);
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+  border-radius: 8px;
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.8);
   transition: width 0.08s ease-out;
 }
 
-.welcome-actions {
+/* 3D Action Buttons */
+.actions-3d-row {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  width: 100%;
+  gap: 10px;
+  transform: translateZ(45px);
 }
 
-.welcome-enter-btn {
+.btn-3d-enter {
   width: 100%;
   padding: 14px 28px;
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.02rem;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.6px;
   border-radius: 14px;
-  background: linear-gradient(135deg, #00f0ff 0%, #0080ff 50%, #9d00ff 100%);
-  color: #030712;
+  background: linear-gradient(135deg, #00f0ff 0%, #0088ff 50%, #9d00ff 100%);
+  color: #020612;
   border: none;
   cursor: pointer;
   display: flex;
@@ -2160,70 +2300,120 @@ body.custom-cursor-active * {
   gap: 10px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 10px 30px rgba(0, 240, 255, 0.4),
+    0 0 20px rgba(157, 0, 255, 0.3);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.welcome-enter-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 35px rgba(0, 240, 255, 0.6), 0 0 15px rgba(255, 0, 127, 0.4);
+.btn-light-sweep {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  animation: sweepLight 3s infinite ease-in-out;
+}
+
+@keyframes sweepLight {
+  0% { left: -100%; }
+  40%, 100% { left: 160%; }
+}
+
+.btn-3d-enter:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 16px 40px rgba(0, 240, 255, 0.6),
+    0 0 30px rgba(255, 0, 127, 0.5);
   color: #000000;
 }
 
-.welcome-enter-btn.ready {
+.btn-3d-enter.ready {
   animation: pulseReadyBtn 2s infinite ease-in-out;
 }
 
-@keyframes pulseReadyBtn {
-  0%, 100% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
-  50% { box-shadow: 0 0 38px rgba(0, 240, 255, 0.7), 0 0 20px rgba(255, 0, 127, 0.4); }
-}
-
-.enter-btn-arrow {
+.btn-arrow-icon {
   transition: transform 0.25s ease;
 }
 
-.welcome-enter-btn:hover .enter-btn-arrow {
-  transform: translateX(5px);
+.btn-3d-enter:hover .btn-arrow-icon {
+  transform: translateX(6px);
 }
 
-.welcome-skip-link {
+.skip-3d-btn {
   background: none;
   border: none;
   color: var(--text-muted);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-family: 'Fira Code', monospace;
   cursor: pointer;
   padding: 4px 8px;
   transition: color 0.2s ease;
+  letter-spacing: 0.4px;
 }
 
-.welcome-skip-link:hover {
+.skip-3d-btn:hover {
   color: var(--primary);
 }
 
-@media (max-width: 480px) {
-  .welcome-content-container {
-    padding: 28px 18px;
-    border-radius: 20px;
+/* Bottom Footer Telemetry */
+.welcome-3d-footer {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  max-width: 1200px;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 768px) {
+  .welcome-3d-telemetry-bar {
+    font-size: 0.68rem;
+    padding: 12px 16px;
   }
-  .welcome-emblem-wrapper {
-    width: 72px;
-    height: 72px;
-    margin-bottom: 14px;
+  .telemetry-center {
+    display: none;
   }
-  .welcome-emblem-core {
-    width: 50px;
-    height: 50px;
-  }
-  .welcome-greeting-text {
-    font-size: 2.2rem;
-  }
-  .welcome-name {
-    font-size: 1.2rem;
-  }
-  .welcome-tagline {
-    font-size: 0.84rem;
+  .welcome-3d-footer {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+    font-size: 0.65rem;
+    padding: 12px;
   }
 }
+
+@media (max-width: 480px) {
+  .welcome-3d-card {
+    padding: 24px 18px;
+    border-radius: 20px;
+  }
+  .greeting-3d-title {
+    font-size: 2.1rem;
+  }
+  .metrics-3d-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .metric-pill {
+    justify-content: center;
+    font-size: 0.74rem;
+    padding: 4px 8px;
+  }
+  .badge-3d-verified {
+    display: none;
+  }
+  .card-3d-badge-row {
+    justify-content: center;
+  }
+}
+
 
