@@ -3,11 +3,11 @@ export const portfolioData = {
   personal: {
     name: "Harsh Agarwal",
     tagline: "Aspiring Software Engineer | AI/ML Specialist",
-    animeTag: "⚡ [ SOFTWARE_ENGINEER // AI_ML_SPECIALIZATION // LPU_9.24_CGPA ] ⚡",
+    animeTag: "⚡ [ SOFTWARE_ENGINEER // AI_ML_SPECIALIZATION // LPU_9.24*_CGPA ] ⚡",
     titles: [
       "Aspiring Software Engineer",
       "Specialization in AI / ML",
-      "B.Tech CSE @ LPU (9.24 CGPA)",
+      "B.Tech CSE @ LPU (9.24* CGPA)",
       "Solved 50+ Problems on LeetCode",
       "Full-Stack React & Python Developer"
     ],
@@ -29,10 +29,10 @@ export const portfolioData = {
 
   about: {
     stats: [
-      { number: "9.24", label: "Current CGPA" },
+      { number: "9.24*", label: "Current CGPA" },
       { number: "AI/ML", label: "Specialization" },
       { number: "50+", label: "LeetCode Solved" },
-      { number: "JEE Adv", label: "Qualified" }
+      { number: "JEE Adv", label: "Qualified for JEE Advanced" }
     ],
     objective: "Motivated Computer Science undergraduate aiming to build a career as a Software Engineer with a specialization in Artificial Intelligence and Machine Learning. Eager to apply strong problem-solving skills and a growing foundation in programming and data structures to real-world, impactful projects.",
     strengths: [
@@ -208,8 +208,8 @@ export const portfolioData = {
       tag: "Competitive Exam"
     },
     {
-      title: "Top Academic Standing (9.24 CGPA)",
-      description: "Achieved and maintained top academic standing with a 9.24 CGPA in B.Tech CSE (AI/ML) at Lovely Professional University.",
+      title: "Top Academic Standing (9.24* CGPA)",
+      description: "Achieved and maintained top academic standing with a 9.24* CGPA in B.Tech CSE (AI/ML) at Lovely Professional University.",
       icon: "Award",
       tag: "Academic Excellence"
     },
@@ -229,7 +229,7 @@ export const portfolioData = {
       institution: "Lovely Professional University",
       duration: "Aug' 25 – Present",
       semester: "Currently in 3rd Semester",
-      score: "CGPA: 9.24",
+      score: "CGPA: 9.24*",
       highlight: "Top Academic Standing",
       jeeQualified: true,
       location: "Phagwara, Punjab",

@@ -38,11 +38,11 @@ export const Education = () => {
           <div className="running-ticker-track">
             <div className="ticker-item">
               <Sparkles size={16} color="var(--primary)" />
-              <span>B.Tech CSE (AI/ML) @ LPU: <strong>9.24 CGPA (Aug' 25 – Present)</strong></span>
+              <span>B.Tech CSE (AI/ML) @ LPU: <strong>9.24* CGPA (Aug' 25 – Present)</strong></span>
             </div>
             <div className="ticker-item">
               <CheckCircle2 size={16} color="var(--secondary)" />
-              <span>Qualified for: <strong>JEE Advanced</strong></span>
+              <span><strong>Qualified for JEE Advanced</strong></span>
             </div>
             <div className="ticker-item">
               <Award size={16} color="var(--primary)" />
@@ -56,11 +56,11 @@ export const Education = () => {
             {/* Duplicate for seamless infinite loop */}
             <div className="ticker-item">
               <Sparkles size={16} color="var(--primary)" />
-              <span>B.Tech CSE (AI/ML) @ LPU: <strong>9.24 CGPA (Aug' 25 – Present)</strong></span>
+              <span>B.Tech CSE (AI/ML) @ LPU: <strong>9.24* CGPA (Aug' 25 – Present)</strong></span>
             </div>
             <div className="ticker-item">
               <CheckCircle2 size={16} color="var(--secondary)" />
-              <span>Qualified for: <strong>JEE Advanced</strong></span>
+              <span><strong>Qualified for JEE Advanced</strong></span>
             </div>
             <div className="ticker-item">
               <Award size={16} color="var(--primary)" />
@@ -73,11 +73,12 @@ export const Education = () => {
           </div>
         </div>
 
-        {/* Education Ordered Running Card Blocks */}
+        {/* Education Ordered Running Card Blocks — All Equal Length & Breadth */}
         <div className="edu-running-grid">
           {education.map((item, idx) => (
             <motion.div
               key={item.id}
+              className="edu-motion-wrapper"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.05 }}
@@ -87,7 +88,7 @@ export const Education = () => {
               <TiltCard className={`glass-card edu-running-card edu-stage-3d ${idx === 0 ? 'featured-card' : ''}`} maxTilt={8} scale={1.02}>
                 <div className="edu-card-glow-bar" />
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+                <div className="edu-card-top-bar">
                   <span className="edu-step-badge">
                     STAGE 0{item.order} // {item.duration}
                   </span>
@@ -98,14 +99,18 @@ export const Education = () => {
                   )}
                 </div>
 
-                <h3>{item.degree}</h3>
-                <p className="edu-org">{item.institution}</p>
+                <div className="edu-card-main-content">
+                  <h3>{item.degree}</h3>
+                  <p className="edu-org">{item.institution}</p>
 
-                {item.semester && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary)', fontWeight: '600', fontSize: '0.9rem', marginBottom: '8px' }}>
-                    <Sparkles size={14} /> {item.semester}
-                  </div>
-                )}
+                  {item.semester ? (
+                    <div className="edu-sub-highlight">
+                      <Sparkles size={14} /> {item.semester}
+                    </div>
+                  ) : (
+                    <div className="edu-sub-highlight-placeholder" aria-hidden="true" />
+                  )}
+                </div>
 
                 <div className="edu-footer-meta">
                   <div className="edu-score-pill">

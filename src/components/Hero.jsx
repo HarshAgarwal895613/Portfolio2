@@ -136,7 +136,7 @@ export const Hero = () => {
             {/* Floating 3D Holographic Badges */}
             <div className="hero-3d-badge badge-top-left">
               <GraduationCap size={13} style={{ color: 'var(--primary)' }} />
-              <span>9.24 CGPA @ LPU</span>
+              <span>9.24* CGPA @ LPU</span>
             </div>
 
             <div className="hero-3d-badge badge-bottom-right">

@@ -46,7 +46,7 @@ export const CVSection = () => {
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '32px' }}>
               <span className="tag">
-                <GraduationCap size={14} style={{ marginRight: '6px' }} /> 9.24 CGPA @ LPU
+                <GraduationCap size={14} style={{ marginRight: '6px' }} /> 9.24* CGPA @ LPU
               </span>
               <span className="tag tag-pink">
                 <Sparkles size={14} style={{ marginRight: '6px' }} /> AI/ML Specialization

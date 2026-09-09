@@ -1296,20 +1296,39 @@ body.custom-cursor-active * {
   color: var(--primary);
 }
 
-/* Education Running Card Blocks */
+/* Education Running Card Blocks — Strict Uniform Dimensions (Equal Length & Breadth) */
 .edu-running-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  align-items: stretch;
+}
+
+@media (max-width: 1024px) {
+  .edu-running-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+.edu-motion-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 .edu-running-card {
-  padding: 28px;
+  padding: 28px 24px 22px;
   position: relative;
   overflow: hidden;
   border: 1px solid var(--glass-border);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 310px;
 }
 
 .edu-running-card.featured-card {
@@ -1326,6 +1345,15 @@ body.custom-cursor-active * {
   background: var(--gradient-anime);
 }
 
+.edu-card-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 28px;
+}
+
 .edu-step-badge {
   font-size: 0.75rem;
   font-family: 'Fira Code', monospace;
@@ -1337,29 +1365,47 @@ body.custom-cursor-active * {
   border: 1px solid rgba(0, 240, 255, 0.3);
 }
 
-.edu-running-card h3 {
-  font-size: 1.28rem;
-  margin-top: 12px;
+.edu-card-main-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 14px;
+}
+
+.edu-card-main-content h3 {
+  font-size: 1.2rem;
+  line-height: 1.45;
   margin-bottom: 8px;
   color: var(--text-primary);
+  min-height: 54px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .edu-running-card .edu-org {
   color: var(--primary-light);
   font-weight: 500;
   font-size: 0.95rem;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  min-height: 22px;
 }
 
-.edu-notes-box {
-  background: rgba(255, 0, 127, 0.08);
-  border: 1px dashed rgba(255, 0, 127, 0.3);
-  padding: 10px 14px;
-  border-radius: 10px;
-  margin: 14px 0;
-  font-size: 0.85rem;
-  color: #ff99cc;
-  line-height: 1.5;
+.edu-sub-highlight {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 12px;
+  min-height: 22px;
+}
+
+.edu-sub-highlight-placeholder {
+  min-height: 22px;
+  margin-bottom: 12px;
 }
 
 .edu-footer-meta {
@@ -1368,7 +1414,7 @@ body.custom-cursor-active * {
   align-items: center;
   margin-top: auto;
   padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.88rem;
 }
 

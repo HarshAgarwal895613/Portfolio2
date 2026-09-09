@@ -338,7 +338,7 @@ export const WelcomeScreen = ({ onEnter }) => {
 
         <div className="telemetry-col telemetry-center">
           <Globe size={13} className="telemetry-icon" />
-          <span>LPU CSE // AI & ML SPECIALIZATION (9.24 CGPA)</span>
+          <span>LPU CSE // AI & ML SPECIALIZATION (9.24* CGPA)</span>
         </div>
 
         <div className="telemetry-col telemetry-right">
@@ -413,7 +413,7 @@ export const WelcomeScreen = ({ onEnter }) => {
             {/* Quick 3D Key Metrics */}
             <div className="metrics-3d-strip">
               <div className="metric-pill">
-                <strong>9.24</strong> <span>CGPA @ LPU</span>
+                <strong>9.24*</strong> <span>CGPA @ LPU</span>
               </div>
               <div className="metric-pill">
                 <strong>AI / ML</strong> <span>Specialization</span>
@@ -422,7 +422,7 @@ export const WelcomeScreen = ({ onEnter }) => {
                 <strong>50+</strong> <span>LeetCode Solved</span>
               </div>
               <div className="metric-pill">
-                <strong>JEE Adv</strong> <span>Qualified</span>
+                <strong>JEE Adv</strong> <span>Qualified for JEE Advanced</span>
               </div>
             </div>
           </div>
