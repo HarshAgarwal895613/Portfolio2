@@ -174,21 +174,22 @@ section {
   margin: 0 auto;
 }
 
-/* Glassmorphic Cyber Cards */
+/* Glassmorphic 3D Cyber Cards */
 .glass-card {
   background: var(--surface);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   border-radius: var(--card-radius);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .glass-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--glass-hover-border);
-  box-shadow: var(--shadow-md), var(--shadow-glow);
+  transform: translateY(-7px) scale(1.01);
+  border-color: rgba(0, 240, 255, 0.45);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 /* Buttons */
@@ -592,7 +593,7 @@ body.custom-cursor-active * {
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
 }
 
-/* Anime Avatar Frame & Responsive Fluid Centering */
+/* 3D Anime Avatar Frame & Perspective Showcase */
 .hero-avatar-wrapper {
   --avatar-size: 300px;
   position: relative;
@@ -603,6 +604,18 @@ body.custom-cursor-active * {
   height: calc(var(--avatar-size) + 90px);
   max-width: 100%;
   margin: 0 auto;
+  perspective: 1200px;
+}
+
+.hero-3d-avatar-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .avatar-ring {
@@ -614,6 +627,7 @@ body.custom-cursor-active * {
   animation: rotate-ring 25s linear infinite;
   box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
   pointer-events: none;
+  transform: translateZ(10px);
 }
 
 .avatar-ring-outer {
@@ -621,9 +635,10 @@ body.custom-cursor-active * {
   width: calc(var(--avatar-size) + 90px);
   height: calc(var(--avatar-size) + 90px);
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 0, 127, 0.3);
+  border: 1.5px solid rgba(255, 0, 127, 0.35);
   animation: rotate-ring-rev 30s linear infinite;
   pointer-events: none;
+  transform: translateZ(5px);
 }
 
 .avatar-glow {
@@ -631,7 +646,7 @@ body.custom-cursor-active * {
   width: calc(var(--avatar-size) + 30px);
   height: calc(var(--avatar-size) + 30px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.35) 0%, rgba(255, 0, 127, 0.2) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.4) 0%, rgba(255, 0, 127, 0.25) 50%, transparent 70%);
   filter: blur(28px);
   pointer-events: none;
 }
@@ -643,9 +658,15 @@ body.custom-cursor-active * {
   border-radius: 50%;
   overflow: hidden;
   border: 4px solid rgba(0, 240, 255, 0.7);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 35px rgba(0, 240, 255, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 240, 255, 0.4);
   background: var(--bg-tertiary);
   z-index: 2;
+  transform: translateZ(25px);
+  transition: box-shadow 0.3s ease;
+}
+
+.avatar-img-container:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 240, 255, 0.6);
 }
 
 /* Zoomed out position: Clear space above head and visible body down to chest */
@@ -664,8 +685,124 @@ body.custom-cursor-active * {
 
 .avatar-img-container:hover img,
 .avatar-img-container:hover .hero-avatar-img {
-  transform: scale(1.03);
-  filter: brightness(1.04);
+  transform: scale(1.04);
+  filter: brightness(1.05);
+}
+
+/* Floating 3D Holographic Badges on Avatar */
+.hero-3d-badge {
+  position: absolute;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: rgba(6, 12, 28, 0.85);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 20px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(0, 240, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  pointer-events: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.hero-3d-badge.badge-top-left {
+  top: 10px;
+  left: -20px;
+  transform: translateZ(45px);
+  animation: floatBadge1 4s ease-in-out infinite alternate;
+}
+
+.hero-3d-badge.badge-bottom-right {
+  bottom: 25px;
+  right: -25px;
+  border-color: rgba(255, 0, 127, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(255, 0, 127, 0.2);
+  transform: translateZ(48px);
+  animation: floatBadge2 4.5s ease-in-out infinite alternate;
+}
+
+.hero-3d-badge.badge-bottom-left {
+  bottom: -12px;
+  left: 20px;
+  border-color: rgba(0, 255, 136, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(0, 255, 136, 0.2);
+  transform: translateZ(40px);
+  animation: floatBadge3 5s ease-in-out infinite alternate;
+}
+
+@keyframes floatBadge1 {
+  0% { transform: translateZ(45px) translateY(0); }
+  100% { transform: translateZ(45px) translateY(-8px); }
+}
+
+@keyframes floatBadge2 {
+  0% { transform: translateZ(48px) translateY(0); }
+  100% { transform: translateZ(48px) translateY(-10px); }
+}
+
+@keyframes floatBadge3 {
+  0% { transform: translateZ(40px) translateY(0); }
+  100% { transform: translateZ(40px) translateY(-7px); }
+}
+
+/* 3D Tactile Buttons */
+.btn-3d-tactile {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 0 rgba(0, 160, 200, 0.45), 0 10px 25px rgba(0, 240, 255, 0.3);
+}
+
+.btn-3d-tactile:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 0 rgba(0, 160, 200, 0.55), 0 14px 32px rgba(0, 240, 255, 0.5);
+}
+
+.btn-3d-tactile:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 rgba(0, 160, 200, 0.55), 0 4px 12px rgba(0, 240, 255, 0.3);
+}
+
+.btn-accent.btn-3d-tactile {
+  box-shadow: 0 6px 0 rgba(180, 0, 90, 0.5), 0 10px 25px rgba(255, 0, 127, 0.35);
+}
+
+.btn-accent.btn-3d-tactile:hover {
+  box-shadow: 0 8px 0 rgba(180, 0, 90, 0.6), 0 14px 32px rgba(255, 0, 127, 0.55);
+}
+
+.btn-outline.btn-3d-tactile {
+  box-shadow: 0 4px 0 rgba(255, 255, 255, 0.08), 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.btn-outline.btn-3d-tactile:hover {
+  box-shadow: 0 6px 0 rgba(0, 240, 255, 0.3), 0 10px 24px rgba(0, 240, 255, 0.25);
+}
+
+.social-3d-btn {
+  transform-style: preserve-3d;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.social-3d-btn:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 20px rgba(0, 240, 255, 0.5);
+}
+
+.text-3d-glow {
+  text-shadow: 0 0 35px rgba(0, 240, 255, 0.25);
+}
+
+.badge-3d-elevated {
+  box-shadow: 0 6px 18px rgba(0, 240, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 @keyframes rotate-ring {
@@ -797,11 +934,11 @@ body.custom-cursor-active * {
   min-height: 105px;
 }
 
-/* Individual Card Styling */
+/* Individual 3D Card Styling */
 .arsenal-card {
   background: #000000;
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 14px;
   padding: 18px 16px;
   display: flex;
   flex-direction: column;
@@ -811,9 +948,15 @@ body.custom-cursor-active * {
   gap: 12px;
   cursor: pointer;
   box-sizing: border-box;
+  transform-style: preserve-3d;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+}
+
+.arsenal-card:hover {
+  transform: translateY(-5px) translateZ(12px);
 }
 
 .arsenal-card-icon {
@@ -821,11 +964,12 @@ body.custom-cursor-active * {
   align-items: center;
   justify-content: center;
   height: 32px;
+  transform: translateZ(15px);
   transition: transform 0.25s ease, filter 0.25s ease;
 }
 
 .arsenal-card:hover .arsenal-card-icon {
-  transform: scale(1.12);
+  transform: translateZ(25px) scale(1.15);
 }
 
 .arsenal-github-icon {
