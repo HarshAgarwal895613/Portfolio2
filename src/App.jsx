@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import { WelcomeScreen } from './components/WelcomeScreen';
 import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -12,8 +14,16 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
 export function App() {
+  const [showWelcome, setShowWelcome] = useState(true);
+
   return (
     <>
+      <AnimatePresence mode="wait">
+        {showWelcome && (
+          <WelcomeScreen onEnter={() => setShowWelcome(false)} />
+        )}
+      </AnimatePresence>
+
       <CustomCursor />
       <Navbar />
       <main>
