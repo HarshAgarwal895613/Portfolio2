@@ -817,21 +817,23 @@ body.custom-cursor-active * {
 }
 
 .arsenal-card-icon {
-  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 32px;
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-.arsenal-card-icon svg {
-  color: #ffffff;
-  fill: currentColor;
+.arsenal-card:hover .arsenal-card-icon {
+  transform: scale(1.12);
 }
 
-.arsenal-card-icon svg.arsenal-svg-icon {
-  fill: none;
-  stroke: #ffffff;
+.arsenal-github-icon {
+  color: #f0f6fc;
+}
+
+[data-theme="light"] .arsenal-github-icon {
+  color: #181717;
 }
 
 .arsenal-code-badge {
@@ -855,16 +857,16 @@ body.custom-cursor-active * {
 /* Light Mode Overrides */
 [data-theme="light"] .arsenal-card {
   background: #ffffff;
-  border: 1.5px solid rgba(10, 17, 40, 0.85);
+  border: 1.5px solid rgba(10, 17, 40, 0.15);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
 }
 
-[data-theme="light"] .arsenal-card-icon,
-[data-theme="light"] .arsenal-card-icon svg,
-[data-theme="light"] .arsenal-code-badge,
+[data-theme="light"] .arsenal-code-badge {
+  color: #0a1128;
+}
+
 [data-theme="light"] .arsenal-card-name {
   color: #0a1128;
-  stroke: #0a1128;
 }
 
 [data-theme="light"] .arsenal-title {

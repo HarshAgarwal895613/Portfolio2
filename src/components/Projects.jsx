@@ -7,8 +7,8 @@ export const Projects = () => {
   const { projects } = portfolioData;
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } }
   };
 
   return (
@@ -18,7 +18,7 @@ export const Projects = () => {
           className="section-header"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
           <span className="section-label">[ FEATURED_SYSTEM // AI_IOT_PROJECT ]</span>
@@ -33,9 +33,9 @@ export const Projects = () => {
               className="glass-card project-card"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.05 }}
               variants={cardVariants}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ delay: idx * 0.04 }}
             >
               {proj.image ? (
                 <div className="project-image-container">

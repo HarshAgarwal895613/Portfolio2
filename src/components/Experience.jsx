@@ -7,8 +7,8 @@ export const Experience = () => {
   const { experience } = portfolioData;
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } }
   };
 
   return (
@@ -18,7 +18,7 @@ export const Experience = () => {
           className="section-header"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
           <span className="section-label">// Experience</span>
@@ -33,9 +33,9 @@ export const Experience = () => {
               className="timeline-item"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.05 }}
               variants={cardVariants}
-              transition={{ delay: idx * 0.15 }}
+              transition={{ delay: idx * 0.04 }}
             >
               <div className="timeline-dot" />
               <div className="glass-card timeline-card">

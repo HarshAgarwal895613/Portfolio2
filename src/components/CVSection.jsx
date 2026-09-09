@@ -8,8 +8,8 @@ export const CVSection = () => {
   const [showPreview, setShowPreview] = useState(false);
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } }
   };
 
   return (
@@ -19,7 +19,7 @@ export const CVSection = () => {
           className="section-header"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
           <span className="section-label">[ CURRICULUM_VITAE // OFFICIAL_DOCUMENT ]</span>
@@ -31,7 +31,7 @@ export const CVSection = () => {
           className="glass-card cv-card"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
           <div className="cv-icon">

@@ -65,13 +65,10 @@ export const CustomCursor = () => {
 
     const handleMouseOver = (e) => {
       const target = e.target;
+      if (!target || !(target instanceof Element)) return;
       const isHoverable =
-        target.tagName?.toLowerCase() === 'a' ||
-        target.tagName?.toLowerCase() === 'button' ||
-        target.closest('a') ||
-        target.closest('button') ||
-        target.classList?.contains('hoverable') ||
-        window.getComputedStyle(target).cursor === 'pointer';
+        target.matches('a, button, input, select, textarea, [role="button"], .hoverable, .btn, .tag, .arsenal-card, .glass-card, .cert-image-wrapper, .theme-toggle') ||
+        Boolean(target.closest('a, button, input, select, textarea, [role="button"], .hoverable, .btn, .tag, .arsenal-card, .glass-card, .cert-image-wrapper, .theme-toggle'));
 
       if (circleRef.current && dotRef.current) {
         if (isHoverable) {

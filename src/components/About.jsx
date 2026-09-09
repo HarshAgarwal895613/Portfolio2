@@ -7,8 +7,8 @@ export const About = () => {
   const { about, personal } = portfolioData;
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } }
   };
 
   return (
@@ -18,7 +18,7 @@ export const About = () => {
           className="section-header"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
           <span className="section-label">
@@ -33,7 +33,7 @@ export const About = () => {
             className="about-text"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05 }}
             variants={cardVariants}
           >
             <h3>Engineering Intelligent Systems & Web Solutions</h3>
@@ -59,7 +59,7 @@ export const About = () => {
             className="about-stats"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05 }}
             variants={cardVariants}
           >
             {about.stats.map((stat, idx) => (

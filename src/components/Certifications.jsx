@@ -9,8 +9,8 @@ export const Certifications = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } }
   };
 
   return (
@@ -20,7 +20,7 @@ export const Certifications = () => {
           className="section-header"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
           <span className="section-label">[ VERIFIED_CREDENTIALS // PROOF ]</span>
@@ -35,9 +35,9 @@ export const Certifications = () => {
               className="glass-card cert-card"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.05 }}
               variants={cardVariants}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ delay: idx * 0.04 }}
             >
               <div
                 className="cert-image-wrapper"

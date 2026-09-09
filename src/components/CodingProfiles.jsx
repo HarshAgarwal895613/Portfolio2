@@ -14,8 +14,8 @@ export const CodingProfiles = () => {
   const { codingProfiles } = portfolioData;
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } }
   };
 
   return (
@@ -25,7 +25,7 @@ export const CodingProfiles = () => {
           className="section-header"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
           <span className="section-label">// Coding Ecosystem</span>
@@ -43,9 +43,9 @@ export const CodingProfiles = () => {
               className="glass-card profile-card"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.05 }}
               variants={cardVariants}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ delay: idx * 0.04 }}
             >
               <div className="profile-icon">
                 {iconMap[profile.icon] || <Code size={24} />}

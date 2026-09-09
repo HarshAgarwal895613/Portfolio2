@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle2, Terminal } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle2, Terminal, Building2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export const Contact = () => {
@@ -17,8 +17,8 @@ export const Contact = () => {
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } }
   };
 
   return (
@@ -28,7 +28,7 @@ export const Contact = () => {
           className="section-header"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
           <span className="section-label">
@@ -43,7 +43,7 @@ export const Contact = () => {
             className="contact-info"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05 }}
             variants={cardVariants}
           >
             <h3>Direct Contact Channels</h3>
@@ -58,11 +58,9 @@ export const Contact = () => {
                 </div>
                 <div>
                   <p className="contact-label">Email (Gmail)</p>
-                  <p className="contact-value">
-                    <a href={personal.socialLinks.email} target="_blank" rel="noopener noreferrer">
-                      {personal.email}
-                    </a>
-                  </p>
+                  <a href={`mailto:${personal.email}`} className="contact-value">
+                    {personal.email}
+                  </a>
                 </div>
               </div>
 
@@ -71,12 +69,10 @@ export const Contact = () => {
                   <Phone size={22} />
                 </div>
                 <div>
-                  <p className="contact-label">Mobile Number</p>
-                  <p className="contact-value">
-                    <a href={`tel:${personal.phone.replace(/\s+/g, '')}`}>
-                      {personal.phone}
-                    </a>
-                  </p>
+                  <p className="contact-label">Phone</p>
+                  <a href={`tel:${personal.phone.replace(/[^0-9+]/g, '')}`} className="contact-value">
+                    {personal.phone}
+                  </a>
                 </div>
               </div>
 
@@ -85,21 +81,21 @@ export const Contact = () => {
                   <MapPin size={22} />
                 </div>
                 <div>
-                  <p className="contact-label">Location</p>
-                  <p className="contact-value">{personal.location}</p>
+                  <p className="contact-label">Locations</p>
+                  <p className="contact-value" style={{ fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
+                    {personal.location}
+                  </p>
                 </div>
               </div>
 
               <div className="contact-item">
                 <div className="contact-icon">
-                  <Linkedin size={22} />
+                  <Building2 size={22} />
                 </div>
                 <div>
-                  <p className="contact-label">LinkedIn Profile</p>
-                  <p className="contact-value">
-                    <a href={personal.socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
-                      Harsh Agarwal
-                    </a>
+                  <p className="contact-label">Alma Mater & School</p>
+                  <p className="contact-value" style={{ fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
+                    {personal.subhashChowk}
                   </p>
                 </div>
               </div>
@@ -110,9 +106,9 @@ export const Contact = () => {
             className="glass-card contact-form-wrapper"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05 }}
             variants={cardVariants}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.04 }}
           >
             {submitted ? (
               <div style={{ textAlign: 'center', padding: '40px 20px' }}>
