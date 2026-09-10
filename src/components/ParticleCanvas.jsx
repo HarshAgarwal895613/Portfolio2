@@ -180,19 +180,27 @@ export const ParticleCanvas = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
 
+    const isLightMode = () => document.documentElement.getAttribute('data-theme') === 'light';
+
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const cx = canvas.width / 2;
       const cy = canvas.height / 2;
+      const light = isLightMode();
 
       // Mouse Lerp for 3D parallax
       mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.05;
       mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * 0.05;
 
       // Update & Draw 3D Polyhedra
-      polyhedra.forEach(poly => {
+      polyhedra.forEach((poly, pIdx) => {
         poly.update();
+        if (light) {
+          poly.color = pIdx === 1 ? 'rgba(230, 0, 110, 0.35)' : 'rgba(0, 98, 255, 0.35)';
+        } else {
+          poly.color = pIdx === 1 ? 'rgba(255, 0, 127, 0.4)' : (pIdx === 2 ? 'rgba(0, 255, 136, 0.38)' : 'rgba(0, 240, 255, 0.45)');
+        }
         poly.draw(ctx, cx, cy, mouseRef.current.x, mouseRef.current.y);
       });
 
@@ -226,8 +234,10 @@ export const ParticleCanvas = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxDistance) {
-            const lineAlpha = (1 - dist / maxDistance) * Math.min(p1.alpha, p2.alpha) * 0.32;
-            ctx.strokeStyle = `rgba(0, 240, 255, ${lineAlpha})`;
+            const lineAlpha = (1 - dist / maxDistance) * Math.min(p1.alpha, p2.alpha) * (light ? 0.4 : 0.32);
+            ctx.strokeStyle = light
+              ? `rgba(0, 98, 255, ${lineAlpha})`
+              : `rgba(0, 240, 255, ${lineAlpha})`;
             ctx.lineWidth = 1 * Math.min(p1.scale, p2.scale);
             ctx.beginPath();
             ctx.moveTo(p1.projX, p1.projY);
@@ -243,15 +253,19 @@ export const ParticleCanvas = () => {
         ctx.arc(pt.projX, pt.projY, pt.radius, 0, Math.PI * 2);
 
         if (pt.z < 0) {
-          // Front 3D particles: Glowing Cyan
-          ctx.fillStyle = `rgba(0, 240, 255, ${pt.alpha})`;
-          ctx.shadowColor = '#00f0ff';
-          ctx.shadowBlur = 7 * pt.scale;
+          // Front 3D particles
+          ctx.fillStyle = light
+            ? `rgba(0, 98, 255, ${pt.alpha * 0.95})`
+            : `rgba(0, 240, 255, ${pt.alpha})`;
+          ctx.shadowColor = light ? '#0062ff' : '#00f0ff';
+          ctx.shadowBlur = (light ? 4 : 7) * pt.scale;
         } else {
-          // Back 3D particles: Magenta / Neon Violet
-          ctx.fillStyle = `rgba(255, 0, 127, ${pt.alpha * 0.8})`;
-          ctx.shadowColor = '#ff007f';
-          ctx.shadowBlur = 4 * pt.scale;
+          // Back 3D particles
+          ctx.fillStyle = light
+            ? `rgba(230, 0, 110, ${pt.alpha * 0.75})`
+            : `rgba(255, 0, 127, ${pt.alpha * 0.8})`;
+          ctx.shadowColor = light ? '#e6006e' : '#ff007f';
+          ctx.shadowBlur = (light ? 3 : 4) * pt.scale;
         }
 
         ctx.fill();

@@ -14,13 +14,19 @@ export const TiltCard = ({
   ...props
 }) => {
   const cardRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
   const [tiltStyle, setTiltStyle] = useState({
     transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
-    boxShadow: '0 12px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 240, 255, 0.06)',
+    boxShadow: '',
     glareX: 50,
     glareY: 50,
     glareOpacity: 0
   });
+
+  const isLightMode = () => {
+    if (typeof document === 'undefined') return false;
+    return document.documentElement.getAttribute('data-theme') === 'light';
+  };
 
   const handleMouseMove = useCallback((e) => {
     if (!cardRef.current) return;
@@ -34,27 +40,38 @@ export const TiltCard = ({
     const rotY = ((x - centerX) / centerX) * maxTilt;
 
     // Dynamic 3D shadow cast in opposite direction of tilt
-    const shadowX = (-rotY * 2.2).toFixed(1);
-    const shadowY = (rotX * 2.2 + 18).toFixed(1);
+    const shadowX = (-rotY * 1.8).toFixed(1);
+    const shadowY = (rotX * 1.8 + 14).toFixed(1);
 
+    const light = isLightMode();
+    const shadowStr = light
+      ? `${shadowX}px ${shadowY}px 36px rgba(12, 21, 46, 0.12), 0 0 20px rgba(0, 98, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.95)`
+      : `${shadowX}px ${shadowY}px 45px rgba(0, 0, 0, 0.85), 0 0 32px rgba(0, 240, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25)`;
+
+    setIsHovered(true);
     setTiltStyle({
-      transform: `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(${scale}, ${scale}, ${scale}) translateZ(10px)`,
-      boxShadow: `${shadowX}px ${shadowY}px 45px rgba(0, 0, 0, 0.85), 0 0 32px rgba(0, 240, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25)`,
+      transform: `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(${scale}, ${scale}, ${scale}) translateZ(8px)`,
+      boxShadow: shadowStr,
       glareX: (x / rect.width) * 100,
       glareY: (y / rect.height) * 100,
-      glareOpacity: 0.28
+      glareOpacity: light ? 0.22 : 0.28
     });
   }, [maxTilt, scale]);
 
   const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
     setTiltStyle({
       transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translateZ(0px)',
-      boxShadow: '0 12px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 240, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.12)',
+      boxShadow: '',
       glareX: 50,
       glareY: 50,
       glareOpacity: 0
     });
   }, []);
+
+  const light = isLightMode();
+  const glareColor1 = light ? 'rgba(0, 98, 255, ' : 'rgba(0, 240, 255, ';
+  const glareColor2 = light ? 'rgba(230, 0, 110, ' : 'rgba(255, 0, 127, ';
 
   return (
     <div
@@ -64,9 +81,9 @@ export const TiltCard = ({
       onMouseLeave={handleMouseLeave}
       style={{
         transform: tiltStyle.transform,
-        boxShadow: tiltStyle.boxShadow,
+        ...(isHovered && tiltStyle.boxShadow ? { boxShadow: tiltStyle.boxShadow } : {}),
         transformStyle: 'preserve-3d',
-        transition: 'transform 0.14s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease',
+        transition: 'transform 0.14s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease',
         position: 'relative',
         ...style
       }}
@@ -79,9 +96,10 @@ export const TiltCard = ({
             position: 'absolute',
             inset: 0,
             borderRadius: 'inherit',
-            background: `radial-gradient(circle at ${tiltStyle.glareX}% ${tiltStyle.glareY}%, rgba(0, 240, 255, ${tiltStyle.glareOpacity}) 0%, rgba(255, 0, 127, ${tiltStyle.glareOpacity * 0.4}) 40%, transparent 70%)`,
+            background: `radial-gradient(circle at ${tiltStyle.glareX}% ${tiltStyle.glareY}%, ${glareColor1}${tiltStyle.glareOpacity}) 0%, ${glareColor2}${tiltStyle.glareOpacity * 0.4}) 40%, transparent 70%)`,
             pointerEvents: 'none',
             zIndex: 10,
+            opacity: isHovered ? 1 : 0,
             transition: 'opacity 0.2s ease'
           }}
           aria-hidden="true"
