@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Sparkles, Terminal, Code2, Cpu } from 'lucide-react';
+import { CheckCircle2, Sparkles, Terminal, Code2, Cpu, User } from 'lucide-react';
 import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
@@ -23,11 +23,11 @@ export const About = () => {
           variants={cardVariants}
         >
           <span className="section-label">
-            <Terminal size={14} style={{ display: 'inline', marginRight: '6px' }} />
-            [ ABOUT_DEV // 3D_CYBER_TERMINAL ]
+            <User size={14} style={{ display: 'inline', marginRight: '6px' }} />
+            [ CANDIDATE_PROFILE // PROFESSIONAL_BACKGROUND ]
           </span>
-          <h2>Background & Journey</h2>
-          <p>Get to know my engineering path, academic focus, and development mindset.</p>
+          <h2>About Me & Engineering Focus</h2>
+          <p>B.Tech Computer Science student with strong foundations in algorithms, AI/ML engineering, and full-stack software development.</p>
         </motion.div>
 
         <div className="about-grid">
@@ -37,23 +37,23 @@ export const About = () => {
             viewport={{ once: true, amount: 0.05 }}
             variants={cardVariants}
           >
-            <TiltCard className="glass-card about-terminal-card terminal-3d-frame" maxTilt={8} scale={1.015} elevation={20}>
-              {/* Terminal Window Title Bar */}
-              <div className="about-terminal-header terminal-header-3d">
+            <TiltCard className="glass-card about-terminal-card">
+              {/* Terminal Header */}
+              <div className="about-terminal-header">
                 <div className="terminal-dots">
                   <span className="dot dot-red" />
                   <span className="dot dot-yellow" />
                   <span className="dot dot-green" />
                 </div>
                 <div className="terminal-title">
-                  <Code2 size={13} style={{ display: 'inline', marginRight: '5px' }} />
-                  dev://harsh_agarwal/profile.sys
+                  <Code2 size={14} style={{ display: 'inline', marginRight: '6px' }} />
+                  harsh_agarwal_profile.sys
                 </div>
                 <span className="terminal-status-badge">ONLINE</span>
               </div>
 
-              <div className="about-terminal-body terminal-body-3d">
-                <h3>Engineering Intelligent Systems & Web Solutions</h3>
+              <div className="about-terminal-body">
+                <h3>Engineering Scalable Systems & AI Solutions</h3>
                 <p className="terminal-prompt-line">
                   <span className="prompt-sym">&gt;</span> {personal.bio}
                 </p>
@@ -61,30 +61,30 @@ export const About = () => {
                   <span className="prompt-sym">&gt;</span> {about.objective}
                 </p>
 
-                {/* 3D AI Telemetry Metadata Grid */}
-                <div className="terminal-ai-telemetry-box telemetry-box-3d">
+                {/* Placement Telemetry Highlights */}
+                <div className="terminal-ai-telemetry-box">
                   <div className="ai-telemetry-row">
                     <span className="telemetry-key">SPECIALIZATION:</span>
                     <span className="telemetry-val">Artificial Intelligence & Machine Learning (AI/ML)</span>
                   </div>
                   <div className="ai-telemetry-row">
                     <span className="telemetry-key">PROBLEM_SOLVING:</span>
-                    <span className="telemetry-val">50+ LeetCode DSA Solved // C++ & Python</span>
+                    <span className="telemetry-val">50+ LeetCode DSA Problems Solved // C++ & Python</span>
                   </div>
                   <div className="ai-telemetry-row">
-                    <span className="telemetry-key">APPLIED_SYSTEMS:</span>
-                    <span className="telemetry-val">IoT Smart Climate Telemetry, React.js & Algorithms</span>
+                    <span className="telemetry-key">CORE_COMPETENCIES:</span>
+                    <span className="telemetry-val">Data Structures, Algorithms, React.js, Full-Stack, IoT Telemetry</span>
                   </div>
                 </div>
 
-                <div className="strengths-container strengths-3d">
+                <div className="strengths-container">
                   <h4 className="strengths-title">
                     <Sparkles size={16} style={{ display: 'inline', marginRight: '6px' }} />
-                    Core Capabilities & Focus:
+                    Key Strengths & Placement Highlights:
                   </h4>
                   <div className="strengths-pills">
                     {about.strengths.map((str, idx) => (
-                      <span key={idx} className="tag tag-3d-depth">
+                      <span key={idx} className="tag">
                         <CheckCircle2 size={13} style={{ marginRight: '6px' }} /> {str}
                       </span>
                     ))}
@@ -102,10 +102,10 @@ export const About = () => {
             variants={cardVariants}
           >
             {about.stats.map((stat, idx) => (
-              <TiltCard key={idx} className="glass-card stat-box stat-box-3d" maxTilt={14} scale={1.05} elevation={18}>
+              <TiltCard key={idx} className="glass-card stat-box">
                 <div className="stat-glow-orb" />
-                <div className="stat-number stat-number-3d">{stat.number}</div>
-                <div className="stat-label stat-label-3d">{stat.label}</div>
+                <div className="stat-number">{stat.number}</div>
+                <div className="stat-label">{stat.label}</div>
               </TiltCard>
             ))}
           </motion.div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle2, Terminal, Building2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, Building2 } from 'lucide-react';
 import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
@@ -11,7 +11,7 @@ export const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const mailtoUrl = `mailto:${personal.email}?subject=${encodeURIComponent(formState.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`)}`;
+    const mailtoUrl = `mailto:${personal.email}?subject=${encodeURIComponent(formState.subject || 'Portfolio Inquiry / Job Opportunity')}&body=${encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`)}`;
     window.open(mailtoUrl, '_blank');
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
@@ -33,10 +33,11 @@ export const Contact = () => {
           variants={cardVariants}
         >
           <span className="section-label">
-            <Terminal size={14} /> [ TRANSMISSION // CONNECT ]
+            <Mail size={14} style={{ display: 'inline', marginRight: '6px' }} />
+            [ GET_IN_TOUCH // CONTACT_ME ]
           </span>
-          <h2>Contact Me & Collaborate</h2>
-          <p>Have an engineering opportunity, a hackathon project, or want to discuss ideas? Reach out!</p>
+          <h2>Contact & Communication</h2>
+          <p>Open for software engineering opportunities, campus placement, internships, and technical collaborations.</p>
         </motion.div>
 
         <div className="contact-grid">
@@ -46,19 +47,19 @@ export const Contact = () => {
             viewport={{ once: true, amount: 0.05 }}
             variants={cardVariants}
           >
-            <TiltCard className="contact-info contact-panel-3d" maxTilt={6} scale={1.01}>
+            <TiltCard className="contact-info">
               <h3>Direct Contact Channels</h3>
               <p>
-                I am open to software development internships, freelance collaborations, and project inquiries.
+                Feel free to reach out via email or phone for placement discussions, interviews, and engineering queries.
               </p>
 
               <div className="contact-items">
                 <div className="contact-item">
                   <div className="contact-icon">
-                    <Mail size={22} />
+                    <Mail size={20} />
                   </div>
                   <div>
-                    <p className="contact-label">Email (Gmail)</p>
+                    <p className="contact-label">Email Address</p>
                     <a href={`mailto:${personal.email}`} className="contact-value">
                       {personal.email}
                     </a>
@@ -67,7 +68,7 @@ export const Contact = () => {
 
                 <div className="contact-item">
                   <div className="contact-icon">
-                    <Phone size={22} />
+                    <Phone size={20} />
                   </div>
                   <div>
                     <p className="contact-label">Phone</p>
@@ -79,7 +80,7 @@ export const Contact = () => {
 
                 <div className="contact-item">
                   <div className="contact-icon">
-                    <MapPin size={22} />
+                    <MapPin size={20} />
                   </div>
                   <div>
                     <p className="contact-label">Locations</p>
@@ -91,10 +92,10 @@ export const Contact = () => {
 
                 <div className="contact-item">
                   <div className="contact-icon">
-                    <Building2 size={22} />
+                    <Building2 size={20} />
                   </div>
                   <div>
-                    <p className="contact-label">Alma Mater & School</p>
+                    <p className="contact-label">University / Institution</p>
                     <p className="contact-value" style={{ fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
                       {personal.subhashChowk}
                     </p>
@@ -111,11 +112,11 @@ export const Contact = () => {
             variants={cardVariants}
             transition={{ delay: 0.04 }}
           >
-            <TiltCard className="glass-card contact-form-wrapper form-frame-3d" maxTilt={6} scale={1.01}>
+            <TiltCard className="glass-card contact-form-wrapper">
               {submitted ? (
                 <div style={{ textAlign: 'center', padding: '40px 20px' }}>
                   <CheckCircle2 size={48} color="var(--primary)" style={{ margin: '0 auto 16px' }} />
-                  <h3>Transmission Ready!</h3>
+                  <h3>Message Ready!</h3>
                   <p style={{ color: 'var(--text-secondary)', marginTop: '8px' }}>
                     Your email client has been launched. Thank you for connecting with Harsh Agarwal!
                   </p>
@@ -124,23 +125,23 @@ export const Contact = () => {
                 <form className="contact-form" onSubmit={handleSubmit}>
                   <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor="name">// YOUR_NAME</label>
+                      <label htmlFor="name">Your Name</label>
                       <input
                         type="text"
                         id="name"
                         required
-                        placeholder="e.g. Alex"
+                        placeholder="e.g. Recruiter / Hiring Manager"
                         value={formState.name}
                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                       />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="email">// YOUR_EMAIL</label>
+                      <label htmlFor="email">Your Email</label>
                       <input
                         type="email"
                         id="email"
                         required
-                        placeholder="e.g. user@example.com"
+                        placeholder="e.g. recruiter@company.com"
                         value={formState.email}
                         onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                       />
@@ -148,31 +149,31 @@ export const Contact = () => {
                   </div>
 
                   <div className="form-group" style={{ marginTop: '16px' }}>
-                    <label htmlFor="subject">// SUBJECT</label>
+                    <label htmlFor="subject">Subject</label>
                     <input
                       type="text"
                       id="subject"
                       required
-                      placeholder="Project Inquiry / Job Opportunity"
+                      placeholder="Job Opportunity / Interview Invitation"
                       value={formState.subject}
                       onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
                     />
                   </div>
 
                   <div className="form-group" style={{ marginTop: '16px' }}>
-                    <label htmlFor="message">// MESSAGE_BODY</label>
+                    <label htmlFor="message">Message</label>
                     <textarea
                       id="message"
                       required
-                      placeholder="Describe your proposal or project requirements..."
+                      placeholder="Write your message or inquiry..."
                       value={formState.message}
                       onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                     />
                   </div>
 
                   <div className="form-submit">
-                    <button type="submit" className="btn btn-primary btn-3d-tactile" style={{ width: '100%' }}>
-                      <Send size={18} /> Transmit Message
+                    <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+                      <Send size={18} /> Send Message
                     </button>
                   </div>
                 </form>

@@ -3306,9 +3306,9 @@ body.custom-cursor-active * {
 }
 
 /* ==========================================================================
-   21. Global 3D AI Neural Matrix & Synaptic Background System
+   21. Clean Modern Background System (Placement Optimized)
    ========================================================================== */
-.global-ai-background-container {
+.clean-bg-wrapper {
   position: fixed;
   top: 0;
   left: 0;
@@ -3317,568 +3317,297 @@ body.custom-cursor-active * {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  background: var(--bg-primary);
 }
 
-.global-ai-canvas {
+.clean-bg-spotlight {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.06) 0%, transparent 70%);
+  filter: blur(40px);
   pointer-events: none;
-  z-index: 1;
+  transition: opacity 0.3s ease;
 }
 
-.global-ai-grid-overlay {
+[data-theme="light"] .clean-bg-spotlight {
+  background: radial-gradient(circle, rgba(0, 98, 255, 0.05) 0%, transparent 70%);
+}
+
+.clean-bg-grid {
   position: absolute;
   inset: 0;
-  background-size: 64px 64px;
+  background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(0, 240, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
-  mask-image: radial-gradient(ellipse at 50% 50%, black 45%, transparent 92%);
-  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 45%, transparent 92%);
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 90%);
   pointer-events: none;
-  z-index: 2;
 }
 
-[data-theme="light"] .global-ai-grid-overlay {
+[data-theme="light"] .clean-bg-grid {
   background-image: 
     linear-gradient(to right, rgba(0, 98, 255, 0.035) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 98, 255, 0.035) 1px, transparent 1px);
 }
 
-.global-ai-ambient-orb {
+.clean-bg-ambient {
   position: absolute;
   border-radius: 50%;
-  filter: blur(140px);
+  filter: blur(120px);
   pointer-events: none;
-  opacity: 0.22;
-  z-index: 2;
+  opacity: 0.18;
 }
 
-.global-ai-ambient-orb.orb-primary {
-  top: 15%;
-  left: 10%;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.5) 0%, rgba(157, 0, 255, 0.3) 60%, transparent 80%);
-}
-
-.global-ai-ambient-orb.orb-secondary {
-  bottom: 10%;
-  right: 12%;
+.ambient-top-left {
+  top: -100px;
+  left: -100px;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(255, 0, 127, 0.45) 0%, rgba(0, 240, 255, 0.25) 60%, transparent 80%);
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
 }
 
-[data-theme="light"] .global-ai-ambient-orb.orb-primary {
-  background: radial-gradient(circle, rgba(0, 98, 255, 0.2) 0%, rgba(121, 40, 202, 0.12) 60%, transparent 80%);
-  opacity: 0.45;
+.ambient-bottom-right {
+  bottom: -100px;
+  right: -100px;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
 }
 
-[data-theme="light"] .global-ai-ambient-orb.orb-secondary {
-  background: radial-gradient(circle, rgba(230, 0, 110, 0.18) 0%, rgba(0, 98, 255, 0.12) 60%, transparent 80%);
-  opacity: 0.45;
+[data-theme="light"] .clean-bg-ambient {
+  opacity: 0.12;
 }
 
-/* 3D AI Neural Telemetry HUD Strip */
-.hero-ai-telemetry-hud {
+/* ==========================================================================
+   22. Placement Hero & Telemetry System
+   ========================================================================== */
+.badge-placement {
+  border-color: rgba(0, 240, 255, 0.35);
+  background: rgba(0, 240, 255, 0.06);
+}
+
+.hero-placement-telemetry {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   padding: 8px 18px;
-  background: rgba(6, 12, 28, 0.85);
-  border: 1px solid rgba(0, 240, 255, 0.3);
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
   border-radius: 30px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 240, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
   font-family: 'Fira Code', monospace;
   font-size: 0.76rem;
-  margin-top: 10px;
+  margin-top: 12px;
   flex-wrap: wrap;
 }
 
-[data-theme="light"] .hero-ai-telemetry-hud {
-  background: #ffffff;
-  border: 1.5px solid rgba(0, 98, 255, 0.2);
-  box-shadow: 0 6px 20px rgba(12, 21, 46, 0.06);
-}
-
-.ai-hud-item {
+.telemetry-item {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.ai-hud-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #00ff88;
-  box-shadow: 0 0 8px #00ff88;
-  animation: pulseLiveDot 1.4s infinite alternate;
-}
-
-.ai-hud-label {
+.telemetry-label {
   color: var(--text-muted);
   font-weight: 600;
-  letter-spacing: 0.4px;
-}
-
-[data-theme="light"] .ai-hud-label {
-  color: #64748b;
-}
-
-.ai-hud-value {
-  color: var(--primary);
-  font-weight: 700;
-}
-
-[data-theme="light"] .ai-hud-value {
-  color: #0062ff;
-}
-
-.ai-hud-divider {
-  width: 1px;
-  height: 14px;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-[data-theme="light"] .ai-hud-divider {
-  background: rgba(0, 98, 255, 0.15);
-}
-
-/* Terminal AI Telemetry Metadata Grid in About */
-.terminal-ai-telemetry-box {
-  background: rgba(0, 240, 255, 0.04);
-  border: 1px solid rgba(0, 240, 255, 0.2);
-  border-left: 3px solid var(--primary);
-  border-radius: 8px;
-  padding: 12px 14px;
-  margin: 16px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.8rem;
-}
-
-[data-theme="light"] .terminal-ai-telemetry-box {
-  background: rgba(0, 98, 255, 0.04);
-  border-color: rgba(0, 98, 255, 0.16);
-  border-left: 3px solid #0062ff;
-}
-
-.ai-telemetry-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.telemetry-key {
-  color: var(--primary);
-  font-weight: 700;
-  font-size: 0.74rem;
-  letter-spacing: 0.5px;
-}
-
-[data-theme="light"] .telemetry-key {
-  color: #0062ff;
+  letter-spacing: 0.3px;
 }
 
 .telemetry-val {
-  color: var(--text-secondary);
-  font-size: 0.82rem;
-}
-
-[data-theme="light"] .telemetry-val {
-  color: #334155;
-}
-
-/* ==========================================================================
-   22. 3D WebGL AI Neural Core & Hero Interactive Hub
-   ========================================================================== */
-.global-ai-ambient-orb.orb-accent {
-  top: 50%;
-  left: 35%;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(157, 0, 255, 0.35) 0%, rgba(0, 240, 255, 0.15) 50%, transparent 75%);
-}
-
-[data-theme="light"] .global-ai-ambient-orb.orb-accent {
-  background: radial-gradient(circle, rgba(121, 40, 202, 0.15) 0%, rgba(0, 98, 255, 0.08) 50%, transparent 75%);
-  opacity: 0.35;
-}
-
-/* Hero 3D Mode Selector Toggle */
-.hero-3d-mode-switcher {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 16px;
-  background: rgba(6, 10, 24, 0.8);
-  padding: 5px;
-  border-radius: 24px;
-  border: 1px solid rgba(0, 240, 255, 0.2);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 5;
-}
-
-[data-theme="light"] .hero-3d-mode-switcher {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1.5px solid rgba(0, 98, 255, 0.2);
-  box-shadow: 0 4px 14px rgba(12, 21, 46, 0.06);
-}
-
-.hero-3d-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: 'Fira Code', monospace;
-  color: var(--text-muted);
-  background: transparent;
-  border: none;
-  border-radius: 18px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.hero-3d-tab:hover {
-  color: var(--text-primary);
-}
-
-.hero-3d-tab.active {
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.25), rgba(157, 0, 255, 0.25));
   color: var(--primary);
-  border: 1px solid rgba(0, 240, 255, 0.4);
-  box-shadow: 0 0 14px rgba(0, 240, 255, 0.25);
+  font-weight: 700;
 }
 
-[data-theme="light"] .hero-3d-tab.active {
-  background: linear-gradient(135deg, rgba(0, 98, 255, 0.12), rgba(121, 40, 202, 0.12));
-  color: #0062ff;
-  border: 1.5px solid rgba(0, 98, 255, 0.35);
-  box-shadow: 0 2px 10px rgba(0, 98, 255, 0.15);
+.telemetry-separator {
+  width: 1px;
+  height: 14px;
+  background: var(--glass-border);
 }
 
-.hero-3d-webgl-wrapper {
-  width: 100%;
-  max-width: 380px;
-  margin: 0 auto;
+/* Clean Professional Avatar Card */
+.hero-avatar-card-clean {
   position: relative;
+  width: 320px;
+  height: 320px;
   display: flex;
+  align-items: center;
   justify-content: center;
+  margin: 0 auto;
 }
 
-/* AI 3D Core Card */
-.ai-3d-core-card {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  max-width: 360px;
-  background: rgba(8, 12, 26, 0.85);
-  border: 1px solid rgba(0, 240, 255, 0.35);
-  border-radius: 24px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 240, 255, 0.2);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+.avatar-ring-clean {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2px dashed rgba(0, 240, 255, 0.35);
+  animation: rotateClockwise 25s linear infinite;
+}
+
+[data-theme="light"] .avatar-ring-clean {
+  border-color: rgba(0, 98, 255, 0.3);
+}
+
+.avatar-glow-clean {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+  filter: blur(20px);
+}
+
+[data-theme="light"] .avatar-glow-clean {
+  background: radial-gradient(circle, rgba(0, 98, 255, 0.12) 0%, transparent 70%);
+}
+
+.hero-avatar-card-clean .avatar-img-container {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
   overflow: hidden;
+  border: 3px solid rgba(0, 240, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 2;
+  background: var(--bg-secondary);
 }
 
-[data-theme="light"] .ai-3d-core-card {
-  background: #ffffff;
-  border: 1.5px solid rgba(0, 98, 255, 0.25);
-  box-shadow: 0 16px 40px rgba(12, 21, 46, 0.1), 0 0 25px rgba(0, 98, 255, 0.12);
+[data-theme="light"] .hero-avatar-card-clean .avatar-img-container {
+  border-color: rgba(0, 98, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(12, 21, 46, 0.12);
 }
 
-.ai-3d-core-header {
+.hero-avatar-card-clean .hero-avatar-img {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  z-index: 5;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.ai-3d-core-status {
+/* Clean Credential Badges Around Avatar */
+.hero-avatar-card-clean .hero-badge {
+  position: absolute;
   display: flex;
   align-items: center;
   gap: 6px;
-}
-
-.ai-3d-status-text {
+  padding: 6px 12px;
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
   font-family: 'Fira Code', monospace;
   font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--primary);
-  letter-spacing: 0.5px;
-}
-
-[data-theme="light"] .ai-3d-status-text {
-  color: #0062ff;
-}
-
-.ai-3d-drag-hint {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.68rem;
-  color: var(--text-muted);
-}
-
-.ai-3d-canvas-mount {
-  width: 100%;
-  flex: 1;
-  min-height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.ai-3d-core-telemetry {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  z-index: 5;
-}
-
-.telemetry-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 10px;
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.2);
-  border-radius: 12px;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.66rem;
-  color: var(--text-secondary);
   font-weight: 600;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 3;
+  white-space: nowrap;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-[data-theme="light"] .telemetry-pill {
-  background: rgba(0, 98, 255, 0.06);
-  border-color: rgba(0, 98, 255, 0.18);
-  color: #334155;
+.hero-avatar-card-clean .hero-badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+.hero-avatar-card-clean .badge-top-left {
+  top: -8px;
+  left: -20px;
+}
+
+.hero-avatar-card-clean .badge-top-right {
+  top: -8px;
+  right: -20px;
+}
+
+.hero-avatar-card-clean .badge-bottom-right {
+  bottom: -8px;
+  right: -15px;
+}
+
+.hero-avatar-card-clean .badge-bottom-left {
+  bottom: -8px;
+  left: -15px;
+}
+
+@media (max-width: 768px) {
+  .hero-avatar-card-clean {
+    width: 260px;
+    height: 260px;
+  }
+  .hero-avatar-card-clean .avatar-img-container {
+    width: 210px;
+    height: 210px;
+  }
+  .hero-avatar-card-clean .hero-badge {
+    position: static;
+    margin: 4px;
+  }
+  .hero-avatar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
 }
 
 /* ==========================================================================
-   23. Comprehensive 3D Perspective Depth Pop-Out Physics
+   23. Clean Card Physics & Button Hover
    ========================================================================== */
-.tilt-3d-card {
-  transform-style: preserve-3d;
-  perspective: 1100px;
-  will-change: transform, box-shadow;
+.clean-card {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
-.tilt-3d-content {
-  transform-style: preserve-3d;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+.clean-card:hover,
+.clean-card.clean-card-hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--glass-hover-border);
 }
 
-/* Multi-layer Z-axis pop-outs on hover */
-.tilt-3d-card.tilt-3d-active .arsenal-icon-3d,
-.tilt-3d-card:hover .arsenal-icon-3d {
-  transform: translateZ(36px);
-  filter: drop-shadow(0 10px 14px rgba(0, 240, 255, 0.3));
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
-}
-
-.tilt-3d-card.tilt-3d-active .arsenal-name-3d,
-.tilt-3d-card:hover .arsenal-name-3d {
-  transform: translateZ(24px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .project-media-3d,
-.tilt-3d-card:hover .project-media-3d {
-  transform: translateZ(32px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
-}
-
-.tilt-3d-card.tilt-3d-active .project-title-3d,
-.tilt-3d-card:hover .project-title-3d {
-  transform: translateZ(26px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .project-tags-3d,
-.tilt-3d-card:hover .project-tags-3d {
-  transform: translateZ(30px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .project-tech-3d,
-.tilt-3d-card:hover .project-tech-3d {
-  transform: translateZ(25px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .project-links-3d,
-.tilt-3d-card:hover .project-links-3d {
-  transform: translateZ(35px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .profile-icon-3d,
-.tilt-3d-card:hover .profile-icon-3d {
-  transform: translateZ(36px);
-  filter: drop-shadow(0 8px 16px rgba(0, 240, 255, 0.3));
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .profile-status-pill,
-.tilt-3d-card:hover .profile-status-pill {
-  transform: translateZ(32px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .profile-info-3d,
-.tilt-3d-card:hover .profile-info-3d {
-  transform: translateZ(26px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .edu-top-3d,
-.tilt-3d-card:hover .edu-top-3d {
-  transform: translateZ(25px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .edu-degree-3d,
-.tilt-3d-card:hover .edu-degree-3d {
-  transform: translateZ(28px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .edu-highlight-3d,
-.tilt-3d-card:hover .edu-highlight-3d {
-  transform: translateZ(32px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .edu-footer-3d,
-.tilt-3d-card:hover .edu-footer-3d {
-  transform: translateZ(22px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .cert-media-3d,
-.tilt-3d-card:hover .cert-media-3d {
-  transform: translateZ(34px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .cert-title-3d,
-.tilt-3d-card:hover .cert-title-3d {
-  transform: translateZ(26px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .stat-number-3d,
-.tilt-3d-card:hover .stat-number-3d {
-  transform: translateZ(36px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .stat-label-3d,
-.tilt-3d-card:hover .stat-label-3d {
-  transform: translateZ(22px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .terminal-header-3d,
-.tilt-3d-card:hover .terminal-header-3d {
-  transform: translateZ(24px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tilt-3d-card.tilt-3d-active .telemetry-box-3d,
-.tilt-3d-card:hover .telemetry-box-3d {
-  transform: translateZ(28px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* 3D Tactile Buttons */
-.btn-3d-tactile {
-  transform-style: preserve-3d;
-  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background 0.2s ease;
-  position: relative;
-}
-
-.btn-3d-tactile:hover {
-  transform: translateY(-3px) translateZ(10px);
-  box-shadow: 0 10px 24px rgba(0, 240, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.4);
-}
-
-.btn-3d-tactile:active {
-  transform: translateY(1px) translateZ(-4px);
-  box-shadow: 0 3px 8px rgba(0, 240, 255, 0.2);
-}
-
-[data-theme="light"] .btn-3d-tactile:hover {
-  box-shadow: 0 10px 24px rgba(0, 98, 255, 0.25), 0 2px 4px rgba(12, 21, 46, 0.08);
-}
-
-/* 3D Social Buttons */
-.social-3d-btn {
+.social-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--surface);
   border: 1px solid var(--glass-border);
   color: var(--text-primary);
   text-decoration: none;
-  transform-style: preserve-3d;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease;
 }
 
-.social-3d-btn:hover {
-  transform: translateY(-4px) translateZ(12px);
-  background: rgba(0, 240, 255, 0.15);
+.social-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 240, 255, 0.1);
   border-color: var(--primary);
   color: var(--primary);
-  box-shadow: 0 8px 20px rgba(0, 240, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 240, 255, 0.2);
 }
 
-[data-theme="light"] .social-3d-btn {
-  background: #ffffff;
-  border: 1.5px solid rgba(0, 98, 255, 0.18);
-  box-shadow: 0 2px 8px rgba(12, 21, 46, 0.06);
-}
-
-[data-theme="light"] .social-3d-btn:hover {
+[data-theme="light"] .social-btn:hover {
   background: rgba(0, 98, 255, 0.08);
   border-color: #0062ff;
   color: #0062ff;
-  box-shadow: 0 8px 20px rgba(0, 98, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 98, 255, 0.15);
 }
+
+@keyframes rotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 

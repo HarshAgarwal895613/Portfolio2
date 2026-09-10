@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Sparkles, CheckCircle2, Calendar, Box } from 'lucide-react';
+import { Github, ExternalLink, Sparkles, CheckCircle2, Calendar, FolderGit2 } from 'lucide-react';
 import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
@@ -23,11 +23,11 @@ export const Projects = () => {
           variants={cardVariants}
         >
           <span className="section-label">
-            <Box size={14} style={{ display: 'inline', marginRight: '6px' }} />
-            [ FEATURED_SYSTEM // AI_IOT_PROJECT ]
+            <FolderGit2 size={14} style={{ display: 'inline', marginRight: '6px' }} />
+            [ PORTFOLIO_PROJECTS // ENGINEERING_SOLUTIONS ]
           </span>
           <h2>Featured Projects & Innovations</h2>
-          <p>Highlighting AI/ML intelligent climate telemetry, automated regulation, and hardware sensing.</p>
+          <p>Real-world engineering applications combining AI/ML algorithms, IoT sensor automation, and responsive web systems.</p>
         </motion.div>
 
         <div className="projects-grid" style={projects.length === 1 ? { maxWidth: '750px', margin: '0 auto' } : {}}>
@@ -40,9 +40,9 @@ export const Projects = () => {
               variants={cardVariants}
               transition={{ delay: idx * 0.04 }}
             >
-              <TiltCard className="glass-card project-card project-frame-3d" maxTilt={10} scale={1.02} elevation={22}>
+              <TiltCard className="glass-card project-card">
                 {proj.image ? (
-                  <div className="project-image-container project-media-3d">
+                  <div className="project-image-container">
                     <img src={proj.image} alt={proj.title} loading="lazy" />
                   </div>
                 ) : (
@@ -51,8 +51,8 @@ export const Projects = () => {
                   </div>
                 )}
 
-              <div className="project-body project-body-3d">
-                <div className="project-tag-row project-tags-3d">
+              <div className="project-body">
+                <div className="project-tag-row">
                   <span className="tag">
                     <Sparkles size={12} style={{ marginRight: '4px' }} /> {proj.category}
                   </span>
@@ -68,7 +68,7 @@ export const Projects = () => {
                   )}
                 </div>
 
-                <h3 className="project-title-3d">{proj.title}</h3>
+                <h3>{proj.title}</h3>
                 
                 {proj.bullets && proj.bullets.length > 0 ? (
                   <ul style={{ listStyle: 'none', padding: 0, margin: '12px 0 16px 0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -83,7 +83,7 @@ export const Projects = () => {
                   <p>{proj.description}</p>
                 )}
 
-                <div className="project-tech project-tech-3d">
+                <div className="project-tech">
                   {proj.techStack.map((tech, tIdx) => (
                     <span key={tIdx} className="tag tag-pink">
                       {tech}
@@ -91,13 +91,13 @@ export const Projects = () => {
                   ))}
                 </div>
 
-                <div className="project-links project-links-3d">
+                <div className="project-links">
                   {proj.github && (
                     <a
                       href={proj.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-outline btn-3d-tactile"
+                      className="btn btn-outline"
                       style={{ padding: '8px 18px', fontSize: '0.88rem' }}
                     >
                       <Github size={16} /> GitHub Code
@@ -108,7 +108,7 @@ export const Projects = () => {
                       href={proj.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-primary btn-3d-tactile"
+                      className="btn btn-primary"
                       style={{ padding: '8px 18px', fontSize: '0.88rem' }}
                     >
                       <ExternalLink size={16} /> Live Preview

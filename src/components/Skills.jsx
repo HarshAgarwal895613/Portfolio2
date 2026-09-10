@@ -17,15 +17,13 @@ import {
   FaDatabase,
   FaBrain,
   FaStar,
-  FaLightbulb,
   FaUsers,
   FaComments,
-  FaTowerBroadcast,
-  FaSliders
+  FaTowerBroadcast
 } from 'react-icons/fa6';
 import { VscVscode } from 'react-icons/vsc';
 import { TbApi, TbActivity } from 'react-icons/tb';
-import { Terminal, Layers, Sparkles, Box } from 'lucide-react';
+import { Code, Terminal } from 'lucide-react';
 import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
@@ -130,31 +128,31 @@ export const Skills = () => {
           transition={{ duration: 0.35 }}
         >
           <span className="section-label">
-            <Layers size={14} style={{ display: 'inline', marginRight: '6px' }} />
-            [ TECHNICAL_ARSENAL // 3D_SKILLS_MATRIX ]
+            <Code size={14} style={{ display: 'inline', marginRight: '6px' }} />
+            [ TECHNICAL_SKILLS // CORE_PROFICIENCIES ]
           </span>
-          <h2>Skills & Technologies</h2>
-          <p>Proficiencies across programming languages, tools & platforms, web engineering, and problem-solving.</p>
+          <h2>Technical Skills & Technologies</h2>
+          <p>Structured categorization of programming languages, frameworks, developer tools, and problem-solving skillsets.</p>
         </motion.div>
 
         {/* Categorized Skills Grids */}
         {categories.map((category, catIdx) => (
-          <div key={catIdx} style={{ marginBottom: catIdx < categories.length - 1 ? '44px' : '0' }}>
+          <div key={catIdx} style={{ marginBottom: catIdx < categories.length - 1 ? '40px' : '0' }}>
             <motion.div
-              initial={{ opacity: 0, y: -8 }}
+              initial={{ opacity: 0, y: -6 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.05 }}
-              transition={{ duration: 0.3, delay: catIdx * 0.04 }}
+              transition={{ duration: 0.25, delay: catIdx * 0.03 }}
               className="arsenal-heading-wrap"
-              style={{ textAlign: 'left', marginBottom: '18px' }}
+              style={{ textAlign: 'left', marginBottom: '16px' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <span className="pulse-dot" style={{ width: '7px', height: '7px' }} />
-                <h3 className="arsenal-title" style={{ fontSize: '1.45rem', textShadow: 'none' }}>
+                <h3 className="arsenal-title" style={{ fontSize: '1.35rem', fontWeight: 600 }}>
                   {category.name}
                 </h3>
-                <span style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginLeft: 'auto' }}>
-                  // {category.skills.length} Nodes
+                <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginLeft: 'auto' }}>
+                  ({category.skills.length} skills)
                 </span>
               </div>
             </motion.div>
@@ -174,16 +172,13 @@ export const Skills = () => {
                     variants={cardVariants}
                   >
                     <TiltCard
-                      className="arsenal-card arsenal-card-3d"
-                      maxTilt={14}
-                      scale={1.06}
-                      elevation={18}
+                      className="arsenal-card"
                       style={{ height: '100%', width: '100%' }}
                     >
-                      <div className="arsenal-card-icon arsenal-icon-3d">
+                      <div className="arsenal-card-icon">
                         {iconMap[skill.name] || <SiCplusplus size={28} color="#00599C" />}
                       </div>
-                      <span className="arsenal-card-name arsenal-name-3d">{skill.name}</span>
+                      <span className="arsenal-card-name">{skill.name}</span>
                     </TiltCard>
                   </motion.div>
                 );

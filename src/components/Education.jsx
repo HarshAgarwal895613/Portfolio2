@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award, MapPin, Sparkles, BookOpen, CheckCircle2, Milestone, ArrowRight } from 'lucide-react';
+import { GraduationCap, Award, MapPin, Sparkles, BookOpen, CheckCircle2, ArrowRight } from 'lucide-react';
 import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
@@ -23,14 +23,14 @@ export const Education = () => {
           variants={cardVariants}
         >
           <span className="section-label">
-            <Milestone size={14} style={{ display: 'inline', marginRight: '6px' }} />
-            [ ACADEMIC_JOURNEY // 3D_ROADMAP ]
+            <GraduationCap size={14} style={{ display: 'inline', marginRight: '6px' }} />
+            [ ACADEMIC_CREDENTIALS // EDUCATION_TIMELINE ]
           </span>
-          <h2>Educational Journey & Milestones</h2>
-          <p>Chronological academic trajectory from secondary foundation and JEE Advanced qualification to AI/ML engineering.</p>
+          <h2>Educational Background & Academic Journey</h2>
+          <p>Chronological trajectory highlighting strong foundational schooling, competitive exam success, and university engineering excellence.</p>
         </motion.div>
 
-        {/* Interactive Visual 3D Journey Roadmap Track */}
+        {/* Clean Interactive Visual Journey Stepper */}
         <motion.div
           className="journey-stepper-track"
           initial="hidden"
@@ -47,7 +47,6 @@ export const Education = () => {
           </div>
 
           <div className="journey-connector-line">
-            <div className="journey-energy-pulse" />
             <ArrowRight size={16} className="journey-arrow-icon" />
           </div>
 
@@ -60,7 +59,6 @@ export const Education = () => {
           </div>
 
           <div className="journey-connector-line">
-            <div className="journey-energy-pulse" />
             <ArrowRight size={16} className="journey-arrow-icon" />
           </div>
 
@@ -74,7 +72,7 @@ export const Education = () => {
         </motion.div>
 
         {/* Dynamic Running Block Marquee */}
-        <div className="running-ticker-container" style={{ marginTop: '28px' }}>
+        <div className="running-ticker-container" style={{ marginTop: '24px' }}>
           <div className="running-ticker-track">
             <div className="ticker-item">
               <BookOpen size={16} color="var(--secondary)" />
@@ -113,7 +111,7 @@ export const Education = () => {
           </div>
         </div>
 
-        {/* Education Ordered Running Card Blocks — All Equal Length & Breadth with 3D Depth */}
+        {/* Education Ordered Running Card Blocks — All Equal Length & Breadth */}
         <div className="edu-running-grid">
           {education.map((item, idx) => (
             <motion.div
@@ -126,14 +124,11 @@ export const Education = () => {
               transition={{ delay: idx * 0.04 }}
             >
               <TiltCard
-                className={`glass-card edu-running-card edu-stage-3d ${item.order === 3 ? 'featured-card active-summit-card' : ''}`}
-                maxTilt={12}
-                scale={1.03}
-                elevation={20}
+                className={`glass-card edu-running-card ${item.order === 3 ? 'featured-card active-summit-card' : ''}`}
               >
                 <div className="edu-card-glow-bar" />
 
-                <div className="edu-card-top-bar edu-top-3d">
+                <div className="edu-card-top-bar">
                   <span className="edu-step-badge">
                     MILESTONE 0{item.order} // {item.duration}
                   </span>
@@ -144,13 +139,13 @@ export const Education = () => {
                   )}
                 </div>
 
-                <div className="edu-card-main-content edu-content-3d">
+                <div className="edu-card-main-content">
                   <span className="edu-phase-label">{item.phase}</span>
-                  <h3 className="edu-degree-3d">{item.degree}</h3>
+                  <h3>{item.degree}</h3>
                   <p className="edu-org">{item.institution}</p>
 
                   {item.semester ? (
-                    <div className="edu-sub-highlight edu-highlight-3d">
+                    <div className="edu-sub-highlight">
                       <Sparkles size={14} /> {item.semester}
                     </div>
                   ) : (
@@ -158,7 +153,7 @@ export const Education = () => {
                   )}
                 </div>
 
-                <div className="edu-footer-meta edu-footer-3d">
+                <div className="edu-footer-meta">
                   <div className="edu-score-pill">
                     <Award size={16} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle' }} />
                     {item.score}

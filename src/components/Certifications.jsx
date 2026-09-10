@@ -26,9 +26,9 @@ export const Certifications = () => {
         >
           <span className="section-label">
             <ShieldCheck size={14} style={{ display: 'inline', marginRight: '6px' }} />
-            [ VERIFIED_CREDENTIALS // 3D_HOLOGRAMS ]
+            [ VERIFIED_CREDENTIALS // CERTIFICATIONS ]
           </span>
-          <h2>Certificates & Honors</h2>
+          <h2>Certificates & Professional Honors</h2>
           <p>Verified professional certifications in Full-Stack React, Python, Programming, and Leadership.</p>
         </motion.div>
 
@@ -42,11 +42,11 @@ export const Certifications = () => {
               variants={cardVariants}
               transition={{ delay: idx * 0.04 }}
             >
-              <TiltCard className="glass-card cert-card cert-frame-3d" maxTilt={12} scale={1.03} elevation={20}>
+              <TiltCard className="glass-card cert-card">
                 <div
-                  className="cert-image-wrapper cert-media-3d"
+                  className="cert-image-wrapper"
                   onClick={() => setSelectedImage(cert.image)}
-                  title="Click to zoom certificate"
+                  title="Click to view certificate"
                 >
                   <img
                     src={cert.image}
@@ -54,19 +54,19 @@ export const Certifications = () => {
                     loading="lazy"
                   />
                   <div className="cert-image-overlay">
-                    <Eye size={22} /> Click to Examine
+                    <Eye size={20} /> View Certificate
                   </div>
                 </div>
 
-                <div className="cert-body cert-body-3d">
+                <div className="cert-body">
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                     <p className="cert-issuer">{cert.issuer}</p>
                     <span className="tag tag-pink" style={{ fontSize: '0.72rem', padding: '2px 8px' }}>
                       {cert.badge}
                     </span>
                   </div>
-                  <h3 className="cert-title-3d">{cert.title}</h3>
-                  <div className="cert-meta-row cert-meta-3d">
+                  <h3>{cert.title}</h3>
+                  <div className="cert-meta-row">
                     <p className="cert-date">{cert.date}</p>
                     <span style={{ fontSize: '0.85rem', color: 'var(--primary)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                       <CheckCircle2 size={14} /> Verified

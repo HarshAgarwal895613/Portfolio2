@@ -23,9 +23,12 @@ export const CVSection = () => {
           viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
-          <span className="section-label">[ CURRICULUM_VITAE // OFFICIAL_DOCUMENT ]</span>
-          <h2>Curriculum Vitae</h2>
-          <p>Download or examine my official verified CV with comprehensive academic records, project implementations, and technical credentials.</p>
+          <span className="section-label">
+            <FileText size={14} style={{ display: 'inline', marginRight: '6px' }} />
+            [ CURRICULUM_VITAE // OFFICIAL_RESUME ]
+          </span>
+          <h2>Curriculum Vitae & Resume</h2>
+          <p>Download or view my verified resume with academic records, technical proficiencies, and project accomplishments.</p>
         </motion.div>
 
         <motion.div
@@ -34,7 +37,7 @@ export const CVSection = () => {
           viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
-          <TiltCard className="glass-card cv-card cv-frame-3d" maxTilt={6} scale={1.015}>
+          <TiltCard className="glass-card cv-card">
             <div className="cv-icon">
               <FileText size={36} />
             </div>
@@ -66,13 +69,13 @@ export const CVSection = () => {
               <a
                 href={personal.resumePdf}
                 download="Harsh_Agarwal_Resume.pdf"
-                className="btn btn-primary btn-3d-tactile"
+                className="btn btn-primary"
               >
                 <Download size={18} /> Download CV (PDF)
               </a>
 
               <button
-                className="btn btn-accent btn-3d-tactile"
+                className="btn btn-accent"
                 onClick={() => setShowPreview(true)}
               >
                 <Eye size={18} /> Instant CV Viewer
@@ -80,7 +83,7 @@ export const CVSection = () => {
 
               <a
                 href="#skills"
-                className="btn btn-outline btn-3d-tactile"
+                className="btn btn-outline"
                 style={{
                   borderColor: 'rgba(0, 240, 255, 0.4)',
                   color: 'var(--primary)',
@@ -94,7 +97,7 @@ export const CVSection = () => {
                 href={personal.resumePdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-outline btn-3d-tactile"
+                className="btn btn-outline"
               >
                 <ExternalLink size={18} /> Open in New Tab
               </a>
