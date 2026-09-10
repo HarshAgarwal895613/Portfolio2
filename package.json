@@ -3,6 +3,11 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "homepage": "https://harshagarwal895613.github.io/Portfolio2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HarshAgarwal895613/Portfolio2.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
