@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award, MapPin, Sparkles, BookOpen, CheckCircle2 } from 'lucide-react';
+import { GraduationCap, Award, MapPin, Sparkles, BookOpen, CheckCircle2, ChevronRight, Milestone, ArrowRight } from 'lucide-react';
 import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
@@ -19,7 +19,7 @@ export const Education = () => {
   };
 
   return (
-    <section id="education">
+    <section id="education" className="education-journey-section">
       <div className="container">
         <motion.div
           className="section-header"
@@ -28,47 +28,93 @@ export const Education = () => {
           viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
-          <span className="section-label">[ ACADEMIC_PATH // RUNNING_BLOCKS ]</span>
-          <h2>Education & Academic Milestones</h2>
-          <p>Educational trajectory in chronological order with certified scores and achievements.</p>
+          <span className="section-label">
+            <Milestone size={14} style={{ display: 'inline', marginRight: '6px' }} />
+            [ ACADEMIC_JOURNEY // PROGRESSION_ROADMAP ]
+          </span>
+          <h2>Educational Journey & Milestones</h2>
+          <p>Chronological academic trajectory from secondary foundation and JEE Advanced qualification to AI/ML engineering.</p>
+        </motion.div>
+
+        {/* Interactive Visual Journey Roadmap Track */}
+        <motion.div
+          className="journey-stepper-track"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.05 }}
+          variants={cardVariants}
+        >
+          <div className="journey-step-node">
+            <div className="journey-node-dot">01</div>
+            <div className="journey-node-info">
+              <span className="journey-node-title">Class X (Secondary)</span>
+              <span className="journey-node-time">2020 – 2021</span>
+            </div>
+          </div>
+
+          <div className="journey-connector-line">
+            <div className="journey-energy-pulse" />
+            <ArrowRight size={16} className="journey-arrow-icon" />
+          </div>
+
+          <div className="journey-step-node">
+            <div className="journey-node-dot">02</div>
+            <div className="journey-node-info">
+              <span className="journey-node-title">Class XII & JEE Adv</span>
+              <span className="journey-node-time">2022 – 2023</span>
+            </div>
+          </div>
+
+          <div className="journey-connector-line">
+            <div className="journey-energy-pulse" />
+            <ArrowRight size={16} className="journey-arrow-icon" />
+          </div>
+
+          <div className="journey-step-node active-summit">
+            <div className="journey-node-dot pulse-glow">03</div>
+            <div className="journey-node-info">
+              <span className="journey-node-title">B.Tech CSE (AI/ML)</span>
+              <span className="journey-node-time highlight-time">2025 – Present</span>
+            </div>
+          </div>
         </motion.div>
 
         {/* Dynamic Running Block Marquee */}
-        <div className="running-ticker-container">
+        <div className="running-ticker-container" style={{ marginTop: '28px' }}>
           <div className="running-ticker-track">
             <div className="ticker-item">
-              <Sparkles size={16} color="var(--primary)" />
-              <span>B.Tech CSE (AI/ML) @ LPU: <strong>9.24* CGPA (Aug' 25 – Present)</strong></span>
+              <BookOpen size={16} color="var(--secondary)" />
+              <span>Stage 01: <strong>Class 10th CBSE (70.0%)</strong></span>
+            </div>
+            <div className="ticker-item">
+              <Award size={16} color="var(--primary)" />
+              <span>Stage 02: <strong>Class 12th CBSE (76.6%)</strong></span>
             </div>
             <div className="ticker-item">
               <CheckCircle2 size={16} color="var(--secondary)" />
               <span><strong>Qualified for JEE Advanced</strong></span>
             </div>
             <div className="ticker-item">
-              <Award size={16} color="var(--primary)" />
-              <span>Class 12th CBSE: <strong>76.6% (Mar' 22 – May' 23)</strong></span>
-            </div>
-            <div className="ticker-item">
-              <BookOpen size={16} color="var(--secondary)" />
-              <span>Class 10th CBSE: <strong>70.0% (Mar' 20 – May' 21)</strong></span>
+              <Sparkles size={16} color="var(--primary)" />
+              <span>Stage 03: <strong>B.Tech CSE (AI/ML) — 9.24* CGPA</strong></span>
             </div>
 
             {/* Duplicate for seamless infinite loop */}
             <div className="ticker-item">
-              <Sparkles size={16} color="var(--primary)" />
-              <span>B.Tech CSE (AI/ML) @ LPU: <strong>9.24* CGPA (Aug' 25 – Present)</strong></span>
+              <BookOpen size={16} color="var(--secondary)" />
+              <span>Stage 01: <strong>Class 10th CBSE (70.0%)</strong></span>
+            </div>
+            <div className="ticker-item">
+              <Award size={16} color="var(--primary)" />
+              <span>Stage 02: <strong>Class 12th CBSE (76.6%)</strong></span>
             </div>
             <div className="ticker-item">
               <CheckCircle2 size={16} color="var(--secondary)" />
               <span><strong>Qualified for JEE Advanced</strong></span>
             </div>
             <div className="ticker-item">
-              <Award size={16} color="var(--primary)" />
-              <span>Class 12th CBSE: <strong>76.6% (Mar' 22 – May' 23)</strong></span>
-            </div>
-            <div className="ticker-item">
-              <BookOpen size={16} color="var(--secondary)" />
-              <span>Class 10th CBSE: <strong>70.0% (Mar' 20 – May' 21)</strong></span>
+              <Sparkles size={16} color="var(--primary)" />
+              <span>Stage 03: <strong>B.Tech CSE (AI/ML) — 9.24* CGPA</strong></span>
             </div>
           </div>
         </div>
@@ -85,21 +131,22 @@ export const Education = () => {
               variants={cardVariants}
               transition={{ delay: idx * 0.04 }}
             >
-              <TiltCard className={`glass-card edu-running-card edu-stage-3d ${idx === 0 ? 'featured-card' : ''}`} maxTilt={8} scale={1.02}>
+              <TiltCard className={`glass-card edu-running-card edu-stage-3d ${item.order === 3 ? 'featured-card active-summit-card' : ''}`} maxTilt={8} scale={1.02}>
                 <div className="edu-card-glow-bar" />
 
                 <div className="edu-card-top-bar">
                   <span className="edu-step-badge">
-                    STAGE 0{item.order} // {item.duration}
+                    MILESTONE 0{item.order} // {item.duration}
                   </span>
                   {item.highlight && (
-                    <span className="tag tag-pink" style={{ fontSize: '0.72rem', padding: '2px 8px' }}>
+                    <span className={`tag ${item.order === 3 ? 'tag-pink' : ''}`} style={{ fontSize: '0.72rem', padding: '2px 8px' }}>
                       <Sparkles size={11} style={{ marginRight: '4px' }} /> {item.highlight}
                     </span>
                   )}
                 </div>
 
                 <div className="edu-card-main-content">
+                  <span className="edu-phase-label">{item.phase}</span>
                   <h3>{item.degree}</h3>
                   <p className="edu-org">{item.institution}</p>
 

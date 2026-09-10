@@ -223,9 +223,34 @@ export const portfolioData = {
 
   education: [
     {
-      id: "btech-lpu",
+      id: "secondary-10th",
       order: 1,
-      degree: "Bachelor of Technology — Computer Science and Engineering (AI/ML)",
+      phase: "Phase 01 — Foundation",
+      degree: "Secondary Education (Class X)",
+      institution: "Lord's International School",
+      duration: "Mar' 20 – May' 21",
+      score: "Percentage: 70.0%",
+      highlight: "CBSE Matriculation",
+      location: "Rajasthan, Churu",
+      icon: "BookOpen"
+    },
+    {
+      id: "senior-secondary-12th",
+      order: 2,
+      phase: "Phase 02 — Higher Secondary & JEE",
+      degree: "Senior Secondary Education (Class XII)",
+      institution: "Lord's International School",
+      duration: "Mar' 22 – May' 23",
+      score: "Percentage: 76.6%",
+      highlight: "Qualified for JEE Advanced",
+      location: "Rajasthan, Churu",
+      icon: "Award"
+    },
+    {
+      id: "btech-lpu",
+      order: 3,
+      phase: "Phase 03 — Current Undergraduate",
+      degree: "Bachelor of Technology — Computer Science & Engineering (AI/ML)",
       institution: "Lovely Professional University",
       duration: "Aug' 25 – Present",
       semester: "Currently in 3rd Semester",
@@ -234,28 +259,6 @@ export const portfolioData = {
       jeeQualified: true,
       location: "Phagwara, Punjab",
       icon: "GraduationCap"
-    },
-    {
-      id: "senior-secondary-12th",
-      order: 2,
-      degree: "Senior Secondary Education (Class XII)",
-      institution: "Lord's International School",
-      duration: "Mar' 22 – May' 23",
-      score: "Percentage: 76.6%",
-      highlight: "CBSE Senior Secondary",
-      location: "Rajasthan, Churu",
-      icon: "Award"
-    },
-    {
-      id: "secondary-10th",
-      order: 3,
-      degree: "Secondary Education (Class X)",
-      institution: "Lord's International School",
-      duration: "Mar' 20 – May' 21",
-      score: "Percentage: 70.0%",
-      highlight: "CBSE Matriculation",
-      location: "Rajasthan, Churu",
-      icon: "BookOpen"
     }
   ],
 
