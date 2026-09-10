@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Sparkles, CheckCircle2, Calendar } from 'lucide-react';
+import { Github, ExternalLink, Sparkles, CheckCircle2, Calendar, Box } from 'lucide-react';
 import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
@@ -22,7 +22,10 @@ export const Projects = () => {
           viewport={{ once: true, amount: 0.05 }}
           variants={cardVariants}
         >
-          <span className="section-label">[ FEATURED_SYSTEM // AI_IOT_PROJECT ]</span>
+          <span className="section-label">
+            <Box size={14} style={{ display: 'inline', marginRight: '6px' }} />
+            [ FEATURED_SYSTEM // AI_IOT_PROJECT ]
+          </span>
           <h2>Featured Projects & Innovations</h2>
           <p>Highlighting AI/ML intelligent climate telemetry, automated regulation, and hardware sensing.</p>
         </motion.div>
@@ -37,9 +40,9 @@ export const Projects = () => {
               variants={cardVariants}
               transition={{ delay: idx * 0.04 }}
             >
-              <TiltCard className="glass-card project-card project-frame-3d" maxTilt={8} scale={1.015}>
+              <TiltCard className="glass-card project-card project-frame-3d" maxTilt={10} scale={1.02} elevation={22}>
                 {proj.image ? (
-                  <div className="project-image-container">
+                  <div className="project-image-container project-media-3d">
                     <img src={proj.image} alt={proj.title} loading="lazy" />
                   </div>
                 ) : (
@@ -48,8 +51,8 @@ export const Projects = () => {
                   </div>
                 )}
 
-              <div className="project-body">
-                <div className="project-tag-row">
+              <div className="project-body project-body-3d">
+                <div className="project-tag-row project-tags-3d">
                   <span className="tag">
                     <Sparkles size={12} style={{ marginRight: '4px' }} /> {proj.category}
                   </span>
@@ -65,7 +68,7 @@ export const Projects = () => {
                   )}
                 </div>
 
-                <h3>{proj.title}</h3>
+                <h3 className="project-title-3d">{proj.title}</h3>
                 
                 {proj.bullets && proj.bullets.length > 0 ? (
                   <ul style={{ listStyle: 'none', padding: 0, margin: '12px 0 16px 0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -80,7 +83,7 @@ export const Projects = () => {
                   <p>{proj.description}</p>
                 )}
 
-                <div className="project-tech">
+                <div className="project-tech project-tech-3d">
                   {proj.techStack.map((tech, tIdx) => (
                     <span key={tIdx} className="tag tag-pink">
                       {tech}
@@ -88,7 +91,7 @@ export const Projects = () => {
                   ))}
                 </div>
 
-                <div className="project-links">
+                <div className="project-links project-links-3d">
                   {proj.github && (
                     <a
                       href={proj.github}

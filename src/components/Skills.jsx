@@ -25,7 +25,7 @@ import {
 } from 'react-icons/fa6';
 import { VscVscode } from 'react-icons/vsc';
 import { TbApi, TbActivity } from 'react-icons/tb';
-import { Terminal } from 'lucide-react';
+import { Terminal, Layers, Sparkles, Box } from 'lucide-react';
 import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
@@ -93,39 +93,6 @@ const iconMap = {
   Communication: <FaComments size={26} color="#10B981" />
 };
 
-// Brand accent colors for dynamic hover glow
-const skillBrandColors = {
-  "C++": "#00599C",
-  Python: "#387EB8",
-  C: "#659AD2",
-  "C Language": "#659AD2",
-  "JavaScript (ES6+)": "#F7DF1E",
-  JavaScript: "#F7DF1E",
-  SQL: "#00758F",
-  Git: "#F05032",
-  GitHub: "#8957E5",
-  "Git & GitHub": "#F05032",
-  "VS Code": "#007ACC",
-  "IoT Sensors": "#10B981",
-  "Microcontroller Interfacing": "#00979D",
-  "Environmental Telemetry": "#F59E0B",
-  HTML5: "#E34F26",
-  CSS3: "#1572B6",
-  "HTML5 & CSS3": "#E34F26",
-  "React.js": "#61DAFB",
-  React: "#61DAFB",
-  "RESTful APIs": "#00D084",
-  "Modern UI/UX": "#F24E1E",
-  "Problem-Solving (50+ LeetCode solved)": "#FFA116",
-  "Problem-Solving and Critical Thinking": "#FFA116",
-  "Team Collaboration": "#06B6D4",
-  "Collaboration and Teamwork": "#06B6D4",
-  Leadership: "#F59E0B",
-  "Leadership and Influence": "#F59E0B",
-  "Critical Thinking": "#EC4899",
-  Communication: "#10B981"
-};
-
 export const Skills = () => {
   const { categories } = portfolioData.skills;
 
@@ -163,7 +130,8 @@ export const Skills = () => {
           transition={{ duration: 0.35 }}
         >
           <span className="section-label">
-            <Terminal size={14} /> [ TECHNICAL_ARSENAL // SKILLS_MATRIX ]
+            <Layers size={14} style={{ display: 'inline', marginRight: '6px' }} />
+            [ TECHNICAL_ARSENAL // 3D_SKILLS_MATRIX ]
           </span>
           <h2>Skills & Technologies</h2>
           <p>Proficiencies across programming languages, tools & platforms, web engineering, and problem-solving.</p>
@@ -186,7 +154,7 @@ export const Skills = () => {
                   {category.name}
                 </h3>
                 <span style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginLeft: 'auto' }}>
-                  // {category.skills.length} Items
+                  // {category.skills.length} Nodes
                 </span>
               </div>
             </motion.div>
@@ -199,7 +167,6 @@ export const Skills = () => {
               variants={containerVariants}
             >
               {category.skills.map((skill, sIdx) => {
-                const brandColor = skillBrandColors[skill.name] || '#00f0ff';
                 return (
                   <motion.div
                     key={sIdx}
@@ -207,15 +174,16 @@ export const Skills = () => {
                     variants={cardVariants}
                   >
                     <TiltCard
-                      className="arsenal-card"
-                      maxTilt={12}
-                      scale={1.05}
+                      className="arsenal-card arsenal-card-3d"
+                      maxTilt={14}
+                      scale={1.06}
+                      elevation={18}
                       style={{ height: '100%', width: '100%' }}
                     >
-                      <div className="arsenal-card-icon">
+                      <div className="arsenal-card-icon arsenal-icon-3d">
                         {iconMap[skill.name] || <SiCplusplus size={28} color="#00599C" />}
                       </div>
-                      <span className="arsenal-card-name">{skill.name}</span>
+                      <span className="arsenal-card-name arsenal-name-3d">{skill.name}</span>
                     </TiltCard>
                   </motion.div>
                 );

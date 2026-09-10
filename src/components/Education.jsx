@@ -1,14 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award, MapPin, Sparkles, BookOpen, CheckCircle2, ChevronRight, Milestone, ArrowRight } from 'lucide-react';
+import { GraduationCap, Award, MapPin, Sparkles, BookOpen, CheckCircle2, Milestone, ArrowRight } from 'lucide-react';
 import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
-
-const iconMap = {
-  GraduationCap: <GraduationCap size={22} />,
-  Award: <Award size={22} />,
-  BookOpen: <BookOpen size={22} />
-};
 
 export const Education = () => {
   const { education } = portfolioData;
@@ -30,13 +24,13 @@ export const Education = () => {
         >
           <span className="section-label">
             <Milestone size={14} style={{ display: 'inline', marginRight: '6px' }} />
-            [ ACADEMIC_JOURNEY // PROGRESSION_ROADMAP ]
+            [ ACADEMIC_JOURNEY // 3D_ROADMAP ]
           </span>
           <h2>Educational Journey & Milestones</h2>
           <p>Chronological academic trajectory from secondary foundation and JEE Advanced qualification to AI/ML engineering.</p>
         </motion.div>
 
-        {/* Interactive Visual Journey Roadmap Track */}
+        {/* Interactive Visual 3D Journey Roadmap Track */}
         <motion.div
           className="journey-stepper-track"
           initial="hidden"
@@ -119,7 +113,7 @@ export const Education = () => {
           </div>
         </div>
 
-        {/* Education Ordered Running Card Blocks — All Equal Length & Breadth */}
+        {/* Education Ordered Running Card Blocks — All Equal Length & Breadth with 3D Depth */}
         <div className="edu-running-grid">
           {education.map((item, idx) => (
             <motion.div
@@ -131,10 +125,15 @@ export const Education = () => {
               variants={cardVariants}
               transition={{ delay: idx * 0.04 }}
             >
-              <TiltCard className={`glass-card edu-running-card edu-stage-3d ${item.order === 3 ? 'featured-card active-summit-card' : ''}`} maxTilt={8} scale={1.02}>
+              <TiltCard
+                className={`glass-card edu-running-card edu-stage-3d ${item.order === 3 ? 'featured-card active-summit-card' : ''}`}
+                maxTilt={12}
+                scale={1.03}
+                elevation={20}
+              >
                 <div className="edu-card-glow-bar" />
 
-                <div className="edu-card-top-bar">
+                <div className="edu-card-top-bar edu-top-3d">
                   <span className="edu-step-badge">
                     MILESTONE 0{item.order} // {item.duration}
                   </span>
@@ -145,13 +144,13 @@ export const Education = () => {
                   )}
                 </div>
 
-                <div className="edu-card-main-content">
+                <div className="edu-card-main-content edu-content-3d">
                   <span className="edu-phase-label">{item.phase}</span>
-                  <h3>{item.degree}</h3>
+                  <h3 className="edu-degree-3d">{item.degree}</h3>
                   <p className="edu-org">{item.institution}</p>
 
                   {item.semester ? (
-                    <div className="edu-sub-highlight">
+                    <div className="edu-sub-highlight edu-highlight-3d">
                       <Sparkles size={14} /> {item.semester}
                     </div>
                   ) : (
@@ -159,7 +158,7 @@ export const Education = () => {
                   )}
                 </div>
 
-                <div className="edu-footer-meta">
+                <div className="edu-footer-meta edu-footer-3d">
                   <div className="edu-score-pill">
                     <Award size={16} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle' }} />
                     {item.score}

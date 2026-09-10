@@ -912,6 +912,24 @@ body.custom-cursor-active * {
   transform: translateZ(5px);
 }
 
+.avatar-ring-gyro {
+  position: absolute;
+  width: calc(var(--avatar-size) + 40px);
+  height: calc(var(--avatar-size) + 40px);
+  border-radius: 50%;
+  border: 1.5px dashed rgba(0, 255, 136, 0.55);
+  animation: rotate-gyro 16s ease-in-out infinite alternate;
+  pointer-events: none;
+  transform: translateZ(15px);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+}
+
+@keyframes rotate-gyro {
+  0% { transform: translateZ(15px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  50% { transform: translateZ(28px) rotateX(45deg) rotateY(180deg) rotateZ(90deg); }
+  100% { transform: translateZ(15px) rotateX(0deg) rotateY(360deg) rotateZ(180deg); }
+}
+
 .avatar-glow {
   position: absolute;
   width: calc(var(--avatar-size) + 30px);
@@ -929,6 +947,11 @@ body.custom-cursor-active * {
 
 [data-theme="light"] .avatar-ring-outer {
   border-color: rgba(230, 0, 110, 0.3);
+}
+
+[data-theme="light"] .avatar-ring-gyro {
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
 }
 
 [data-theme="light"] .avatar-glow {
@@ -3475,4 +3498,387 @@ body.custom-cursor-active * {
 [data-theme="light"] .telemetry-val {
   color: #334155;
 }
+
+/* ==========================================================================
+   22. 3D WebGL AI Neural Core & Hero Interactive Hub
+   ========================================================================== */
+.global-ai-ambient-orb.orb-accent {
+  top: 50%;
+  left: 35%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(157, 0, 255, 0.35) 0%, rgba(0, 240, 255, 0.15) 50%, transparent 75%);
+}
+
+[data-theme="light"] .global-ai-ambient-orb.orb-accent {
+  background: radial-gradient(circle, rgba(121, 40, 202, 0.15) 0%, rgba(0, 98, 255, 0.08) 50%, transparent 75%);
+  opacity: 0.35;
+}
+
+/* Hero 3D Mode Selector Toggle */
+.hero-3d-mode-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  background: rgba(6, 10, 24, 0.8);
+  padding: 5px;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 5;
+}
+
+[data-theme="light"] .hero-3d-mode-switcher {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid rgba(0, 98, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(12, 21, 46, 0.06);
+}
+
+.hero-3d-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'Fira Code', monospace;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.hero-3d-tab:hover {
+  color: var(--text-primary);
+}
+
+.hero-3d-tab.active {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.25), rgba(157, 0, 255, 0.25));
+  color: var(--primary);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.25);
+}
+
+[data-theme="light"] .hero-3d-tab.active {
+  background: linear-gradient(135deg, rgba(0, 98, 255, 0.12), rgba(121, 40, 202, 0.12));
+  color: #0062ff;
+  border: 1.5px solid rgba(0, 98, 255, 0.35);
+  box-shadow: 0 2px 10px rgba(0, 98, 255, 0.15);
+}
+
+.hero-3d-webgl-wrapper {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* AI 3D Core Card */
+.ai-3d-core-card {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 360px;
+  background: rgba(8, 12, 26, 0.85);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 24px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 240, 255, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+
+[data-theme="light"] .ai-3d-core-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(0, 98, 255, 0.25);
+  box-shadow: 0 16px 40px rgba(12, 21, 46, 0.1), 0 0 25px rgba(0, 98, 255, 0.12);
+}
+
+.ai-3d-core-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  z-index: 5;
+}
+
+.ai-3d-core-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ai-3d-status-text {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.5px;
+}
+
+[data-theme="light"] .ai-3d-status-text {
+  color: #0062ff;
+}
+
+.ai-3d-drag-hint {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.ai-3d-canvas-mount {
+  width: 100%;
+  flex: 1;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ai-3d-core-telemetry {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  z-index: 5;
+}
+
+.telemetry-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 12px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.66rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+[data-theme="light"] .telemetry-pill {
+  background: rgba(0, 98, 255, 0.06);
+  border-color: rgba(0, 98, 255, 0.18);
+  color: #334155;
+}
+
+/* ==========================================================================
+   23. Comprehensive 3D Perspective Depth Pop-Out Physics
+   ========================================================================== */
+.tilt-3d-card {
+  transform-style: preserve-3d;
+  perspective: 1100px;
+  will-change: transform, box-shadow;
+}
+
+.tilt-3d-content {
+  transform-style: preserve-3d;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Multi-layer Z-axis pop-outs on hover */
+.tilt-3d-card.tilt-3d-active .arsenal-icon-3d,
+.tilt-3d-card:hover .arsenal-icon-3d {
+  transform: translateZ(36px);
+  filter: drop-shadow(0 10px 14px rgba(0, 240, 255, 0.3));
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+}
+
+.tilt-3d-card.tilt-3d-active .arsenal-name-3d,
+.tilt-3d-card:hover .arsenal-name-3d {
+  transform: translateZ(24px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .project-media-3d,
+.tilt-3d-card:hover .project-media-3d {
+  transform: translateZ(32px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
+}
+
+.tilt-3d-card.tilt-3d-active .project-title-3d,
+.tilt-3d-card:hover .project-title-3d {
+  transform: translateZ(26px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .project-tags-3d,
+.tilt-3d-card:hover .project-tags-3d {
+  transform: translateZ(30px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .project-tech-3d,
+.tilt-3d-card:hover .project-tech-3d {
+  transform: translateZ(25px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .project-links-3d,
+.tilt-3d-card:hover .project-links-3d {
+  transform: translateZ(35px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .profile-icon-3d,
+.tilt-3d-card:hover .profile-icon-3d {
+  transform: translateZ(36px);
+  filter: drop-shadow(0 8px 16px rgba(0, 240, 255, 0.3));
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .profile-status-pill,
+.tilt-3d-card:hover .profile-status-pill {
+  transform: translateZ(32px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .profile-info-3d,
+.tilt-3d-card:hover .profile-info-3d {
+  transform: translateZ(26px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .edu-top-3d,
+.tilt-3d-card:hover .edu-top-3d {
+  transform: translateZ(25px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .edu-degree-3d,
+.tilt-3d-card:hover .edu-degree-3d {
+  transform: translateZ(28px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .edu-highlight-3d,
+.tilt-3d-card:hover .edu-highlight-3d {
+  transform: translateZ(32px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .edu-footer-3d,
+.tilt-3d-card:hover .edu-footer-3d {
+  transform: translateZ(22px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .cert-media-3d,
+.tilt-3d-card:hover .cert-media-3d {
+  transform: translateZ(34px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .cert-title-3d,
+.tilt-3d-card:hover .cert-title-3d {
+  transform: translateZ(26px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .stat-number-3d,
+.tilt-3d-card:hover .stat-number-3d {
+  transform: translateZ(36px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .stat-label-3d,
+.tilt-3d-card:hover .stat-label-3d {
+  transform: translateZ(22px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .terminal-header-3d,
+.tilt-3d-card:hover .terminal-header-3d {
+  transform: translateZ(24px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tilt-3d-card.tilt-3d-active .telemetry-box-3d,
+.tilt-3d-card:hover .telemetry-box-3d {
+  transform: translateZ(28px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 3D Tactile Buttons */
+.btn-3d-tactile {
+  transform-style: preserve-3d;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background 0.2s ease;
+  position: relative;
+}
+
+.btn-3d-tactile:hover {
+  transform: translateY(-3px) translateZ(10px);
+  box-shadow: 0 10px 24px rgba(0, 240, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.btn-3d-tactile:active {
+  transform: translateY(1px) translateZ(-4px);
+  box-shadow: 0 3px 8px rgba(0, 240, 255, 0.2);
+}
+
+[data-theme="light"] .btn-3d-tactile:hover {
+  box-shadow: 0 10px 24px rgba(0, 98, 255, 0.25), 0 2px 4px rgba(12, 21, 46, 0.08);
+}
+
+/* 3D Social Buttons */
+.social-3d-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  text-decoration: none;
+  transform-style: preserve-3d;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-3d-btn:hover {
+  transform: translateY(-4px) translateZ(12px);
+  background: rgba(0, 240, 255, 0.15);
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 8px 20px rgba(0, 240, 255, 0.3);
+}
+
+[data-theme="light"] .social-3d-btn {
+  background: #ffffff;
+  border: 1.5px solid rgba(0, 98, 255, 0.18);
+  box-shadow: 0 2px 8px rgba(12, 21, 46, 0.06);
+}
+
+[data-theme="light"] .social-3d-btn:hover {
+  background: rgba(0, 98, 255, 0.08);
+  border-color: #0062ff;
+  color: #0062ff;
+  box-shadow: 0 8px 20px rgba(0, 98, 255, 0.2);
+}
+
 

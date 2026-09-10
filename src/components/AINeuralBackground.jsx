@@ -1,361 +1,382 @@
 import React, { useEffect, useRef } from 'react';
+import * as THREE from 'three';
 
 /**
- * AINeuralBackground — Global 3D AI Neural Matrix & Synaptic Synapse Engine
- * Renders depth-projected 3D neural graph, traveling synaptic action potentials,
- * floating 3D tensor polyhedra, and AI mathematical telemetry with mouse parallax.
+ * AINeuralBackground — State-of-the-Art WebGL 3D AI Neural Matrix
+ * Built with Three.js for hardware-accelerated 60fps 3D rendering.
+ * Features:
+ * - 3D Neural Particle Cloud & Synaptic Lattice with Depth-Z dynamics
+ * - Floating 3D Polyhedra: Icosahedron, Torus Knot, Octahedron, Dodecahedron, Tetrahedron & Cyber Cubes
+ * - 3D Scroll-Driven Camera Depth Travel & Perspective Parallax
+ * - Interactive 3D Cursor Parallax & Synaptic Burst Waves
+ * - Dual-Theme Adaptive Lighting (Neon Cyberpunk Dark & Royal Sapphire Light)
  */
 export const AINeuralBackground = () => {
-  const canvasRef = useRef(null);
-  const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0, active: false });
+  const mountRef = useRef(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let animId;
+    const container = mountRef.current;
+    if (!container) return;
 
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resize();
-    window.addEventListener('resize', resize);
+    let width = window.innerWidth;
+    let height = window.innerHeight;
 
-    const focalLength = 520;
-    const depthRange = 800;
-    const nodeCount = Math.min(Math.floor(window.innerWidth / 16), 85);
+    // 1. Scene, Camera, Renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(65, width / height, 0.1, 1200);
+    camera.position.z = 90;
 
-    // AI Mathematical & Neural Symbols that drift through 3D space
-    const aiSymbols = [
-      '∇L', 'σ(z)', 'w_ij', 'ReLU', 'f(x)', 'λ', 'ReLU', 'W·x+b',
-      'Loss: 0.002', 'softmax', 'Epoch 100', '9.24* CGPA', 'AI/ML'
-    ];
-
-    // 3D Neural Node Class
-    class NeuralNode3D {
-      constructor(width, height) {
-        this.reset(width, height, true);
-      }
-
-      reset(width, height, randomZ = false) {
-        this.x = (Math.random() - 0.5) * width * 1.6;
-        this.y = (Math.random() - 0.5) * height * 1.6;
-        this.z = randomZ ? Math.random() * depthRange - depthRange / 2 : depthRange / 2;
-        this.vx = (Math.random() - 0.5) * 0.35;
-        this.vy = (Math.random() - 0.5) * 0.35;
-        this.vz = -(Math.random() * 0.45 + 0.2);
-        this.baseRadius = Math.random() * 2.2 + 1.4;
-        this.pulsePhase = Math.random() * Math.PI * 2;
-        this.isSpecial = Math.random() > 0.85;
-        this.symbol = this.isSpecial ? aiSymbols[Math.floor(Math.random() * aiSymbols.length)] : null;
-      }
-
-      update(width, height) {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.z += this.vz;
-        this.pulsePhase += 0.04;
-
-        if (this.z < -depthRange / 2) {
-          this.reset(width, height, false);
-        }
-      }
-    }
-
-    // Floating 3D AI Tensor Wireframe Polyhedron
-    class TensorPolyhedron3D {
-      constructor(x, y, z, size, rotSpeedX, rotSpeedY, type = 'octahedron') {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.baseSize = size;
-        this.rx = Math.random() * Math.PI;
-        this.ry = Math.random() * Math.PI;
-        this.rz = Math.random() * Math.PI;
-        this.rotSpeedX = rotSpeedX;
-        this.rotSpeedY = rotSpeedY;
-        this.type = type;
-
-        if (type === 'cube') {
-          this.vertices = [
-            [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
-            [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]
-          ];
-          this.edges = [
-            [0, 1], [1, 2], [2, 3], [3, 0],
-            [4, 5], [5, 6], [6, 7], [7, 4],
-            [0, 4], [1, 5], [2, 6], [3, 7]
-          ];
-        } else {
-          // Octahedron
-          this.vertices = [
-            [1, 0, 0], [-1, 0, 0],
-            [0, 1, 0], [0, -1, 0],
-            [0, 0, 1], [0, 0, -1]
-          ];
-          this.edges = [
-            [0, 2], [2, 1], [1, 3], [3, 0],
-            [0, 4], [2, 4], [1, 4], [3, 4],
-            [0, 5], [2, 5], [1, 5], [3, 5]
-          ];
-        }
-      }
-
-      update() {
-        this.rx += this.rotSpeedX;
-        this.ry += this.rotSpeedY;
-        this.rz += this.rotSpeedX * 0.4;
-      }
-
-      draw(ctx, cx, cy, mouseX, mouseY, light) {
-        const cosX = Math.cos(this.rx), sinX = Math.sin(this.rx);
-        const cosY = Math.cos(this.ry), sinY = Math.sin(this.ry);
-        const cosZ = Math.cos(this.rz), sinZ = Math.sin(this.rz);
-
-        const worldX = this.x + mouseX * (this.z / depthRange);
-        const worldY = this.y + mouseY * (this.z / depthRange);
-        const scale = focalLength / (focalLength + this.z + depthRange / 2);
-
-        if (scale <= 0) return;
-
-        const projPts = this.vertices.map(([vx, vy, vz]) => {
-          const s = this.baseSize;
-          let x0 = vx * s, y0 = vy * s, z0 = vz * s;
-
-          let y1 = y0 * cosX - z0 * sinX;
-          let z1 = y0 * sinX + z0 * cosX;
-          let x1 = x0;
-
-          let x2 = x1 * cosY + z1 * sinY;
-          let z2 = -x1 * sinY + z1 * cosY;
-          let y2 = y1;
-
-          let x3 = x2 * cosZ - y2 * sinZ;
-          let y3 = x2 * sinZ + y2 * cosZ;
-          let z3 = z2;
-
-          const px = (worldX + x3) * scale + cx;
-          const py = (worldY + y3) * scale + cy;
-
-          return { px, py, pz: this.z + z3 };
-        });
-
-        ctx.save();
-        const strokeColor = light ? 'rgba(0, 98, 255, 0.28)' : 'rgba(0, 240, 255, 0.35)';
-        ctx.strokeStyle = strokeColor;
-        ctx.lineWidth = Math.max(1, 1.4 * scale);
-        ctx.shadowColor = light ? '#0062ff' : '#00f0ff';
-        ctx.shadowBlur = 8 * scale;
-
-        this.edges.forEach(([i, j]) => {
-          const p1 = projPts[i];
-          const p2 = projPts[j];
-          ctx.beginPath();
-          ctx.moveTo(p1.px, p1.py);
-          ctx.lineTo(p2.px, p2.py);
-          ctx.stroke();
-        });
-
-        // Vertex points
-        ctx.fillStyle = light ? '#0062ff' : '#ffffff';
-        projPts.forEach(pt => {
-          ctx.beginPath();
-          ctx.arc(pt.px, pt.py, Math.max(1.5, 2.2 * scale), 0, Math.PI * 2);
-          ctx.fill();
-        });
-
-        ctx.restore();
-      }
-    }
-
-    // Synaptic Action Potential Pulse (Energy travel along axons)
-    class SynapticPulse {
-      constructor(fromIdx, toIdx) {
-        this.fromIdx = fromIdx;
-        this.toIdx = toIdx;
-        this.progress = 0;
-        this.speed = Math.random() * 0.02 + 0.015;
-        this.alive = true;
-      }
-
-      update() {
-        this.progress += this.speed;
-        if (this.progress >= 1) this.alive = false;
-      }
-    }
-
-    const nodes = Array.from(
-      { length: nodeCount },
-      () => new NeuralNode3D(canvas.width, canvas.height)
-    );
-
-    const polyhedra = [
-      new TensorPolyhedron3D(-canvas.width * 0.36, -canvas.height * 0.28, 120, 60, 0.007, 0.01, 'octahedron'),
-      new TensorPolyhedron3D(canvas.width * 0.38, canvas.height * 0.24, 60, 70, 0.008, -0.008, 'cube'),
-      new TensorPolyhedron3D(canvas.width * 0.22, -canvas.height * 0.36, -60, 48, -0.009, 0.012, 'octahedron')
-    ];
-
-    let pulses = [];
-
-    const handleMouseMove = (e) => {
-      const nx = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
-      const ny = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-      mouseRef.current.targetX = nx * 80;
-      mouseRef.current.targetY = ny * 80;
-      mouseRef.current.active = true;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.domElement.style.position = 'absolute';
+    renderer.domElement.style.top = '0';
+    renderer.domElement.style.left = '0';
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+    renderer.domElement.style.pointerEvents = 'none';
+    container.appendChild(renderer.domElement);
 
     const isLightMode = () => document.documentElement.getAttribute('data-theme') === 'light';
 
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // 2. 3D Neural Synaptic Particle Lattice
+    const particleCount = Math.min(Math.floor(width / 2.6), 480);
+    const particleGeo = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const originalPositions = new Float32Array(particleCount * 3);
+    const velocities = [];
 
-      const cx = canvas.width / 2;
-      const cy = canvas.height / 2;
+    for (let i = 0; i < particleCount; i++) {
+      const px = (Math.random() - 0.5) * 190;
+      const py = (Math.random() - 0.5) * 150;
+      const pz = (Math.random() - 0.5) * 120;
+
+      positions[i * 3] = px;
+      positions[i * 3 + 1] = py;
+      positions[i * 3 + 2] = pz;
+
+      originalPositions[i * 3] = px;
+      originalPositions[i * 3 + 1] = py;
+      originalPositions[i * 3 + 2] = pz;
+
+      velocities.push({
+        x: (Math.random() - 0.5) * 0.05,
+        y: (Math.random() - 0.5) * 0.05,
+        z: (Math.random() - 0.5) * 0.04
+      });
+    }
+
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    // Custom Glowing Radial Particle Texture
+    const createParticleTexture = () => {
+      const pCanvas = document.createElement('canvas');
+      pCanvas.width = 64;
+      pCanvas.height = 64;
+      const pCtx = pCanvas.getContext('2d');
+      const grad = pCtx.createRadialGradient(32, 32, 0, 32, 32, 32);
+      grad.addColorStop(0, 'rgba(255, 255, 255, 1)');
+      grad.addColorStop(0.3, 'rgba(0, 240, 255, 0.85)');
+      grad.addColorStop(0.7, 'rgba(0, 240, 255, 0.25)');
+      grad.addColorStop(1, 'rgba(0, 240, 255, 0)');
+      pCtx.fillStyle = grad;
+      pCtx.fillRect(0, 0, 64, 64);
+      return new THREE.CanvasTexture(pCanvas);
+    };
+
+    const particleTexture = createParticleTexture();
+
+    const particleMat = new THREE.PointsMaterial({
+      size: 2.4,
+      map: particleTexture,
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      color: 0x00f0ff
+    });
+
+    const particleSystem = new THREE.Points(particleGeo, particleMat);
+    scene.add(particleSystem);
+
+    // 3. Dynamic Synaptic 3D Connections
+    const maxLineConnections = 420;
+    const linePositions = new Float32Array(maxLineConnections * 6);
+    const lineColors = new Float32Array(maxLineConnections * 6);
+    const lineGeo = new THREE.BufferGeometry();
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3).setUsage(THREE.DynamicDrawUsage));
+    lineGeo.setAttribute('color', new THREE.BufferAttribute(lineColors, 3).setUsage(THREE.DynamicDrawUsage));
+
+    const lineMat = new THREE.LineBasicMaterial({
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.4,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+
+    const lineSystem = new THREE.LineSegments(lineGeo, lineMat);
+    scene.add(lineSystem);
+
+    // 4. Floating 3D Polyhedra Fleet (Distributed in 3D Space)
+    const polyhedraGroup = new THREE.Group();
+
+    // Mesh 1: Icosahedron (Top Left)
+    const icoGeo = new THREE.IcosahedronGeometry(15, 1);
+    const icoMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff, wireframe: true, transparent: true, opacity: 0.28 });
+    const icosahedron = new THREE.Mesh(icoGeo, icoMat);
+    icosahedron.position.set(-52, 28, -25);
+    polyhedraGroup.add(icosahedron);
+
+    // Mesh 2: Torus Knot (Top Right)
+    const torusGeo = new THREE.TorusKnotGeometry(11, 2.8, 80, 16);
+    const torusMat = new THREE.MeshBasicMaterial({ color: 0xff007f, wireframe: true, transparent: true, opacity: 0.24 });
+    const torusKnot = new THREE.Mesh(torusGeo, torusMat);
+    torusKnot.position.set(54, 32, -30);
+    polyhedraGroup.add(torusKnot);
+
+    // Mesh 3: Octahedron (Bottom Right)
+    const octaGeo = new THREE.OctahedronGeometry(13, 1);
+    const octaMat = new THREE.MeshBasicMaterial({ color: 0x9d00ff, wireframe: true, transparent: true, opacity: 0.26 });
+    const octahedron = new THREE.Mesh(octaGeo, octaMat);
+    octahedron.position.set(45, -38, -20);
+    polyhedraGroup.add(octahedron);
+
+    // Mesh 4: Dodecahedron (Bottom Left)
+    const dodecaGeo = new THREE.DodecahedronGeometry(14, 0);
+    const dodecaMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff, wireframe: true, transparent: true, opacity: 0.22 });
+    const dodecahedron = new THREE.Mesh(dodecaGeo, dodecaMat);
+    dodecahedron.position.set(-48, -42, -18);
+    polyhedraGroup.add(dodecahedron);
+
+    // Mesh 5: Cyber Data Cube (Center Deep Z)
+    const boxGeo = new THREE.BoxGeometry(16, 16, 16);
+    const boxMat = new THREE.MeshBasicMaterial({ color: 0x00ff88, wireframe: true, transparent: true, opacity: 0.2 });
+    const cyberCube = new THREE.Mesh(boxGeo, boxMat);
+    cyberCube.position.set(0, -65, -35);
+    polyhedraGroup.add(cyberCube);
+
+    // Mesh 6: Tetrahedron (Floating Mid Right)
+    const tetraGeo = new THREE.TetrahedronGeometry(12, 0);
+    const tetraMat = new THREE.MeshBasicMaterial({ color: 0xffb800, wireframe: true, transparent: true, opacity: 0.24 });
+    const tetrahedron = new THREE.Mesh(tetraGeo, tetraMat);
+    tetrahedron.position.set(58, -8, -15);
+    polyhedraGroup.add(tetrahedron);
+
+    scene.add(polyhedraGroup);
+
+    // 5. Mouse Parallax & Scroll Depth Controller
+    const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+    let scrollProgress = 0;
+
+    const handleMouseMove = (e) => {
+      mouse.targetX = (e.clientX / window.innerWidth) * 2 - 1;
+      mouse.targetY = -(e.clientY / window.innerHeight) * 2 + 1;
+    };
+
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        scrollProgress = window.scrollY / totalHeight;
+      }
+    };
+
+    const handleResize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleResize);
+
+    // 6. Animation Loop
+    let animId;
+    let clock = new THREE.Clock();
+
+    const animate = () => {
+      animId = requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
       const light = isLightMode();
 
-      // Mouse Lerp
-      mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.05;
-      mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * 0.05;
+      // Adaptive Theme Colors
+      if (light) {
+        particleMat.color.setHex(0x0062ff);
+        icoMat.color.setHex(0x0062ff);
+        torusMat.color.setHex(0xe6006e);
+        octaMat.color.setHex(0x7928ca);
+        dodecaMat.color.setHex(0x0062ff);
+        boxMat.color.setHex(0x10b981);
+        tetraMat.color.setHex(0xf59e0b);
+        icoMat.opacity = 0.24;
+        torusMat.opacity = 0.2;
+        octaMat.opacity = 0.22;
+        dodecaMat.opacity = 0.2;
+        boxMat.opacity = 0.18;
+        tetraMat.opacity = 0.2;
+      } else {
+        particleMat.color.setHex(0x00f0ff);
+        icoMat.color.setHex(0x00f0ff);
+        torusMat.color.setHex(0xff007f);
+        octaMat.color.setHex(0x9d00ff);
+        dodecaMat.color.setHex(0x00f0ff);
+        boxMat.color.setHex(0x00ff88);
+        tetraMat.color.setHex(0xffb800);
+        icoMat.opacity = 0.3;
+        torusMat.opacity = 0.25;
+        octaMat.opacity = 0.28;
+        dodecaMat.opacity = 0.25;
+        boxMat.opacity = 0.22;
+        tetraMat.opacity = 0.26;
+      }
 
-      // Draw Polyhedra
-      polyhedra.forEach(poly => {
-        poly.update();
-        poly.draw(ctx, cx, cy, mouseRef.current.x, mouseRef.current.y, light);
-      });
+      // Smooth mouse lerp
+      mouse.x += (mouse.targetX - mouse.x) * 0.04;
+      mouse.y += (mouse.targetY - mouse.y) * 0.04;
 
-      // Project Neural Nodes
-      const projected = [];
-      nodes.forEach((node, idx) => {
-        node.update(canvas.width, canvas.height);
+      // 3D Scroll Depth Camera Flight
+      const scrollYOffset = scrollProgress * 50;
+      const scrollZOffset = Math.sin(scrollProgress * Math.PI) * 15;
 
-        const px = node.x + mouseRef.current.x * (node.z / depthRange);
-        const py = node.y + mouseRef.current.y * (node.z / depthRange);
+      camera.position.x = mouse.x * 14;
+      camera.position.y = mouse.y * 12 - scrollYOffset;
+      camera.position.z = 90 - scrollZOffset;
+      camera.lookAt(0, -scrollYOffset * 0.8, 0);
 
-        const scale = focalLength / (focalLength + node.z + depthRange / 2);
-        const projX = cx + px * scale;
-        const projY = cy + py * scale;
-        const radius = Math.max(0.7, node.baseRadius * scale * (1 + 0.15 * Math.sin(node.pulsePhase)));
-        const alpha = Math.max(0.12, Math.min(0.9, (depthRange / 2 - node.z) / depthRange));
+      // Polyhedra 3D Rotations
+      icosahedron.rotation.x += 0.007;
+      icosahedron.rotation.y += 0.01;
 
-        projected.push({ node, idx, projX, projY, radius, scale, alpha, z: node.z });
-      });
+      torusKnot.rotation.x -= 0.009;
+      torusKnot.rotation.y += 0.008;
 
-      // Draw Synaptic Connective Axons & Spawn Action Potentials
-      const maxDistance = 135;
-      const connections = [];
+      octahedron.rotation.x += 0.008;
+      octahedron.rotation.z -= 0.01;
 
-      for (let i = 0; i < projected.length; i++) {
-        for (let j = i + 1; j < projected.length; j++) {
-          const p1 = projected[i];
-          const p2 = projected[j];
+      dodecahedron.rotation.y += 0.009;
+      dodecahedron.rotation.z += 0.007;
 
-          const dx = p1.projX - p2.projX;
-          const dy = p1.projY - p2.projY;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+      cyberCube.rotation.x += 0.006;
+      cyberCube.rotation.y += 0.006;
 
-          if (dist < maxDistance) {
-            connections.push({ i, j, p1, p2, dist });
-            const lineAlpha = (1 - dist / maxDistance) * Math.min(p1.alpha, p2.alpha) * (light ? 0.38 : 0.32);
+      tetrahedron.rotation.x -= 0.01;
+      tetrahedron.rotation.y -= 0.008;
 
-            ctx.strokeStyle = light
-              ? `rgba(0, 98, 255, ${lineAlpha})`
-              : `rgba(0, 240, 255, ${lineAlpha})`;
-            ctx.lineWidth = Math.max(0.6, 1.2 * Math.min(p1.scale, p2.scale));
+      // Polyhedra floating hover
+      icosahedron.position.y = 28 + Math.sin(elapsedTime * 1.2) * 4;
+      torusKnot.position.y = 32 + Math.cos(elapsedTime * 1.4) * 4.5;
+      octahedron.position.y = -38 + Math.sin(elapsedTime * 1.5 + 1) * 4;
+      dodecahedron.position.y = -42 + Math.cos(elapsedTime * 1.1 + 2) * 4;
 
-            ctx.beginPath();
-            ctx.moveTo(p1.projX, p1.projY);
-            ctx.lineTo(p2.projX, p2.projY);
-            ctx.stroke();
+      // Update Particle Positions
+      const posAttr = particleGeo.attributes.position;
+      const posArr = posAttr.array;
 
-            // Randomly spawn synaptic firing pulses
-            if (Math.random() < 0.0018 && pulses.length < 18) {
-              pulses.push(new SynapticPulse(i, j));
-            }
+      for (let i = 0; i < particleCount; i++) {
+        const i3 = i * 3;
+        posArr[i3] += velocities[i].x;
+        posArr[i3 + 1] += velocities[i].y;
+        posArr[i3 + 2] += velocities[i].z;
+
+        // Boundary rebound
+        if (Math.abs(posArr[i3]) > 95) velocities[i].x *= -1;
+        if (Math.abs(posArr[i3 + 1]) > 75) velocities[i].y *= -1;
+        if (Math.abs(posArr[i3 + 2]) > 60) velocities[i].z *= -1;
+      }
+      posAttr.needsUpdate = true;
+
+      // Update 3D Synaptic Connections
+      let lineIdx = 0;
+      const linePosArr = lineGeo.attributes.position.array;
+      const lineColArr = lineGeo.attributes.color.array;
+      const maxDistance = 24;
+
+      for (let i = 0; i < particleCount; i++) {
+        for (let j = i + 1; j < particleCount; j++) {
+          const i3 = i * 3;
+          const j3 = j * 3;
+
+          const dx = posArr[i3] - posArr[j3];
+          const dy = posArr[i3 + 1] - posArr[j3 + 1];
+          const dz = posArr[i3 + 2] - posArr[j3 + 2];
+          const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+          if (dist < maxDistance && lineIdx < maxLineConnections) {
+            const idx6 = lineIdx * 6;
+
+            linePosArr[idx6] = posArr[i3];
+            linePosArr[idx6 + 1] = posArr[i3 + 1];
+            linePosArr[idx6 + 2] = posArr[i3 + 2];
+
+            linePosArr[idx6 + 3] = posArr[j3];
+            linePosArr[idx6 + 4] = posArr[j3 + 1];
+            linePosArr[idx6 + 5] = posArr[j3 + 2];
+
+            const alpha = (1 - dist / maxDistance) * (light ? 0.45 : 0.65);
+
+            const r = light ? 0.0 : 0.0;
+            const g = light ? 0.38 : 0.94;
+            const b = light ? 1.0 : 1.0;
+
+            lineColArr[idx6] = r * alpha;
+            lineColArr[idx6 + 1] = g * alpha;
+            lineColArr[idx6 + 2] = b * alpha;
+
+            lineColArr[idx6 + 3] = r * alpha;
+            lineColArr[idx6 + 4] = g * alpha;
+            lineColArr[idx6 + 5] = b * alpha;
+
+            lineIdx++;
           }
         }
       }
 
-      // Update & Draw Synaptic Action Potential Pulses
-      pulses.forEach(pulse => {
-        pulse.update();
-        const p1 = projected[pulse.fromIdx];
-        const p2 = projected[pulse.toIdx];
+      lineGeo.setDrawRange(0, lineIdx * 2);
+      lineGeo.attributes.position.needsUpdate = true;
+      lineGeo.attributes.color.needsUpdate = true;
 
-        if (p1 && p2) {
-          const curX = p1.projX + (p2.projX - p1.projX) * pulse.progress;
-          const curY = p1.projY + (p2.projY - p1.projY) * pulse.progress;
-          const pulseScale = (p1.scale + p2.scale) * 0.5;
-
-          ctx.beginPath();
-          ctx.arc(curX, curY, Math.max(1.8, 3.2 * pulseScale), 0, Math.PI * 2);
-          ctx.fillStyle = light ? '#e6006e' : '#ffffff';
-          ctx.shadowColor = light ? '#e6006e' : '#00f0ff';
-          ctx.shadowBlur = 10 * pulseScale;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        }
-      });
-
-      pulses = pulses.filter(p => p.alive);
-
-      // Render 3D Neural Nodes & AI Floating Symbols
-      projected.forEach(pt => {
-        ctx.beginPath();
-        ctx.arc(pt.projX, pt.projY, pt.radius, 0, Math.PI * 2);
-
-        if (pt.z < 0) {
-          // Foreground neurons
-          ctx.fillStyle = light
-            ? `rgba(0, 98, 255, ${pt.alpha * 0.95})`
-            : `rgba(0, 240, 255, ${pt.alpha})`;
-          ctx.shadowColor = light ? '#0062ff' : '#00f0ff';
-          ctx.shadowBlur = (light ? 5 : 8) * pt.scale;
-        } else {
-          // Background neurons
-          ctx.fillStyle = light
-            ? `rgba(230, 0, 110, ${pt.alpha * 0.75})`
-            : `rgba(255, 0, 127, ${pt.alpha * 0.75})`;
-          ctx.shadowColor = light ? '#e6006e' : '#ff007f';
-          ctx.shadowBlur = (light ? 3 : 5) * pt.scale;
-        }
-
-        ctx.fill();
-        ctx.shadowBlur = 0;
-
-        // Render AI floating mathematical notation
-        if (pt.node.symbol && pt.scale > 0.65) {
-          ctx.save();
-          ctx.font = `${Math.max(9, Math.round(11 * pt.scale))}px 'Fira Code', monospace`;
-          ctx.fillStyle = light
-            ? `rgba(0, 98, 255, ${pt.alpha * 0.65})`
-            : `rgba(0, 240, 255, ${pt.alpha * 0.7})`;
-          ctx.fillText(pt.node.symbol, pt.projX + 8, pt.projY - 6);
-          ctx.restore();
-        }
-      });
-
-      animId = requestAnimationFrame(animate);
+      renderer.render(scene, camera);
     };
 
     animate();
 
     return () => {
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animId);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+      if (container && renderer.domElement) {
+        container.removeChild(renderer.domElement);
+      }
+      renderer.dispose();
+      particleGeo.dispose();
+      particleMat.dispose();
+      lineGeo.dispose();
+      lineMat.dispose();
+      icoGeo.dispose();
+      icoMat.dispose();
+      torusGeo.dispose();
+      torusMat.dispose();
+      octaGeo.dispose();
+      octaMat.dispose();
+      dodecaGeo.dispose();
+      dodecaMat.dispose();
+      boxGeo.dispose();
+      boxMat.dispose();
+      tetraGeo.dispose();
+      tetraMat.dispose();
     };
   }, []);
 
   return (
     <div className="global-ai-background-container" aria-hidden="true">
-      <canvas ref={canvasRef} className="global-ai-canvas" />
+      <div ref={mountRef} className="global-ai-three-canvas" />
       <div className="global-ai-grid-overlay" />
       <div className="global-ai-ambient-orb orb-primary" />
       <div className="global-ai-ambient-orb orb-secondary" />
+      <div className="global-ai-ambient-orb orb-accent" />
     </div>
   );
 };
