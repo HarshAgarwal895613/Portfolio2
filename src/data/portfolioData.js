@@ -19,6 +19,7 @@ export const portfolioData = {
     avatar: "/assets/profile.jpg",
     resumePdf: "/assets/Harsh_Agarwal_Resume.pdf",
     resumeUrl: "/assets/Harsh_Agarwal_Resume.pdf",
+    liveDeploymentUrl: "https://harshagarwal895613.github.io/Portfolio2",
     socialLinks: {
       github: "https://github.com/HarshAgarwal895613",
       linkedin: "https://www.linkedin.com/in/harsh-agarwal-0b3864381/",

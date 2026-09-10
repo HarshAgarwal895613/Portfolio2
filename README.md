@@ -2,7 +2,8 @@
 
 <div align="center">
 
-[![Portfolio Status](https://img.shields.io/badge/Status-Active%20%26%20Deployed-00f0ff?style=for-the-badge&logo=vercel&logoColor=white)](https://github.com/HarshAgarwal895613/Portfolio2)
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Website-Visit%20Portfolio-0062ff?style=for-the-badge&logo=googlechrome&logoColor=white)](https://harshagarwal895613.github.io/Portfolio2/)
+[![Deployment Status](https://img.shields.io/badge/Deployment-Active%20%26%20Automated-00ff88?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/HarshAgarwal895613/Portfolio2/actions)
 [![GitHub Profile](https://img.shields.io/badge/GitHub-HarshAgarwal895613-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/HarshAgarwal895613)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Harsh%20Agarwal-0077b5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/harsh-agarwal-0b3864381/)
 [![Gmail](https://img.shields.io/badge/Email-ha895613%40gmail.com-ea4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ha895613@gmail.com)
@@ -12,9 +13,19 @@
 
 ---
 
-### 🌐 [Explore Repository](https://github.com/HarshAgarwal895613/Portfolio2) • 📄 [View Resume PDF](public/assets/Harsh_Agarwal_Resume.pdf) • 📬 [Contact Developer](mailto:ha895613@gmail.com)
+### 🌐 [**👉 Click Here to Open Live Portfolio Website 👈**](https://harshagarwal895613.github.io/Portfolio2/)
+#### 🔗 [Explore GitHub Repo](https://github.com/HarshAgarwal895613/Portfolio2) • 📄 [View Resume PDF](public/assets/Harsh_Agarwal_Resume.pdf) • 📬 [Contact Developer](mailto:ha895613@gmail.com)
 
 </div>
+
+---
+
+## 🌟 Live Deployment URL
+
+| Platform | Live Deployment Link | Status |
+| :--- | :--- | :--- |
+| **Official Live URL** | [**https://harshagarwal895613.github.io/Portfolio2/**](https://harshagarwal895613.github.io/Portfolio2/) | 🟢 **Live & Active** |
+| **GitHub Repository** | [**https://github.com/HarshAgarwal895613/Portfolio2**](https://github.com/HarshAgarwal895613/Portfolio2) | 🟢 **Main Branch** |
 
 ---
 
@@ -47,6 +58,9 @@ This is the official portfolio repository of **Harsh Agarwal**, engineered with 
 
 ```tree
 Portfolio2/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml                  # Automated GitHub Actions Pages deployment
 ├── public/
 │   ├── assets/
 │   │   ├── certs/                      # Verified certification images
@@ -115,6 +129,7 @@ npm run build
 
 ## 🔗 Official Links & Profiles
 
+- **Live Website**: [https://harshagarwal895613.github.io/Portfolio2/](https://harshagarwal895613.github.io/Portfolio2/)
 - **Repository**: [https://github.com/HarshAgarwal895613/Portfolio2](https://github.com/HarshAgarwal895613/Portfolio2)
 - **GitHub**: [@HarshAgarwal895613](https://github.com/HarshAgarwal895613)
 - **LinkedIn**: [Harsh Agarwal](https://www.linkedin.com/in/harsh-agarwal-0b3864381/)
