@@ -26,6 +26,7 @@ import {
 import { VscVscode } from 'react-icons/vsc';
 import { TbApi, TbActivity } from 'react-icons/tb';
 import { Terminal } from 'lucide-react';
+import { TiltCard } from './TiltCard';
 import { portfolioData } from '../data/portfolioData';
 
 // Official Dual-tone Python SVG Logo
@@ -202,20 +203,20 @@ export const Skills = () => {
                 return (
                   <motion.div
                     key={sIdx}
-                    className={`arsenal-card ${category.name === 'Soft Skills' ? 'arsenal-card-soft' : 'arsenal-card-tech'}`}
+                    className={category.name === 'Soft Skills' ? 'arsenal-card-soft' : 'arsenal-card-tech'}
                     variants={cardVariants}
-                    whileHover={{
-                      scale: 1.05,
-                      borderColor: brandColor,
-                      boxShadow: `0 0 22px ${brandColor}40`,
-                      transition: { duration: 0.2 }
-                    }}
-                    whileTap={{ scale: 0.98 }}
                   >
-                    <div className="arsenal-card-icon">
-                      {iconMap[skill.name] || <SiCplusplus size={28} color="#00599C" />}
-                    </div>
-                    <span className="arsenal-card-name">{skill.name}</span>
+                    <TiltCard
+                      className="arsenal-card"
+                      maxTilt={12}
+                      scale={1.05}
+                      style={{ height: '100%', width: '100%' }}
+                    >
+                      <div className="arsenal-card-icon">
+                        {iconMap[skill.name] || <SiCplusplus size={28} color="#00599C" />}
+                      </div>
+                      <span className="arsenal-card-name">{skill.name}</span>
+                    </TiltCard>
                   </motion.div>
                 );
               })}

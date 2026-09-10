@@ -94,7 +94,7 @@ export const Projects = () => {
                       href={proj.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-outline"
+                      className="btn btn-outline btn-3d-tactile"
                       style={{ padding: '8px 18px', fontSize: '0.88rem' }}
                     >
                       <Github size={16} /> GitHub Code
@@ -105,7 +105,7 @@ export const Projects = () => {
                       href={proj.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-primary"
+                      className="btn btn-primary btn-3d-tactile"
                       style={{ padding: '8px 18px', fontSize: '0.88rem' }}
                     >
                       <ExternalLink size={16} /> Live Preview

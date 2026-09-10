@@ -719,6 +719,15 @@ body.custom-cursor-active * {
   animation: floatBadge1 4s ease-in-out infinite alternate;
 }
 
+.hero-3d-badge.badge-top-right {
+  top: 15px;
+  right: -25px;
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(245, 158, 11, 0.25);
+  transform: translateZ(52px);
+  animation: floatBadge4 4.8s ease-in-out infinite alternate;
+}
+
 .hero-3d-badge.badge-bottom-right {
   bottom: 25px;
   right: -25px;
@@ -750,6 +759,11 @@ body.custom-cursor-active * {
 @keyframes floatBadge3 {
   0% { transform: translateZ(40px) translateY(0); }
   100% { transform: translateZ(40px) translateY(-7px); }
+}
+
+@keyframes floatBadge4 {
+  0% { transform: translateZ(52px) translateY(0); }
+  100% { transform: translateZ(52px) translateY(-9px); }
 }
 
 /* 3D Tactile Buttons */
@@ -826,7 +840,8 @@ body.custom-cursor-active * {
 .tilt-3d-card .cv-icon,
 .tilt-3d-card .profile-icon,
 .tilt-3d-card .achievement-icon-box,
-.tilt-3d-card .contact-icon {
+.tilt-3d-card .contact-icon,
+.tilt-3d-card .arsenal-card-icon {
   transform: translateZ(24px);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -834,8 +849,9 @@ body.custom-cursor-active * {
 .tilt-3d-card:hover .cv-icon,
 .tilt-3d-card:hover .profile-icon,
 .tilt-3d-card:hover .achievement-icon-box,
-.tilt-3d-card:hover .contact-icon {
-  transform: translateZ(32px) scale(1.08);
+.tilt-3d-card:hover .contact-icon,
+.tilt-3d-card:hover .arsenal-card-icon {
+  transform: translateZ(34px) scale(1.12);
 }
 
 .tilt-3d-card h3 {
@@ -963,60 +979,154 @@ body.custom-cursor-active * {
 }
 
 /* About Section */
+/* About Section & Cyber Terminal */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  align-items: stretch;
 }
 
-.about-text h3 {
-  font-size: 1.8rem;
+.about-terminal-card {
+  padding: 0;
+  overflow: hidden;
+  border: 1.5px solid rgba(0, 240, 255, 0.35);
+  background: rgba(6, 12, 28, 0.88);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: rgba(0, 240, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.82rem;
+}
+
+.terminal-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terminal-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red { background: #ff5f56; box-shadow: 0 0 6px #ff5f56; }
+.dot-yellow { background: #ffbd2e; box-shadow: 0 0 6px #ffbd2e; }
+.dot-green { background: #27c93f; box-shadow: 0 0 6px #27c93f; }
+
+.terminal-title {
+  color: var(--primary);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.terminal-status-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(39, 201, 63, 0.18);
+  color: #27c93f;
+  border: 1px solid rgba(39, 201, 63, 0.4);
+}
+
+.about-terminal-body {
+  padding: 26px 24px;
+  flex: 1 1 auto;
+}
+
+.about-terminal-body h3 {
+  font-size: 1.65rem;
   margin-bottom: 16px;
   background: linear-gradient(135deg, var(--text-primary), var(--primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.about-text p {
+.terminal-prompt-line {
   color: var(--text-secondary);
-  margin-bottom: 20px;
-  line-height: 1.8;
+  margin-bottom: 12px;
+  line-height: 1.75;
+  font-size: 0.95rem;
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-prompt-line .prompt-sym {
+  color: var(--primary);
+  font-family: 'Fira Code', monospace;
+  font-weight: 700;
 }
 
 .about-stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 18px;
+  height: 100%;
 }
 
 .stat-box {
-  padding: 24px;
+  padding: 24px 18px;
   text-align: center;
-  border: 1px solid var(--glass-border);
+  border: 1.5px solid var(--glass-border);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-glow-orb {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(12px);
 }
 
 .stat-number {
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   font-weight: 800;
   font-family: 'Outfit', sans-serif;
   color: var(--primary);
   margin-bottom: 4px;
-  text-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+  text-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
+  position: relative;
+  z-index: 2;
 }
 
 .stat-label {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
+  font-family: 'Fira Code', monospace;
+  position: relative;
+  z-index: 2;
 }
 
 .strengths-container {
-  margin-top: 24px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .strengths-title {
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 600;
   margin-bottom: 12px;
   color: var(--primary);
@@ -1026,7 +1136,7 @@ body.custom-cursor-active * {
 .strengths-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 /* ==========================================================================

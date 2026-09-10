@@ -11,7 +11,8 @@ import {
   FileText,
   GraduationCap,
   Code2,
-  Cpu
+  Cpu,
+  Award
 } from 'lucide-react';
 import { ParticleCanvas } from './ParticleCanvas';
 import { portfolioData } from '../data/portfolioData';
@@ -137,6 +138,11 @@ export const Hero = () => {
             <div className="hero-3d-badge badge-top-left">
               <GraduationCap size={13} style={{ color: 'var(--primary)' }} />
               <span>9.24* CGPA @ LPU</span>
+            </div>
+
+            <div className="hero-3d-badge badge-top-right">
+              <Award size={13} style={{ color: '#f59e0b' }} />
+              <span>Qualified for JEE Advanced</span>
             </div>
 
             <div className="hero-3d-badge badge-bottom-right">
