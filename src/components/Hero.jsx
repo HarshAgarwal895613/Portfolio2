@@ -14,7 +14,6 @@ import {
   Cpu,
   Award
 } from 'lucide-react';
-import { ParticleCanvas } from './ParticleCanvas';
 import { portfolioData } from '../data/portfolioData';
 
 export const Hero = () => {
@@ -45,7 +44,6 @@ export const Hero = () => {
 
   return (
     <section id="hero" className="hero">
-      <ParticleCanvas />
       <div className="container hero-content">
         <motion.div
           className="hero-text"
@@ -106,6 +104,25 @@ export const Hero = () => {
             <a href={personal.socialLinks.email} target="_blank" rel="noopener noreferrer" aria-label="Gmail" className="social-3d-btn">
               <Mail size={20} />
             </a>
+          </div>
+
+          {/* 3D AI Neural Telemetry HUD Strip */}
+          <div className="hero-ai-telemetry-hud">
+            <div className="ai-hud-item">
+              <span className="ai-hud-dot" />
+              <span className="ai-hud-label">NEURAL ENGINE:</span>
+              <span className="ai-hud-value">AI / ML Specialized</span>
+            </div>
+            <div className="ai-hud-divider" />
+            <div className="ai-hud-item">
+              <span className="ai-hud-label">ACADEMICS:</span>
+              <span className="ai-hud-value">9.24* CGPA @ LPU</span>
+            </div>
+            <div className="ai-hud-divider" />
+            <div className="ai-hud-item">
+              <span className="ai-hud-label">PROBLEM SOLVING:</span>
+              <span className="ai-hud-value">50+ LeetCode DSA</span>
+            </div>
           </div>
         </motion.div>
 

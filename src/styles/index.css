@@ -3281,3 +3281,198 @@ body.custom-cursor-active * {
     font-size: 0.76rem;
   }
 }
+
+/* ==========================================================================
+   21. Global 3D AI Neural Matrix & Synaptic Background System
+   ========================================================================== */
+.global-ai-background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.global-ai-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.global-ai-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-size: 64px 64px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at 50% 50%, black 45%, transparent 92%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 45%, transparent 92%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+[data-theme="light"] .global-ai-grid-overlay {
+  background-image: 
+    linear-gradient(to right, rgba(0, 98, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 98, 255, 0.035) 1px, transparent 1px);
+}
+
+.global-ai-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+  opacity: 0.22;
+  z-index: 2;
+}
+
+.global-ai-ambient-orb.orb-primary {
+  top: 15%;
+  left: 10%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.5) 0%, rgba(157, 0, 255, 0.3) 60%, transparent 80%);
+}
+
+.global-ai-ambient-orb.orb-secondary {
+  bottom: 10%;
+  right: 12%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 0, 127, 0.45) 0%, rgba(0, 240, 255, 0.25) 60%, transparent 80%);
+}
+
+[data-theme="light"] .global-ai-ambient-orb.orb-primary {
+  background: radial-gradient(circle, rgba(0, 98, 255, 0.2) 0%, rgba(121, 40, 202, 0.12) 60%, transparent 80%);
+  opacity: 0.45;
+}
+
+[data-theme="light"] .global-ai-ambient-orb.orb-secondary {
+  background: radial-gradient(circle, rgba(230, 0, 110, 0.18) 0%, rgba(0, 98, 255, 0.12) 60%, transparent 80%);
+  opacity: 0.45;
+}
+
+/* 3D AI Neural Telemetry HUD Strip */
+.hero-ai-telemetry-hud {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 18px;
+  background: rgba(6, 12, 28, 0.85);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 30px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 240, 255, 0.15);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.76rem;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+[data-theme="light"] .hero-ai-telemetry-hud {
+  background: #ffffff;
+  border: 1.5px solid rgba(0, 98, 255, 0.2);
+  box-shadow: 0 6px 20px rgba(12, 21, 46, 0.06);
+}
+
+.ai-hud-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ai-hud-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 8px #00ff88;
+  animation: pulseLiveDot 1.4s infinite alternate;
+}
+
+.ai-hud-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+[data-theme="light"] .ai-hud-label {
+  color: #64748b;
+}
+
+.ai-hud-value {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+[data-theme="light"] .ai-hud-value {
+  color: #0062ff;
+}
+
+.ai-hud-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="light"] .ai-hud-divider {
+  background: rgba(0, 98, 255, 0.15);
+}
+
+/* Terminal AI Telemetry Metadata Grid in About */
+.terminal-ai-telemetry-box {
+  background: rgba(0, 240, 255, 0.04);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-left: 3px solid var(--primary);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+}
+
+[data-theme="light"] .terminal-ai-telemetry-box {
+  background: rgba(0, 98, 255, 0.04);
+  border-color: rgba(0, 98, 255, 0.16);
+  border-left: 3px solid #0062ff;
+}
+
+.ai-telemetry-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.telemetry-key {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.5px;
+}
+
+[data-theme="light"] .telemetry-key {
+  color: #0062ff;
+}
+
+.telemetry-val {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+[data-theme="light"] .telemetry-val {
+  color: #334155;
+}
+

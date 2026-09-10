@@ -60,6 +60,22 @@ export const About = () => {
                   <span className="prompt-sym">&gt;</span> {about.objective}
                 </p>
 
+                {/* 3D AI Telemetry Metadata Grid */}
+                <div className="terminal-ai-telemetry-box">
+                  <div className="ai-telemetry-row">
+                    <span className="telemetry-key">SPECIALIZATION:</span>
+                    <span className="telemetry-val">Artificial Intelligence & Machine Learning (AI/ML)</span>
+                  </div>
+                  <div className="ai-telemetry-row">
+                    <span className="telemetry-key">PROBLEM_SOLVING:</span>
+                    <span className="telemetry-val">50+ LeetCode DSA Solved // C++ & Python</span>
+                  </div>
+                  <div className="ai-telemetry-row">
+                    <span className="telemetry-key">APPLIED_SYSTEMS:</span>
+                    <span className="telemetry-val">IoT Smart Climate Telemetry, React.js & Algorithms</span>
+                  </div>
+                </div>
+
                 <div className="strengths-container">
                   <h4 className="strengths-title">
                     <Sparkles size={16} style={{ display: 'inline', marginRight: '6px' }} />

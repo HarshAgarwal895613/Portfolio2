@@ -1,4 +1,5 @@
 import React from 'react';
+import { AINeuralBackground } from './components/AINeuralBackground';
 import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -14,6 +15,7 @@ import { Footer } from './components/Footer';
 export function App() {
   return (
     <>
+      <AINeuralBackground />
       <CustomCursor />
       <Navbar />
       <main>
